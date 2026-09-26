@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="title-tag">Business Banking - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0d47a1;
+            --secondary: #1976d2;
+            --accent: #e3f2fd;
+            --dark: #1a237e;
+            --success: #388e3c;
+            --dark-text: #212121;
+            --light-text: #757575;
+        }
+        body {
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark-text);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .bank-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .hero {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 60px 40px;
+            border-radius: 12px 12px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero h1 {
+            margin: 0;
+            font-size: 38px;
+            font-weight: 600;
+            max-width: 70%;
+        }
+        .hero .tag {
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+        }
+        .hero .graphic {
+            position: absolute;
+            right: 40px;
+            bottom: -20px;
+            width: 180px;
+            opacity: 0.8;
+        }
+        .content {
+            background: white;
+            padding: 50px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .intro {
+            font-size: 19px;
+            color: var(--dark-text);
+            margin-bottom: 40px;
+            max-width: 800px;
+            font-weight: 400;
+        }
+        .highlights {
+            display: flex;
+            background: var(--accent);
+            border-radius: 10px;
+            padding: 40px;
+            margin: 40px 0;
+            align-items: center;
+            border-left: 5px solid var(--secondary);
+        }
+        .rate-card {
+            min-width: 250px;
+            margin-right: 50px;
+        }
+        .rate {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+        .rate-sub {
+            font-size: 18px;
+            color: var(--dark-text);
+            margin-top: 10px;
+        }
+        .rate-note {
+            font-size: 14px;
+            color: var(--light-text);
+            margin-top: 15px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        .feature {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(25,118,210,0.1);
+            border-color: var(--secondary);
+        }
+        .feature h3 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .feature h3 i {
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 24px;
+        }
+        .feature-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        .feature-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--success);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 0 8px 0 8px;
+            font-size: 13px;
+        }
+        .documents {
+            background: var(--accent);
+            padding: 40px;
+            border-radius: 10px;
+            margin: 50px 0;
+        }
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .doc-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px 0;
+        }
+        .doc-item i {
+            color: var(--primary);
+            margin-right: 15px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--dark));
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(13,71,161,0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(13,71,161,0.4);
+        }
+        .btn-primary i {
+            margin-left: 12px;
+        }
+        .btn-outline {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 16px 40px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+        }
+        .disclaimer {
+            background: #fff8e6;
+            border-left: 4px solid #ffb300;
+            padding: 25px;
+            margin-top: 50px;
+            font-size: 15px;
+            color: #5e503f;
+            border-radius: 8px;
+        }
+        .solution-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .solution-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--secondary);
+        }
+        .solution-card h4 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .lang-switch {
+            margin: 15px 0;
+            text-align: right;
+        }
+        .lang-switch select {
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                max-width: 100%;
+                font-size: 32px;
+            }
+            .hero .graphic {
+                display: none;
+            }
+            .highlights {
+                flex-direction: column;
+                text-align: center;
+            }
+            .rate-card {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+            .btn-container {
+                flex-direction: column;
+            }
+            .btn-primary, .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="notification" id="langNotification">Language changed successfully!</div>
+    <div class="bank-container">
+        <div class="lang-switch">
+            <span class="lang-label">🌐</span>
+            <select id="language" onchange="switchLang(this.value)">
+                <option value="en">English</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+            </select>
+        </div>
+
+        <div class="hero">
+            <h1 data-lang-key="hero-title">Business Banking Solutions</h1>
+            <span class="tag" data-lang-key="hero-tag">Tailored for Growth</span>
+            <img src="https://cdn-icons-png.flaticon.com/512/1570/1570887.png" alt="Business growth" class="graphic">
+        </div>
+        
+        <div class="content">
+            <p class="intro" data-lang-key="intro-text">Power your business growth with our comprehensive banking solutions designed for SMEs, startups, and corporate clients. Enjoy customized financial products with premium service.</p>
+            
+            <div class="highlights">
+                <div class="rate-card">
+                    <div class="rate">12.5%*</div>
+                    <div class="rate-sub" data-lang-key="rate-sub-text">Base Interest Rate</div>
+                    <div class="rate-note" data-lang-key="rate-note-text">*For working capital loans</div>
+                </div>
+                <div class="highlight-details">
+                    <p data-lang-key="advantages-heading"><strong>Key Advantages:</strong></p>
+                    <ul>
+                        <li data-lang-key="advantage-1">Collateral-free loans up to ₹50 lakhs</li>
+                        <li data-lang-key="advantage-2">Digital application with fast approval</li>
+                        <li data-lang-key="advantage-3">Dedicated relationship manager</li>
+                        <li data-lang-key="advantage-4">Flexible repayment structures</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="features-heading">Business Loan Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-badge" data-lang-key="badge-popular">Popular</span>
+                    <h3 data-lang-key="feature-1-title"><i class="fas fa-hand-holding-usd"></i> Working Capital</h3>
+                    <div class="feature-value">Up to ₹2 Cr</div>
+                    <p data-lang-key="feature-1-text">Meet daily operational needs with flexible credit limits and competitive rates</p>
+                </div>
+                <div class="feature">
+                    <h3 data-lang-key="feature-2-title"><i class="fas fa-building"></i> Term Loan</h3>
+                    <div class="feature-value">Up to ₹5 Cr</div>
+                    <p data-lang-key="feature-2-text">Long-term financing for expansion, equipment purchase, or infrastructure</p>
+                </div>
+                <div class="feature">
+                    <h3 data-lang-key="feature-3-title"><i class="fas fa-truck"></i> Machinery Loan</h3>
+                    <div class="feature-value">Up to ₹3 Cr</div>
+                    <p data-lang-key="feature-3-text">Finance up to 80% of equipment value with specialized repayment plans</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-badge" data-lang-key="badge-new">New</span>
+                    <h3 data-lang-key="feature-4-title"><i class="fas fa-bolt"></i> Startup Financing</h3>
+                    <div class="feature-value">Up to ₹1 Cr</div>
+                    <p data-lang-key="feature-4-text">Custom solutions for new businesses with innovative repayment options</p>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="solutions-heading">Specialized Solutions</h2>
+            <div class="solution-cards">
+                <div class="solution-card">
+                    <h4 data-lang-key="solution-1-title">Trade Services</h4>
+                    <p data-lang-key="solution-1-text">Letters of Credit, Bank Guarantees, and Export/Import financing</p>
+                </div>
+                <div class="solution-card">
+                    <h4 data-lang-key="solution-2-title">Cash Management</h4>
+                    <p data-lang-key="solution-2-text">Collections, payments, and liquidity management solutions</p>
+                </div>
+                <div class="solution-card">
+                    <h4 data-lang-key="solution-3-title">Forex Services</h4>
+                    <p data-lang-key="solution-3-text">Competitive exchange rates and hedging solutions</p>
+                </div>
+                <div class="solution-card">
+                    <h4 data-lang-key="solution-4-title">Digital Banking</h4>
+                    <p data-lang-key="solution-4-text">API integrations and bulk payment solutions</p>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="eligibility-heading">Eligibility Criteria</h2>
+            <ul>
+                <li data-lang-key="eligibility-1"><strong>Business Vintage:</strong> Minimum 3 years (1 year for startups in select sectors)</li>
+                <li data-lang-key="eligibility-2"><strong>Annual Turnover:</strong> ₹25 lakhs and above</li>
+                <li data-lang-key="eligibility-3"><strong>Profitability:</strong> Positive EBITDA for last 2 years (relaxed for growth-stage businesses)</li>
+                <li data-lang-key="eligibility-4"><strong>Credit Score:</strong> Business CIBIL score of 700+ preferred</li>
+            </ul>
+            
+            <h2 data-lang-key="documents-heading">Required Documents</h2>
+            <div class="documents">
+                <div class="doc-grid">
+                    <div class="doc-item">
+                        <i class="fas fa-file-contract"></i>
+                        <div>
+                            <strong data-lang-key="doc-1-title">Business Proof</strong>
+                            <div data-lang-key="doc-1-text">Registration certificate, GST, PAN</div>
+                        </div>
+                    </div>
+                    <div class="doc-item">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <div>
+                            <strong data-lang-key="doc-2-title">Financials</strong>
+                            <div data-lang-key="doc-2-text">2 years audited statements, ITR</div>
+                        </div>
+                    </div>
+                    <div class="doc-item">
+                        <i class="fas fa-file-alt"></i>
+                        <div>
+                            <strong data-lang-key="doc-3-title">Bank Statements</strong>
+                            <div data-lang-key="doc-3-text">Last 12 months (all accounts)</div>
+                        </div>
+                    </div>
+                    <div class="doc-item">
+                        <i class="fas fa-file-signature"></i>
+                        <div>
+                            <strong data-lang-key="doc-4-title">KYC</strong>
+                            <div data-lang-key="doc-4-text">Promoters' identity & address proof</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="btn-container">
+                <button class="btn-primary" data-lang-key="apply-btn">Apply for Business Loan <i class="fas fa-arrow-right"></i></button>
+                <button class="btn-outline" data-lang-key="talk-btn">Talk to Relationship Manager</button>
+            </div>
+            
+            <div class="disclaimer">
+                <p data-lang-key="disclaimer-text"><strong>Note:</strong> Interest rates vary based on credit profile and loan tenure. Processing fees range from 1-2% of loan amount. Collateral requirements apply for loans above ₹50 lakhs. Special rates available for women entrepreneurs and green businesses.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'title-tag': 'Business Banking - Global Trust Bank',
+                'hero-title': 'Business Banking Solutions',
+                'hero-tag': 'Tailored for Growth',
+                'intro-text': 'Power your business growth with our comprehensive banking solutions designed for SMEs, startups, and corporate clients. Enjoy customized financial products with premium service.',
+                'rate-sub-text': 'Base Interest Rate',
+                'rate-note-text': '*For working capital loans',
+                'advantages-heading': 'Key Advantages:',
+                'advantage-1': 'Collateral-free loans up to ₹50 lakhs',
+                'advantage-2': 'Digital application with fast approval',
+                'advantage-3': 'Dedicated relationship manager',
+                'advantage-4': 'Flexible repayment structures',
+                'features-heading': 'Business Loan Features',
+                'badge-popular': 'Popular',
+                'badge-new': 'New',
+                'feature-1-title': 'Working Capital',
+                'feature-1-text': 'Meet daily operational needs with flexible credit limits and competitive rates',
+                'feature-2-title': 'Term Loan',
+                'feature-2-text': 'Long-term financing for expansion, equipment purchase, or infrastructure',
+                'feature-3-title': 'Machinery Loan',
+                'feature-3-text': 'Finance up to 80% of equipment value with specialized repayment plans',
+                'feature-4-title': 'Startup Financing',
+                'feature-4-text': 'Custom solutions for new businesses with innovative repayment options',
+                'solutions-heading': 'Specialized Solutions',
+                'solution-1-title': 'Trade Services',
+                'solution-1-text': 'Letters of Credit, Bank Guarantees, and Export/Import financing',
+                'solution-2-title': 'Cash Management',
+                'solution-2-text': 'Collections, payments, and liquidity management solutions',
+                'solution-3-title': 'Forex Services',
+                'solution-3-text': 'Competitive exchange rates and hedging solutions',
+                'solution-4-title': 'Digital Banking',
+                'solution-4-text': 'API integrations and bulk payment solutions',
+                'eligibility-heading': 'Eligibility Criteria',
+                'eligibility-1': 'Business Vintage: Minimum 3 years (1 year for startups in select sectors)',
+                'eligibility-2': 'Annual Turnover: ₹25 lakhs and above',
+                'eligibility-3': 'Profitability: Positive EBITDA for last 2 years (relaxed for growth-stage businesses)',
+                'eligibility-4': 'Credit Score: Business CIBIL score of 700+ preferred',
+                'documents-heading': 'Required Documents',
+                'doc-1-title': 'Business Proof',
+                'doc-1-text': 'Registration certificate, GST, PAN',
+                'doc-2-title': 'Financials',
+                'doc-2-text': '2 years audited statements, ITR',
+                'doc-3-title': 'Bank Statements',
+                'doc-3-text': 'Last 12 months (all accounts)',
+                'doc-4-title': 'KYC',
+                'doc-4-text': 'Promoters\' identity & address proof',
+                'apply-btn': 'Apply for Business Loan',
+                'talk-btn': 'Talk to Relationship Manager',
+                'disclaimer-text': 'Note: Interest rates vary based on credit profile and loan tenure. Processing fees range from 1-2% of loan amount. Collateral requirements apply for loans above ₹50 lakhs. Special rates available for women entrepreneurs and green businesses.',
+            },
+            'ta': {
+                'title-tag': 'வணிக வங்கி - குளோபல் டிரஸ்ட் வங்கி',
+                'hero-title': 'வணிக வங்கி தீர்வுகள்',
+                'hero-tag': 'வளர்ச்சிக்காக வடிவமைக்கப்பட்டது',
+                'intro-text': 'சிறு மற்றும் நடுத்தர நிறுவனங்கள், ஸ்டார்ட்அப்கள் மற்றும் கார்ப்பரேட் வாடிக்கையாளர்களுக்காக வடிவமைக்கப்பட்ட எங்கள் விரிவான வங்கி தீர்வுகளுடன் உங்கள் வணிக வளர்ச்சியை மேம்படுத்துங்கள். பிரீமியம் சேவையுடன் தனிப்பயனாக்கப்பட்ட நிதி தயாரிப்புகளை அனுபவிக்கவும்.',
+                'rate-sub-text': 'அடிப்படை வட்டி விகிதம்',
+                'rate-note-text': '*நடைமுறை மூலதன கடன்களுக்கு',
+                'advantages-heading': 'முக்கிய நன்மைகள்:',
+                'advantage-1': '₹50 லட்சம் வரை அடமானமில்லா கடன்கள்',
+                'advantage-2': 'விரைவான ஒப்புதலுடன் டிஜிட்டல் விண்ணப்பம்',
+                'advantage-3': 'பிரத்யேக உறவு மேலாளர்',
+                'advantage-4': 'நெகிழ்வான திருப்பிச் செலுத்தும் கட்டமைப்புகள்',
+                'features-heading': 'வணிக கடன் அம்சங்கள்',
+                'badge-popular': 'பிரபலமானது',
+                'badge-new': 'புதியது',
+                'feature-1-title': 'நடைமுறை மூலதனம்',
+                'feature-1-text': 'நெகிழ்வான கடன் வரம்புகள் மற்றும் போட்டி விகிதங்களுடன் தினசரி செயல்பாட்டுத் தேவைகளைப் பூர்த்தி செய்யவும்',
+                'feature-2-title': 'கால கடன்',
+                'feature-2-text': 'விரிவாக்கம், உபகரணங்கள் வாங்குதல் அல்லது உள்கட்டமைப்புக்கான நீண்ட கால நிதி',
+                'feature-3-title': 'இயந்திர கடன்',
+                'feature-3-text': 'சிறப்பு திருப்பிச் செலுத்தும் திட்டங்களுடன் உபகரண மதிப்பில் 80% வரை நிதி பெறவும்',
+                'feature-4-title': 'ஸ்டார்ட்அப் நிதி',
+                'feature-4-text': 'புதிய வணிகங்களுக்கு புதுமையான திருப்பிச் செலுத்தும் விருப்பங்களுடன் தனிப்பயன் தீர்வுகள்',
+                'solutions-heading': 'சிறப்பு தீர்வுகள்',
+                'solution-1-title': 'வர்த்தக சேவைகள்',
+                'solution-1-text': 'கடன் கடிதங்கள், வங்கி உத்தரவாதங்கள் மற்றும் ஏற்றுமதி/இறக்குமதி நிதி',
+                'solution-2-title': 'பண மேலாண்மை',
+                'solution-2-text': 'வசூல்கள், கொடுப்பனவுகள் மற்றும் பணப்புழக்க மேலாண்மை தீர்வுகள்',
+                'solution-3-title': 'அந்நிய செலாவணி சேவைகள்',
+                'solution-3-text': 'போட்டி மாற்று விகிதங்கள் மற்றும் தடுப்பு தீர்வுக',
+                'solution-4-title': 'டிஜிட்டல் வங்கி',
+                'solution-4-text': 'ஏபிஐ ஒருங்கிணைப்புகள் மற்றும் மொத்த கட்டண தீர்வுகள்',
+                'eligibility-heading': 'தகுதிக்கான நிபந்தனைகள்',
+                'eligibility-1': 'வணிக அனுபவம்: குறைந்தபட்சம் 3 ஆண்டுகள் (தேர்ந்தெடுக்கப்பட்ட துறைகளில் ஸ்டார்ட்அப்களுக்கு 1 ஆண்டு)',
+                'eligibility-2': 'ஆண்டு விற்றுமுதல்: ₹25 லட்சம் மற்றும் அதற்கு மேல்',
+                'eligibility-3': 'லாபம்: கடந்த 2 ஆண்டுகளாக நேர்மறையான EBITDA (வளர்ச்சி-நிலை வணிகங்களுக்கு தளர்த்தப்பட்டுள்ளது)',
+                'eligibility-4': 'கடன் மதிப்பெண்: 700+ வணிக சிபில் மதிப்பெண் விரும்பத்தக்கது',
+                'documents-heading': 'தேவையான ஆவணங்கள்',
+                'doc-1-title': 'வணிகச் சான்று',
+                'doc-1-text': 'பதிவு சான்றிதழ், ஜிஎஸ்டி, பான்',
+                'doc-2-title': 'நிதிநிலை',
+                'doc-2-text': '2 வருட தணிக்கை செய்யப்பட்ட அறிக்கைகள், ஐடிஆர்',
+                'doc-3-title': 'வங்கி அறிக்கைகள்',
+                'doc-3-text': 'கடந்த 12 மாதங்கள் (அனைத்து கணக்குகளும்)',
+                'doc-4-title': 'கேஒய்சி',
+                'doc-4-text': 'விளம்பரதாரர்களின் அடையாள & முகவரிச் சான்று',
+                'apply-btn': 'வணிக கடனுக்கு விண்ணப்பிக்கவும்',
+                'talk-btn': 'உறவு மேலாளரிடம் பேசவும்',
+                'disclaimer-text': 'குறிப்பு: வட்டி விகிதங்கள் கடன் விவரம் மற்றும் கடன் காலத்தின் அடிப்படையில் மாறுபடும். செயலாக்கக் கட்டணம் கடன் தொகையில் 1-2% வரை இருக்கும். ₹50 லட்சத்திற்கு மேற்பட்ட கடன்களுக்கு அடமானத் தேவைகள் பொருந்தும். பெண் தொழில்முனைவோர் மற்றும் பசுமை வணிகங்களுக்கு சிறப்பு விகிதங்கள் கிடைக்கின்றன.',
+            },
+            'hi': {
+                'title-tag': 'बिजनेस बैंकिंग - ग्लोबल ट्रस्ट बैंक',
+                'hero-title': 'बिजनेस बैंकिंग समाधान',
+                'hero-tag': 'विकास के लिए तैयार',
+                'intro-text': 'एसएमई, स्टार्टअप और कॉर्पोरेट ग्राहकों के लिए डिज़ाइन किए गए हमारे व्यापक बैंकिंग समाधानों के साथ अपने व्यवसाय के विकास को बढ़ावा दें। प्रीमियम सेवा के साथ अनुकूलित वित्तीय उत्पादों का आनंद लें।',
+                'rate-sub-text': 'आधार ब्याज दर',
+                'rate-note-text': '*कार्यशील पूंजी ऋणों के लिए',
+                'advantages-heading': 'मुख्य लाभ:',
+                'advantage-1': '₹50 लाख तक का बिना-गिरवी ऋण',
+                'advantage-2': 'तेज़ अनुमोदन के साथ डिजिटल आवेदन',
+                'advantage-3': 'समर्पित संबंध प्रबंधक',
+                'advantage-4': 'लचीली पुनर्भुगतान संरचनाएं',
+                'features-heading': 'बिजनेस लोन की विशेषताएं',
+                'badge-popular': 'लोकप्रिय',
+                'badge-new': 'नया',
+                'feature-1-title': 'कार्यशील पूंजी',
+                'feature-1-text': 'लचीली क्रेडिट सीमा और प्रतिस्पर्धी दरों के साथ दैनिक परिचालन आवश्यकताओं को पूरा करें',
+                'feature-2-title': 'सावधि ऋण',
+                'feature-2-text': 'विस्तार, उपकरण खरीद, या बुनियादी ढांचे के लिए दीर्घकालिक वित्तपोषण',
+                'feature-3-title': 'मशीनरी ऋण',
+                'feature-3-text': 'विशेष पुनर्भुगतान योजनाओं के साथ उपकरण के मूल्य का 80% तक वित्तपोषण',
+                'feature-4-title': 'स्टार्टअप फाइनेंसिंग',
+                'feature-4-text': 'नए व्यवसायों के लिए अभिनव पुनर्भुगतान विकल्पों के साथ कस्टम समाधान',
+                'solutions-heading': 'विशेषज्ञ समाधान',
+                'solution-1-title': 'व्यापार सेवाएं',
+                'solution-1-text': 'क्रेडिट के पत्र, बैंक गारंटी, और निर्यात/आयात वित्तपोषण',
+                'solution-2-title': 'नकद प्रबंधन',
+                'solution-2-text': 'संग्रह, भुगतान, और तरलता प्रबंधन समाधान',
+                'solution-3-title': 'विदेशी मुद्रा सेवाएं',
+                'solution-3-text': 'प्रतिस्पर्धी विनिमय दरें और बचाव समाधान',
+                'solution-4-title': 'डिजिटल बैंकिंग',
+                'solution-4-text': 'एपीआई एकीकरण और थोक भुगतान समाधान',
+                'eligibility-heading': 'पात्रता मापदंड',
+                'eligibility-1': 'व्यवसाय अनुभव: न्यूनतम 3 वर्ष (चयनित क्षेत्रों में स्टार्टअप के लिए 1 वर्ष)',
+                'eligibility-2': 'वार्षिक टर्नओवर: ₹25 लाख और उससे अधिक',
+                'eligibility-3': 'लाभप्रदता: पिछले 2 वर्षों से सकारात्मक EBITDA (विकास-चरण के व्यवसायों के लिए ढील दी गई)',
+                'eligibility-4': 'क्रेडिट स्कोर: 700+ का बिजनेस सिबिल स्कोर पसंद किया जाता है',
+                'documents-heading': 'आवश्यक दस्तावेज़',
+                'doc-1-title': 'व्यवसाय प्रमाण',
+                'doc-1-text': 'पंजीकरण प्रमाण पत्र, जीएसटी, पैन',
+                'doc-2-title': 'वित्तीय',
+                'doc-2-text': '2 साल के ऑडिट किए गए विवरण, आईटीआर',
+                'doc-3-title': 'बैंक विवरण',
+                'doc-3-text': 'पिछले 12 महीने (सभी खाते)',
+                'doc-4-title': 'केवाईसी',
+                'doc-4-text': 'प्रमोटरों की पहचान और पते का प्रमाण',
+                'apply-btn': 'बिजनेस लोन के लिए आवेदन करें',
+                'talk-btn': 'संबंध प्रबंधक से बात करें',
+                'disclaimer-text': 'नोट: ब्याज दरें क्रेडिट प्रोफाइल और ऋण अवधि के आधार पर भिन्न होती हैं। प्रोसेसिंग शुल्क ऋण राशि का 1-2% होता है। ₹50 लाख से ऊपर के ऋणों के लिए गिरवी की आवश्यकताएं लागू होती हैं। महिला उद्यमियों और हरित व्यवसायों के लिए विशेष दरें उपलब्ध हैं।',
+            }
+        };
+
+        function translatePage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    // Special handling for button with icon
+                    if (key === 'apply-btn') {
+                        element.innerHTML = `${translations[lang][key]} <i class="fas fa-arrow-right"></i>`;
+                    } else if (key === 'talk-btn') {
+                         element.textContent = translations[lang][key];
+                    } else if (element.tagName === 'LI') {
+                        // For list items with bold text, preserve the bold tag
+                        if (element.innerHTML.includes('<strong>')) {
+                            const [label, content] = translations[lang][key].split(':');
+                            element.innerHTML = `<strong>${label}:</strong>${content}`;
+                        } else {
+                            element.textContent = translations[lang][key];
+                        }
+                    } else if (key === 'advantages-heading') {
+                        element.innerHTML = `<strong>${translations[lang][key]}</strong>`;
+                    } else if (key === 'doc-1-title' || key === 'doc-2-title' || key === 'doc-3-title' || key === 'doc-4-title') {
+                        element.innerHTML = `<strong>${translations[lang][key]}</strong>`;
+                    }
+                    else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            if (translations[lang] && translations[lang]['title-tag']) {
+                document.title = translations[lang]['title-tag'];
+            }
+        }
+
+        function switchLang(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            translatePage(lang);
+            showNotification();
+        }
+
+        function showNotification() {
+            const notification = document.getElementById('langNotification');
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            document.getElementById('language').value = savedLanguage;
+            translatePage(savedLanguage);
+        });
+    </script>
+</body>
+</html>

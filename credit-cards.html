@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="card-title">Credit Card - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --dark-blue: #003a75;
+            --accent-blue: #e6f0ff;
+            --gold: #ffc107;
+            --dark-text: #2d3748;
+            --gray: #6c757d;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark-text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .bank-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card-hero {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            color: white;
+            padding: 40px;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .card-hero h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        .card-hero .tag {
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .card-hero .card-icon {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 80px;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        .card-content {
+            background: white;
+            padding: 40px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        }
+        .rate-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,86,179,0.1);
+            border-top: 4px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .rate-badge {
+            min-width: 200px;
+        }
+        .rate-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+        .rate-label {
+            font-size: 16px;
+            color: var(--dark-text);
+            margin-top: 5px;
+        }
+        .rate-note {
+            font-size: 13px;
+            color: var(--gray);
+            margin-top: 10px;
+        }
+        .rate-details {
+            flex-grow: 1;
+            margin-left: 40px;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .benefit-card {
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,86,179,0.1);
+            border-color: var(--primary-blue);
+        }
+        .benefit-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .benefit-card h3 i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+        .benefit-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin: 15px 0;
+        }
+        .document-section {
+            background: var(--accent-blue);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        .document-list {
+            columns: 2;
+            column-gap: 30px;
+        }
+        .document-list li {
+            padding: 10px 0;
+            break-inside: avoid;
+            display: flex;
+            align-items: center;
+        }
+        .document-list i {
+            color: var(--primary-blue);
+            margin-right: 10px;
+        }
+        .btn-apply {
+            background: linear-gradient(to right, var(--dark-blue), var(--primary-blue));
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
+        }
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,86,179,0.4);
+        }
+        .btn-apply i {
+            margin-left: 10px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .back-link i {
+            margin-right: 8px;
+        }
+        .faq-section {
+            margin-top: 40px;
+        }
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid #e0e6ed;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .faq-item h4 {
+            margin: 0 0 10px 0;
+            cursor: pointer;
+            color: var(--dark-blue);
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .faq-item p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--gray);
+        }
+        .disclaimer {
+            background: #fff8e6;
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #5e503f;
+        }
+        @media (max-width: 768px) {
+            .rate-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .rate-details {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            .document-list {
+                columns: 1;
+            }
+            .card-hero .card-icon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bank-container">
+        <div class="card-hero">
+            <h1 data-lang-key="card-title">Credit Card</h1>
+            <span class="tag" data-lang-key="easy-rewards-tag">Rewards & Benefits</span>
+            <i class="fas fa-credit-card card-icon"></i>
+        </div>
+        
+        <div class="card-content">
+            <p class="lead" data-lang-key="intro-text">Get rewarded for your spending with the Global Trust Bank Credit Card. Enjoy exclusive benefits, easy repayments, and global acceptance.</p>
+            
+            <div class="rate-card">
+                <div class="rate-badge">
+                    <div class="rate-value">18.00%*</div>
+                    <div class="rate-label" data-lang-key="rate-label">Interest Rate (APR)</div>
+                    <div class="rate-note" data-lang-key="rate-note">*Starting from | Subject to credit score</div>
+                </div>
+                <div class="rate-details">
+                    <p data-lang-key="special-offers-heading"><strong>Key Features:</strong></p>
+                    <ul>
+                        <li data-lang-key="offer-1">Generous rewards program</li>
+                        <li data-lang-key="offer-2">Exclusive welcome bonus</li>
+                        <li data-lang-key="offer-3">Contactless & secure payments</li>
+                        <li data-lang-key="offer-4">Worldwide acceptance</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="features-heading">Why Choose Our Credit Card?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-1-title"><i class="fas fa-wallet"></i> Financial Flexibility</h3>
+                    <p data-lang-key="feature-1-text">A credit limit that meets your needs for planned purchases or unexpected emergencies.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-2-title"><i class="fas fa-gift"></i> Rewards on Every Spend</h3>
+                    <p data-lang-key="feature-2-text">Earn reward points on every transaction, which you can redeem for a wide range of products, travel, and more.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-3-title"><i class="fas fa-coins"></i> Transparent Fees</h3>
+                    <p data-lang-key="feature-3-text">Enjoy a low annual fee that is easily waived with a minimal spend, with no hidden charges.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-4-title"><i class="fas fa-mobile-alt"></i> Mobile Management</h3>
+                    <p data-lang-key="feature-4-text">Easily manage your credit card account, view transactions, and pay bills through our secure mobile app.</p>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="eligibility-heading">Eligibility Criteria</h2>
+            <ul>
+                <li data-lang-key="eligibility-1"><strong>Age:</strong> 21 years to 65 years</li>
+                <li data-lang-key="eligibility-2"><strong>Income:</strong> Minimum gross monthly income of ₹30,000</li>
+                <li data-lang-key="eligibility-3"><strong>CIBIL Score:</strong> 750 and above preferred</li>
+                <li data-lang-key="eligibility-4"><strong>Employment:</strong> Salaried employee or self-employed individual</li>
+            </ul>
+            
+            <h2 data-lang-key="documents-heading">Required Documents</h2>
+            <div class="document-section">
+                <ul class="document-list">
+                    <li data-lang-key="doc-1"><i class="fas fa-check-circle"></i> <strong>Identity Proof:</strong> PAN Card + Aadhaar/Passport</li>
+                    <li data-lang-key="doc-2"><i class="fas fa-check-circle"></i> <strong>Address Proof:</strong> Aadhaar/Utility Bill/Rental Agreement</li>
+                    <li data-lang-key="doc-3"><i class="fas fa-check-circle"></i> <strong>Income Proof:</strong> Latest 3 months salary slips or last 2 years ITR</li>
+                    <li data-lang-key="doc-4"><i class="fas fa-check-circle"></i> <strong>Bank Statements:</strong> Last 6 months bank account statement</li>
+                </ul>
+            </div>
+
+            <div class="cta-section">
+                <button class="btn-apply" data-lang-key="apply-btn">Apply Now <i class="fas fa-arrow-right"></i></button>
+                <a href="../index.html" class="back-link" data-lang-key="back-link"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+            </div>
+
+            <div class="faq-section">
+                <h2 data-lang-key="faq-heading">Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <h4 data-lang-key="faq-q1">How do I redeem my reward points?</h4>
+                    <p data-lang-key="faq-a1">You can redeem your reward points through the Global Trust Bank's mobile app or internet banking portal. The options include redeeming for cashback, booking flights, or purchasing products from our rewards catalog.</p>
+                </div>
+                <div class="faq-item">
+                    <h4 data-lang-key="faq-q2">What are the charges for cash withdrawals?</h4>
+                    <p data-lang-key="faq-a2">Cash withdrawals from an ATM using your credit card are subject to a high interest rate from the day of withdrawal and a transaction fee. It's generally not recommended.</p>
+                </div>
+                <div class="faq-item">
+                    <h4 data-lang-key="faq-q3">How is my credit limit determined?</h4>
+                    <p data-lang-key="faq-a3">Your credit limit is determined based on several factors, including your income, employment history, and credit score. A higher income and a good credit score generally lead to a higher credit limit.</p>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                <p data-lang-key="disclaimer-text"><strong>Note:</strong> Interest rates and credit limits are subject to change based on bank policies and individual credit assessment. Final approval and card terms are at the sole discretion of Global Trust Bank.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'card-title': 'Credit Card',
+                'easy-rewards-tag': 'Rewards & Benefits',
+                'intro-text': 'Get rewarded for your spending with the Global Trust Bank Credit Card. Enjoy exclusive benefits, easy repayments, and global acceptance.',
+                'rate-label': 'Interest Rate (APR)',
+                'rate-note': '*Starting from | Subject to credit score',
+                'special-offers-heading': 'Key Features:',
+                'offer-1': 'Generous rewards program',
+                'offer-2': 'Exclusive welcome bonus',
+                'offer-3': 'Contactless & secure payments',
+                'offer-4': 'Worldwide acceptance',
+                'features-heading': 'Why Choose Our Credit Card?',
+                'feature-1-title': 'Financial Flexibility',
+                'feature-1-text': 'A credit limit that meets your needs for planned purchases or unexpected emergencies.',
+                'feature-2-title': 'Rewards on Every Spend',
+                'feature-2-text': 'Earn reward points on every transaction, which you can redeem for a wide range of products, travel, and more.',
+                'feature-3-title': 'Transparent Fees',
+                'feature-3-text': 'Enjoy a low annual fee that is easily waived with a minimal spend, with no hidden charges.',
+                'feature-4-title': 'Mobile Management',
+                'feature-4-text': 'Easily manage your credit card account, view transactions, and pay bills through our secure mobile app.',
+                'eligibility-heading': 'Eligibility Criteria',
+                'eligibility-1': 'Age: 21 years to 65 years',
+                'eligibility-2': 'Income: Minimum gross monthly income of ₹30,000',
+                'eligibility-3': 'CIBIL Score: 750 and above preferred',
+                'eligibility-4': 'Employment: Salaried employee or self-employed individual',
+                'documents-heading': 'Required Documents',
+                'doc-1': 'Identity Proof: PAN Card + Aadhaar/Passport',
+                'doc-2': 'Address Proof: Aadhaar/Utility Bill/Rental Agreement',
+                'doc-3': 'Income Proof: Latest 3 months salary slips or last 2 years ITR',
+                'doc-4': 'Bank Statements: Last 6 months bank account statement',
+                'apply-btn': 'Apply Now',
+                'back-link': 'Back to All Services',
+                'faq-heading': 'Frequently Asked Questions',
+                'faq-q1': 'How do I redeem my reward points?',
+                'faq-a1': 'You can redeem your reward points through the Global Trust Bank\'s mobile app or internet banking portal. The options include redeeming for cashback, booking flights, or purchasing products from our rewards catalog.',
+                'faq-q2': 'What are the charges for cash withdrawals?',
+                'faq-a2': 'Cash withdrawals from an ATM using your credit card are subject to a high interest rate from the day of withdrawal and a transaction fee. It\'s generally not recommended.',
+                'faq-q3': 'How is my credit limit determined?',
+                'faq-a3': 'Your credit limit is determined based on several factors, including your income, employment history, and credit score. A higher income and a good credit score generally lead to a higher credit limit.',
+                'disclaimer-text': 'Note: Interest rates and credit limits are subject to change based on bank policies and individual credit assessment. Final approval and card terms are at the sole discretion of Global Trust Bank.'
+            },
+            'ta': {
+                'card-title': 'கிரெடிட் கார்டு',
+                'easy-rewards-tag': 'பரிசுகள் மற்றும் நன்மைகள்',
+                'intro-text': 'குளோபல் டிரஸ்ட் வங்கியின் கிரெடிட் கார்டுடன் உங்கள் செலவுகளுக்கு வெகுமதிகளைப் பெறுங்கள். பிரத்தியேக நன்மைகள், எளிதான திருப்பிச் செலுத்துதல் மற்றும் உலகளாவிய ஏற்பை அனுபவிக்கவும்.',
+                'rate-label': 'வட்டி விகிதம் (APR)',
+                'rate-note': '*ஆரம்பம் | கடன் மதிப்பெண்ணுக்கு உட்பட்டது',
+                'special-offers-heading': 'முக்கிய அம்சங்கள்:',
+                'offer-1': 'தாராளமான வெகுமதி திட்டம்',
+                'offer-2': 'பிரத்தியேக வரவேற்பு போனஸ்',
+                'offer-3': 'தொடர்பு இல்லாத மற்றும் பாதுகாப்பான கட்டணங்கள்',
+                'offer-4': 'உலகளாவிய ஏற்பு',
+                'features-heading': 'எங்கள் கிரெடிட் கார்டை ஏன் தேர்ந்தெடுக்க வேண்டும்?',
+                'feature-1-title': 'நிதி நெகிழ்வுத்தன்மை',
+                'feature-1-text': 'திட்டமிடப்பட்ட கொள்முதல் அல்லது எதிர்பாராத அவசரநிலைகளுக்கான உங்கள் தேவைகளைப் பூர்த்தி செய்யும் கடன் வரம்பு.',
+                'feature-2-title': 'ஒவ்வொரு செலவிற்கும் வெகுமதிகள்',
+                'feature-2-text': 'ஒவ்வொரு பரிவர்த்தனையிலும் வெகுமதி புள்ளிகளைப் பெறுங்கள், அவற்றை நீங்கள் பரந்த அளவிலான தயாரிப்புகள், பயணம் மற்றும் பலவற்றிற்குப் பயன்படுத்தலாம்.',
+                'feature-3-title': 'வெளிப்படையான கட்டணங்கள்',
+                'feature-3-text': 'குறைந்தபட்ச செலவில் எளிதாகத் தள்ளுபடி செய்யப்படும் குறைந்த ஆண்டு கட்டணத்தை அனுபவிக்கவும், மறைக்கப்பட்ட கட்டணங்கள் எதுவும் இல்லை.',
+                'feature-4-title': 'மொபைல் மேலாண்மை',
+                'feature-4-text': 'எங்கள் பாதுகாப்பான மொபைல் பயன்பாட்டின் மூலம் உங்கள் கிரெடிட் கார்டு கணக்கை எளிதாக நிர்வகிக்கலாம், பரிவர்த்தனைகளைப் பார்க்கலாம் மற்றும் பில்களை செலுத்தலாம்.',
+                'eligibility-heading': 'தகுதிக்கான நிபந்தனைகள்',
+                'eligibility-1': 'வயது: 21 வயது முதல் 65 வயது வரை',
+                'eligibility-2': 'வருமானம்: குறைந்தபட்ச மொத்த மாத வருமானம் ₹30,000',
+                'eligibility-3': 'CIBIL ஸ்கோர்: 750 மற்றும் அதற்கு மேல் விரும்பத்தக்கது',
+                'eligibility-4': 'வேலைவாய்ப்பு: சம்பளதாரர் அல்லது சுயதொழில் செய்பவர்',
+                'documents-heading': 'தேவையான ஆவணங்கள்',
+                'doc-1': 'அடையாளச் சான்று: பான் கார்டு + ஆதார்/பாஸ்போர்ட்',
+                'doc-2': 'முகவரிச் சான்று: ஆதார்/பயன்பாட்டு மசோதா/வாடகை ஒப்பந்தம்',
+                'doc-3': 'வருமானச் சான்று: கடைசி 3 மாத சம்பள சீட்டுகள் அல்லது கடந்த 2 வருட ITR',
+                'doc-4': 'வங்கி அறிக்கைகள்: கடைசி 6 மாத வங்கி கணக்கு அறிக்கை',
+                'apply-btn': 'இப்போது விண்ணப்பிக்கவும்',
+                'back-link': 'அனைத்து சேவைகளுக்கும் திரும்பவும்',
+                'faq-heading': 'அடிக்கடி கேட்கப்படும் கேள்விகள்',
+                'faq-q1': 'எனது வெகுமதி புள்ளிகளை எப்படிப் பயன்படுத்தலாம்?',
+                'faq-a1': 'குளோபல் டிரஸ்ட் வங்கியின் மொபைல் பயன்பாடு அல்லது இணைய வங்கி போர்டல் மூலம் உங்கள் வெகுமதி புள்ளிகளைப் பயன்படுத்தலாம். விருப்பங்களில் கேஷ்பேக்கைப் பயன்படுத்துதல், விமானங்களை முன்பதிவு செய்தல் அல்லது எங்கள் வெகுமதிகள் பட்டியலிலிருந்து தயாரிப்புகளை வாங்குதல் ஆகியவை அடங்கும்.',
+                'faq-q2': 'பணத்தை எடுப்பதற்கான கட்டணங்கள் என்ன?',
+                'faq-q2': 'உங்கள் கிரெடிட் கார்டைப் பயன்படுத்தி ஒரு ATM இலிருந்து பணத்தை எடுப்பது, திரும்பப் பெறும் நாளிலிருந்து அதிக வட்டி விகிதம் மற்றும் ஒரு பரிவர்த்தனை கட்டணத்திற்கு உட்பட்டது. பொதுவாக, இது பரிந்துரைக்கப்படுவதில்லை.',
+                'faq-q3': 'எனது கடன் வரம்பு எப்படி நிர்ணயிக்கப்படுகிறது?',
+                'faq-q3': 'உங்கள் கடன் வரம்பு உங்கள் வருமானம், வேலைவாய்ப்பு வரலாறு மற்றும் கடன் மதிப்பெண் உள்ளிட்ட பல காரணிகளின் அடிப்படையில் தீர்மானிக்கப்படுகிறது. அதிக வருமானம் மற்றும் ஒரு நல்ல கடன் மதிப்பெண் பொதுவாக அதிக கடன் வரம்பிற்கு வழிவகுக்கும்.',
+                'disclaimer-text': 'குறிப்பு: வட்டி விகிதங்கள் மற்றும் கடன் வரம்புகள் வங்கி கொள்கைகள் மற்றும் தனிப்பட்ட கடன் மதிப்பீட்டின் அடிப்படையில் மாறக்கூடும். இறுதி ஒப்புதல் மற்றும் அட்டை விதிமுறைகள் குளோபல் டிரஸ்ட் வங்கியின் தனிப்பட்ட விருப்பத்திற்கு உட்பட்டது.'
+            },
+            'hi': {
+                'card-title': 'क्रेडिट कार्ड',
+                'easy-rewards-tag': 'पुरस्कार और लाभ',
+                'intro-text': 'ग्लोबल ट्रस्ट बैंक क्रेडिट कार्ड के साथ अपनी खर्च पर पुरस्कृत हों। विशेष लाभ, आसान पुनर्भुगतान, और वैश्विक स्वीकृति का आनंद लें।',
+                'rate-label': 'ब्याज दर (APR)',
+                'rate-note': '*शुरूआती | क्रेडिट स्कोर के अधीन',
+                'special-offers-heading': 'मुख्य विशेषताएं:',
+                'offer-1': 'उदार पुरस्कार कार्यक्रम',
+                'offer-2': 'विशेष स्वागत बोनस',
+                'offer-3': 'संपर्क रहित और सुरक्षित भुगतान',
+                'offer-4': 'दुनिया भर में स्वीकृति',
+                'features-heading': 'हमारे क्रेडिट कार्ड को क्यों चुनें?',
+                'feature-1-title': 'वित्तीय लचीलापन',
+                'feature-1-text': 'एक क्रेडिट सीमा जो आपकी नियोजित खरीद या अप्रत्याशित आपात स्थितियों के लिए आपकी जरूरतों को पूरा करती है।',
+                'feature-2-title': 'हर खर्च पर पुरस्कार',
+                'feature-2-text': 'प्रत्येक लेनदेन पर पुरस्कार अंक अर्जित करें, जिन्हें आप उत्पादों, यात्रा, और बहुत कुछ के लिए उपयोग कर सकते हैं।',
+                'feature-3-title': 'पारदर्शी शुल्क',
+                'feature-3-text': 'एक न्यूनतम खर्च के साथ आसानी से माफ किए जाने वाले कम वार्षिक शुल्क का आनंद लें, जिसमें कोई छिपा हुआ शुल्क नहीं है।',
+                'feature-4-title': 'मोबाइल प्रबंधन',
+                'feature-4-text': 'हमारे सुरक्षित मोबाइल ऐप के माध्यम से अपने क्रेडिट कार्ड खाते को आसानी से प्रबंधित करें, लेनदेन देखें और बिलों का भुगतान करें।',
+                'eligibility-heading': 'पात्रता मानदंड',
+                'eligibility-1': 'आयु: 21 वर्ष से 65 वर्ष',
+                'eligibility-2': 'आय: न्यूनतम सकल मासिक आय ₹30,000',
+                'eligibility-3': 'सिबिल स्कोर: 750 और उससे अधिक को प्राथमिकता दी जाती है',
+                'eligibility-4': 'रोजगार: वेतनभोगी कर्मचारी या स्व-नियोजित व्यक्ति',
+                'documents-heading': 'आवश्यक दस्तावेज़',
+                'doc-1': 'पहचान प्रमाण: पैन कार्ड + आधार/पासपोर्ट',
+                'doc-2': 'पते का प्रमाण: आधार/यूटिलिटी बिल/किराया समझौता',
+                'doc-3': 'आय का प्रमाण: पिछले 3 महीने की वेतन पर्ची या पिछले 2 साल का ITR',
+                'doc-4': 'बैंक स्टेटमेंट: पिछले 6 महीने का बैंक खाता विवरण',
+                'apply-btn': 'अभी आवेदन करें',
+                'back-link': 'सभी सेवाओं पर वापस जाएं',
+                'faq-heading': 'अक्सर पूछे जाने वाले प्रश्न',
+                'faq-q1': 'मैं अपने पुरस्कार अंक कैसे उपयोग कर सकता हूँ?',
+                'faq-a1': 'आप ग्लोबल ट्रस्ट बैंक के मोबाइल ऐप या इंटरनेट बैंकिंग पोर्टल के माध्यम से अपने पुरस्कार अंक उपयोग कर सकते हैं। विकल्पों में कैशबैक के लिए उपयोग, उड़ानों की बुकिंग, या हमारे पुरस्कार कैटलॉग से उत्पादों की खरीद शामिल है।',
+                'faq-q2': 'नकद निकासी के लिए शुल्क क्या हैं?',
+                'faq-a2': 'आपके क्रेडिट कार्ड का उपयोग करके एक एटीएम से नकद निकासी, निकासी के दिन से उच्च ब्याज दर और एक लेनदेन शुल्क के अधीन है। यह आम तौर पर अनुशंसित नहीं है।',
+                'faq-q3': 'मेरी क्रेडिट सीमा कैसे निर्धारित होती है?',
+                'faq-a3': 'आपकी क्रेडिट सीमा कई कारकों के आधार पर निर्धारित होती है, जिसमें आपकी आय, रोजगार का इतिहास, और क्रेडिट स्कोर शामिल है। उच्च आय और एक अच्छा क्रेडिट स्कोर आम तौर पर एक उच्च क्रेडिट सीमा की ओर ले जाता है।',
+                'disclaimer-text': 'नोट: ब्याज दरें और क्रेडिट सीमा बैंक की नीतियों और व्यक्तिगत क्रेडिट मूल्यांकन के आधार पर परिवर्तन के अधीन हैं। अंतिम स्वीकृति और कार्ड शर्तें ग्लोबल ट्रस्ट बैंक के एकमात्र विवेक पर हैं।'
+            }
+        };
+
+        function translatePage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'STRONG') {
+                        element.textContent = translations[lang][key];
+                    } else if (element.tagName === 'LI') {
+                        const strongText = element.querySelector('strong');
+                        if (strongText) {
+                            const originalKey = strongText.textContent.trim();
+                            const newText = translations[lang][key];
+                            const separatorIndex = newText.indexOf(':');
+                            if (separatorIndex !== -1) {
+                                element.innerHTML = `<strong>${newText.substring(0, separatorIndex)}</strong>:${newText.substring(separatorIndex)}`;
+                            } else {
+                                element.textContent = newText;
+                            }
+                        } else {
+                            element.textContent = translations[lang][key];
+                        }
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            const backLink = document.querySelector('.back-link');
+            if (backLink && translations[lang] && translations[lang]['back-link']) {
+                backLink.innerHTML = `<i class="fas fa-arrow-left"></i> ${translations[lang]['back-link']}`;
+            }
+            if (translations[lang] && translations[lang]['card-title']) {
+                document.title = translations[lang]['card-title'] + ' - Global Trust Bank';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            translatePage(savedLanguage);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="service-title">Investment-Planner - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --dark-blue: #003a75;
+            --accent-blue: #e6f0ff;
+            --gold: #ffc107;
+            --green: #28a745;
+            --dark-text: #2d3748;
+            --gray: #6c757d;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark-text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .bank-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .service-hero {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            color: white;
+            padding: 40px;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .service-hero h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        .service-hero .tag {
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .service-hero .service-icon {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 80px;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        .service-content {
+            background: white;
+            padding: 40px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .service-card {
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,86,179,0.1);
+            border-color: var(--primary-blue);
+        }
+        .service-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .service-card h3 i {
+            margin-right: 10px;
+            color: var(--green); /* Green for investment */
+        }
+        .service-card p {
+            margin: 15px 0 0;
+            font-size: 14px;
+        }
+        .btn-apply {
+            background: linear-gradient(to right, var(--dark-blue), var(--primary-blue));
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
+        }
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,86,179,0.4);
+        }
+        .btn-apply i {
+            margin-left: 10px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .back-link i {
+            margin-right: 8px;
+        }
+        .disclaimer {
+            background: #fff8e6;
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #5e503f;
+        }
+        @media (max-width: 768px) {
+            .service-hero .service-icon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bank-container">
+        <div class="service-hero">
+            <h1 data-lang-key="service-title">Investment</h1>
+            <span class="tag" data-lang-key="tagline">Grow Your Wealth</span>
+            <i class="fas fa-chart-line service-icon"></i>
+        </div>
+        
+        <div class="service-content">
+            <p class="lead" data-lang-key="intro-text">Start your wealth creation journey with our expert-led investment services. From mutual funds to fixed deposits, we offer a diverse range of products to help you achieve your financial goals.</p>
+            
+            <h2 data-lang-key="plans-heading">Our Investment Products</h2>
+            <div class="card-container">
+                <div class="service-card">
+                    <h3 data-lang-key="product-1-title"><i class="fas fa-piggy-bank"></i> Fixed Deposits (FDs)</h3>
+                    <p data-lang-key="product-1-text">A secure and stable way to grow your savings. Earn guaranteed returns with flexible tenure options.</p>
+                </div>
+                <div class="service-card">
+                    <h3 data-lang-key="product-2-title"><i class="fas fa-balance-scale"></i> Mutual Funds</h3>
+                    <p data-lang-key="product-2-text">Diversify your portfolio with a variety of professionally managed mutual funds. We offer both Systematic Investment Plans (SIPs) and Lump Sum options.</p>
+                </div>
+                <div class="service-card">
+                    <h3 data-lang-key="product-3-title"><i class="fas fa-sack-dollar"></i> Recurring Deposits (RDs)</h3>
+                    <p data-lang-key="product-3-text">Build a habit of saving with our Recurring Deposits. Deposit a fixed amount every month and get higher returns on your savings.</p>
+                </div>
+                <div class="service-card">
+                    <h3 data-lang-key="product-4-title"><i class="fas fa-wallet"></i> Digital Gold</h3>
+                    <p data-lang-key="product-4-text">Invest in 24K pure gold digitally without the hassle of physical storage. Buy, sell, and redeem gold online at your convenience.</p>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="benefits-heading">Why Invest with Us?</h2>
+            <ul>
+                <li data-lang-key="benefit-1"><strong>Expert Guidance:</strong> Get personalized advice from our financial experts to make informed investment decisions.</li>
+                <li data-lang-key="benefit-2"><strong>Easy Platform:</strong> Manage all your investments conveniently through our secure online portal.</li>
+                <li data-lang-key="benefit-3"><strong>Diverse Options:</strong> Choose from a wide range of products to suit your risk appetite and financial goals.</li>
+                <li data-lang-key="benefit-4"><strong>Transparent Process:</strong> Enjoy a completely transparent investment process with clear statements and no hidden fees.</li>
+            </ul>
+
+            <div class="cta-section">
+                <button class="btn-apply" data-lang-key="apply-btn">Get Started <i class="fas fa-arrow-right"></i></button>
+                <a href="../index.html" class="back-link" data-lang-key="back-link"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+            </div>
+
+            <div class="disclaimer">
+                <p data-lang-key="disclaimer-text"><strong>Note:</strong> Mutual funds and other market-linked products are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not an indicator of future returns.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'service-title': 'Investment',
+                'tagline': 'Grow Your Wealth',
+                'intro-text': 'Start your wealth creation journey with our expert-led investment services. From mutual funds to fixed deposits, we offer a diverse range of products to help you achieve your financial goals.',
+                'plans-heading': 'Our Investment Products',
+                'product-1-title': 'Fixed Deposits (FDs)',
+                'product-1-text': 'A secure and stable way to grow your savings. Earn guaranteed returns with flexible tenure options.',
+                'product-2-title': 'Mutual Funds',
+                'product-2-text': 'Diversify your portfolio with a variety of professionally managed mutual funds. We offer both Systematic Investment Plans (SIPs) and Lump Sum options.',
+                'product-3-title': 'Recurring Deposits (RDs)',
+                'product-3-text': 'Build a habit of saving with our Recurring Deposits. Deposit a fixed amount every month and get higher returns on your savings.',
+                'product-4-title': 'Digital Gold',
+                'product-4-text': 'Invest in 24K pure gold digitally without the hassle of physical storage. Buy, sell, and redeem gold online at your convenience.',
+                'benefits-heading': 'Why Invest with Us?',
+                'benefit-1': 'Expert Guidance: Get personalized advice from our financial experts to make informed investment decisions.',
+                'benefit-2': 'Easy Platform: Manage all your investments conveniently through our secure online portal.',
+                'benefit-3': 'Diverse Options: Choose from a wide range of products to suit your risk appetite and financial goals.',
+                'benefit-4': 'Transparent Process: Enjoy a completely transparent investment process with clear statements and no hidden fees.',
+                'apply-btn': 'Get Started',
+                'back-link': 'Back to All Services',
+                'disclaimer-text': 'Note: Mutual funds and other market-linked products are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not an indicator of future returns.'
+            },
+            'ta': {
+                'service-title': 'முதலீடு',
+                'tagline': 'உங்கள் செல்வத்தை பெருக்குங்கள்',
+                'intro-text': 'எங்கள் நிபுணர்களால் வழிநடத்தப்படும் முதலீட்டு சேவைகளுடன் உங்கள் செல்வத்தை உருவாக்கும் பயணத்தைத் தொடங்குங்கள். மியூச்சுவல் ஃபண்டுகள் முதல் நிலையான வைப்புத்தொகைகள் வரை, உங்கள் நிதி இலக்குகளை அடைய உதவும் பல்வேறு தயாரிப்புகளை நாங்கள் வழங்குகிறோம்.',
+                'plans-heading': 'எங்கள் முதலீட்டு தயாரிப்புகள்',
+                'product-1-title': 'நிலையான வைப்புத்தொகைகள் (FDs)',
+                'product-1-text': 'உங்கள் சேமிப்பை வளர்க்க ஒரு பாதுகாப்பான மற்றும் நிலையான வழி. நெகிழ்வான கால விருப்பங்களுடன் உத்தரவாதமான வருமானத்தைப் பெறுங்கள்.',
+                'product-2-title': 'மியூச்சுவல் ஃபண்டுகள்',
+                'product-2-text': 'தொழில்முறை ரீதியாக நிர்வகிக்கப்படும் பல்வேறு மியூச்சுவல் ஃபண்டுகளுடன் உங்கள் போர்ட்ஃபோலியோவை பல்வகைப்படுத்துங்கள். நாங்கள் முறையான முதலீட்டுத் திட்டங்கள் (SIPs) மற்றும் மொத்த தொகை விருப்பங்களை வழங்குகிறோம்.',
+                'product-3-title': 'தொடர் வைப்புத்தொகைகள் (RDs)',
+                'product-3-text': 'எங்கள் தொடர் வைப்புத்தொகைகளுடன் சேமிக்கும் பழக்கத்தை உருவாக்குங்கள். ஒவ்வொரு மாதமும் ஒரு குறிப்பிட்ட தொகையை டெபாசிட் செய்து உங்கள் சேமிப்பில் அதிக வருமானத்தைப் பெறுங்கள்.',
+                'product-4-title': 'டிஜிட்டல் தங்கம்',
+                'product-4-text': 'உடல்ரீதியான சேமிப்பு தொந்தரவு இல்லாமல் 24K தூய தங்கத்தில் டிஜிட்டல் முறையில் முதலீடு செய்யுங்கள். உங்கள் வசதிக்கேற்ப ஆன்லைனில் தங்கத்தை வாங்க, விற்க மற்றும் மீட்டெடுக்கலாம்.',
+                'benefits-heading': 'ஏன் எங்களுடன் முதலீடு செய்ய வேண்டும்?',
+                'benefit-1': 'நிபுணர் வழிகாட்டுதல்: நன்கு அறியப்பட்ட முதலீட்டு முடிவுகளை எடுக்க எங்கள் நிதி நிபுணர்களிடமிருந்து தனிப்பயனாக்கப்பட்ட ஆலோசனையைப் பெறுங்கள்.',
+                'benefit-2': 'எளிதான தளம்: எங்கள் பாதுகாப்பான ஆன்லைன் போர்டல் மூலம் உங்கள் அனைத்து முதலீடுகளையும் வசதியாக நிர்வகிக்கவும்.',
+                'benefit-3': 'பல்வகை விருப்பங்கள்: உங்கள் ஆபத்து பசி மற்றும் நிதி இலக்குகளுக்கு ஏற்றவாறு பரந்த அளவிலான தயாரிப்புகளிலிருந்து தேர்வு செய்யவும்.',
+                'benefit-4': 'வெளிப்படையான செயல்முறை: தெளிவான அறிக்கைகள் மற்றும் மறைக்கப்பட்ட கட்டணங்கள் இல்லாமல் முற்றிலும் வெளிப்படையான முதலீட்டு செயல்முறையை அனுபவிக்கவும்.',
+                'apply-btn': 'தொடங்கு',
+                'back-link': 'அனைத்து சேவைகளுக்கும் திரும்பவும்',
+                'disclaimer-text': 'குறிப்பு: மியூச்சுவல் ஃபண்டுகள் மற்றும் பிற சந்தை சார்ந்த தயாரிப்புகள் சந்தை அபாயங்களுக்கு உட்பட்டவை. முதலீடு செய்வதற்கு முன் அனைத்து திட்டம் தொடர்பான ஆவணங்களையும் கவனமாகப் படிக்கவும். கடந்தகால செயல்திறன் எதிர்கால வருமானத்தின் காட்டி அல்ல.'
+            },
+            'hi': {
+                'service-title': 'निवेश',
+                'tagline': 'अपनी संपत्ति बढ़ाएँ',
+                'intro-text': 'हमारी विशेषज्ञ-नेतृत्व वाली निवेश सेवाओं के साथ अपनी धन सृजन यात्रा शुरू करें। म्यूचुअल फंड से लेकर सावधि जमा तक, हम आपके वित्तीय लक्ष्यों को प्राप्त करने में मदद करने के लिए उत्पादों की एक विविध श्रृंखला प्रदान करते हैं।',
+                'plans-heading': 'हमारे निवेश उत्पाद',
+                'product-1-title': 'सावधि जमा (FDs)',
+                'product-1-text': 'अपनी बचत को बढ़ाने का एक सुरक्षित और स्थिर तरीका। लचीले कार्यकाल विकल्पों के साथ गारंटीड रिटर्न अर्जित करें।',
+                'product-2-title': 'म्यूचुअल फंड',
+                'product-2-text': 'पेशेवर रूप से प्रबंधित विभिन्न म्यूचुअल फंडों के साथ अपने पोर्टफोलियो में विविधता लाएं। हम व्यवस्थित निवेश योजना (SIPs) और एकमुश्त दोनों विकल्प प्रदान करते हैं।',
+                'product-3-title': 'आवर्ती जमा (RDs)',
+                'product-3-text': 'हमारी आवर्ती जमा के साथ बचत की आदत बनाएं। हर महीने एक निश्चित राशि जमा करें और अपनी बचत पर उच्च रिटर्न प्राप्त करें।',
+                'product-4-title': 'डिजिटल गोल्ड',
+                'product-4-text': 'भौतिक भंडारण की परेशानी के बिना 24K शुद्ध सोने में डिजिटल रूप से निवेश करें। अपनी सुविधा पर ऑनलाइन सोना खरीदें, बेचें और भुनाएं।',
+                'benefits-heading': 'हमारे साथ निवेश क्यों करें?',
+                'benefit-1': 'विशेषज्ञ मार्गदर्शन: सूचित निवेश निर्णय लेने के लिए हमारे वित्तीय विशेषज्ञों से व्यक्तिगत सलाह प्राप्त करें।',
+                'benefit-2': 'आसान प्लेटफॉर्म: हमारे सुरक्षित ऑनलाइन पोर्टल के माध्यम से अपने सभी निवेशों को आसानी से प्रबंधित करें।',
+                'benefit-3': 'विविध विकल्प: अपनी जोखिम लेने की क्षमता और वित्तीय लक्ष्यों के अनुरूप उत्पादों की एक विस्तृत श्रृंखला में से चुनें।',
+                'benefit-4': 'पारदर्शी प्रक्रिया: स्पष्ट विवरण और कोई छिपे हुए शुल्क के साथ पूरी तरह से पारदर्शी निवेश प्रक्रिया का आनंद लें।',
+                'apply-btn': 'शुरू करें',
+                'back-link': 'सभी सेवाओं पर वापस जाएं',
+                'disclaimer-text': 'नोट: म्यूचुअल फंड और अन्य बाजार-लिंक्ड उत्पाद बाजार जोखिमों के अधीन हैं। निवेश करने से पहले सभी योजना-संबंधित दस्तावेजों को ध्यान से पढ़ें। पिछला प्रदर्शन भविष्य के रिटर्न का संकेतक नहीं है।'
+            }
+        };
+
+        function translatePage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'STRONG') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        const originalStrong = element.querySelector('strong');
+                        if (originalStrong) {
+                            const newText = translations[lang][key];
+                            const originalHtml = element.innerHTML;
+                            const updatedHtml = originalHtml.replace(originalStrong.outerHTML, `<strong>${newText.split(':')[0]}</strong>:`);
+                            element.innerHTML = updatedHtml;
+                            element.innerHTML = element.innerHTML.replace(originalStrong.textContent, newText.split(':')[0] + ':');
+                        } else {
+                             element.textContent = translations[lang][key];
+                        }
+                    }
+                }
+            });
+            const backLink = document.querySelector('.back-link');
+            if (backLink && translations[lang] && translations[lang]['back-link']) {
+                backLink.innerHTML = `<i class="fas fa-arrow-left"></i> ${translations[lang]['back-link']}`;
+            }
+
+            if (translations[lang] && translations[lang]['service-title']) {
+                document.title = translations[lang]['service-title'] + ' - Global Trust Bank';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            translatePage(savedLanguage);
+        });
+    </script>
+</body>
+</html>

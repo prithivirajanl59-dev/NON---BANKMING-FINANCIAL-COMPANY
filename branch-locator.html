@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch Locator - Global Trust Bank</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f9fc;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #003366;
+            border-bottom: 1px solid #e6f2ff;
+            padding-bottom: 10px;
+        }
+        .search-container {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        input, select {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background: #0059b3;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #004080;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #0059b3;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .map-container {
+            height: 400px;
+            background-color: #eee;
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .map-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #666;
+            font-size: 18px;
+        }
+        .branches-list {
+            margin-top: 30px;
+        }
+        .branch-card {
+            border: 1px solid #e6f2ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+        .branch-card:hover {
+            background-color: #f9fbff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .branch-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #003366;
+            margin: 0 0 10px 0;
+        }
+        .branch-address {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .branch-contact {
+            color: #0059b3;
+            margin-bottom: 5px;
+        }
+        .branch-hours {
+            font-size: 14px;
+            color: #666;
+        }
+        .branch-services {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .service-tag {
+            background-color: #e6f2ff;
+            color: #0059b3;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">&larr; Back to Home</a>
+        <h1>Find a Branch or ATM</h1>
+        
+        <div class="search-container">
+            <input type="text" id="location" placeholder="Enter city, state or PIN code">
+            <select id="radius">
+                <option value="5">Within 5 km</option>
+                <option value="10" selected>Within 10 km</option>
+                <option value="25">Within 25 km</option>
+                <option value="50">Within 50 km</option>
+            </select>
+            <select id="type">
+                <option value="all">All</option>
+                <option value="branch">Branches</option>
+                <option value="atm">ATMs</option>
+            </select>
+            <button onclick="searchBranches()">Search</button>
+        </div>
+        
+        <div class="map-container">
+            <div class="map-placeholder">
+                [Map would display here showing branch locations]
+            </div>
+        </div>
+        
+        <div class="branches-list" id="branches-list">
+            <div class="branch-card">
+                <h3 class="branch-name">Global Trust Bank - Main Branch</h3>
+                <p class="branch-address">123 Financial District, Bangalore, Karnataka - 560001</p>
+                <p class="branch-contact">Phone: 080-12345678 | Email: mainbranch@gtbank.com</p>
+                <p class="branch-hours">Hours: 9:00 AM - 4:00 PM (Mon-Fri), 9:00 AM - 1:00 PM (Sat)</p>
+                <div class="branch-services">
+                    <span class="service-tag">Cash Deposit</span>
+                    <span class="service-tag">Cheque Deposit</span>
+                    <span class="service-tag">Loan Services</span>
+                    <span class="service-tag">NRI Services</span>
+                    <span class="service-tag">Safe Deposit</span>
+                </div>
+            </div>
+            
+            <div class="branch-card">
+                <h3 class="branch-name">Global Trust Bank - MG Road Branch</h3>
+                <p class="branch-address">45 MG Road, Bangalore, Karnataka - 560025</p>
+                <p class="branch-contact">Phone: 080-87654321 | Email: mgroad@gtbank.com</p>
+                <p class="branch-hours">Hours: 9:30 AM - 4:30 PM (Mon-Fri), 9:30 AM - 1:30 PM (Sat)</p>
+                <div class="branch-services">
+                    <span class="service-tag">Cash Deposit</span>
+                    <span class="service-tag">Cheque Deposit</span>
+                    <span class="service-tag">Wealth Management</span>
+                </div>
+            </div>
+            
+            <div class="branch-card">
+                <h3 class="branch-name">ATM - Koramangala</h3>
+                <p class="branch-address">Near Forum Mall, Koramangala, Bangalore - 560034</p>
+                <p class="branch-contact">24/7 Cash Withdrawal</p>
+                <div class="branch-services">
+                    <span class="service-tag">Cash Withdrawal</span>
+                    <span class="service-tag">Balance Inquiry</span>
+                    <span class="service-tag">Mini Statement</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchBranches() {
+            const location = document.getElementById('location').value;
+            const radius = document.getElementById('radius').value;
+            const type = document.getElementById('type').value;
+            
+            if (!location) {
+                alert('Please enter a location to search');
+                return;
+            }
+            
+            // In a real application, this would call an API to get branches
+            // For demo, we'll just filter the existing branches
+            const branchesList = document.getElementById('branches-list');
+            const allBranches = branchesList.innerHTML;
+            
+            if (type === 'atm') {
+                branchesList.innerHTML = `
+                    <div class="branch-card">
+                        <h3 class="branch-name">ATM - Koramangala</h3>
+                        <p class="branch-address">Near Forum Mall, Koramangala, Bangalore - 560034</p>
+                        <p class="branch-contact">24/7 Cash Withdrawal</p>
+                        <div class="branch-services">
+                            <span class="service-tag">Cash Withdrawal</span>
+                            <span class="service-tag">Balance Inquiry</span>
+                            <span class="service-tag">Mini Statement</span>
+                        </div>
+                    </div>
+                    <div class="branch-card">
+                        <h3 class="branch-name">ATM - Indiranagar</h3>
+                        <p class="branch-address">100 Feet Road, Indiranagar, Bangalore - 560038</p>
+                        <p class="branch-contact">24/7 Cash Withdrawal</p>
+                        <div class="branch-services">
+                            <span class="service-tag">Cash Withdrawal</span>
+                            <span class="service-tag">Balance Inquiry</span>
+                            <span class="service-tag">Mini Statement</span>
+                            <span class="service-tag">Cash Deposit</span>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'branch') {
+                branchesList.innerHTML = allBranches;
+            } else {
+                branchesList.innerHTML = allBranches + `
+                    <div class="branch-card">
+                        <h3 class="branch-name">ATM - Indiranagar</h3>
+                        <p class="branch-address">100 Feet Road, Indiranagar, Bangalore - 560038</p>
+                        <p class="branch-contact">24/7 Cash Withdrawal</p>
+                        <div class="branch-services">
+                            <span class="service-tag">Cash Withdrawal</span>
+                            <span class="service-tag">Balance Inquiry</span>
+                            <span class="service-tag">Mini Statement</span>
+                            <span class="service-tag">Cash Deposit</span>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Update map placeholder text
+            document.querySelector('.map-placeholder').textContent = 
+                `Showing ${type === 'all' ? 'branches and ATMs' : type + 's'} near ${location} within ${radius} km`;
+        }
+    </script>
+</body>
+</html>

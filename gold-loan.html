@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="loan-title">Gold Loan - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --dark-blue: #003a75;
+            --accent-blue: #e6f0ff;
+            --gold: #ffc107;
+            --dark-text: #2d3748;
+            --gray: #6c757d;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark-text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .bank-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .loan-hero {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            color: white;
+            padding: 40px;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .loan-hero h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        .loan-hero .tag {
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .loan-hero .loan-icon {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 80px;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        .loan-content {
+            background: white;
+            padding: 40px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        }
+        .rate-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,86,179,0.1);
+            border-top: 4px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .rate-badge {
+            min-width: 200px;
+        }
+        .rate-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+        .rate-label {
+            font-size: 16px;
+            color: var(--dark-text);
+            margin-top: 5px;
+        }
+        .rate-note {
+            font-size: 13px;
+            color: var(--gray);
+            margin-top: 10px;
+        }
+        .rate-details {
+            flex-grow: 1;
+            margin-left: 40px;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .benefit-card {
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,86,179,0.1);
+            border-color: var(--primary-blue);
+        }
+        .benefit-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .benefit-card h3 i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+        .benefit-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin: 15px 0;
+        }
+        .document-section {
+            background: var(--accent-blue);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        .document-list {
+            columns: 2;
+            column-gap: 30px;
+        }
+        .document-list li {
+            padding: 10px 0;
+            break-inside: avoid;
+            display: flex;
+            align-items: center;
+        }
+        .document-list i {
+            color: var(--primary-blue);
+            margin-right: 10px;
+        }
+        .btn-apply {
+            background: linear-gradient(to right, var(--dark-blue), var(--primary-blue));
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
+        }
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,86,179,0.4);
+        }
+        .btn-apply i {
+            margin-left: 10px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .back-link i {
+            margin-right: 8px;
+        }
+        .faq-section {
+            margin-top: 40px;
+        }
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid #e0e6ed;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .faq-item h4 {
+            margin: 0 0 10px 0;
+            cursor: pointer;
+            color: var(--dark-blue);
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .faq-item p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--gray);
+        }
+        .disclaimer {
+            background: #fff8e6;
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #5e503f;
+        }
+        @media (max-width: 768px) {
+            .rate-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .rate-details {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            .document-list {
+                columns: 1;
+            }
+            .loan-hero .loan-icon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bank-container">
+        <div class="loan-hero">
+            <h1 data-lang-key="loan-title">Gold Loan</h1>
+            <span class="tag" data-lang-key="fast-approval-tag">Low Interest Rate</span>
+            <i class="fas fa-gem loan-icon"></i>
+        </div>
+        
+        <div class="loan-content">
+            <p class="lead" data-lang-key="intro-text">Get instant funds by pledging your gold ornaments. Our Gold Loan offers quick processing, competitive interest rates, and secure storage for your valuables.</p>
+            
+            <div class="rate-card">
+                <div class="rate-badge">
+                    <div class="rate-value">8.50%*</div>
+                    <div class="rate-label" data-lang-key="rate-label">Interest Rate</div>
+                    <div class="rate-note" data-lang-key="rate-note">*Starting from | Per annum</div>
+                </div>
+                <div class="rate-details">
+                    <p data-lang-key="special-offers-heading"><strong>Key Features:</strong></p>
+                    <ul>
+                        <li data-lang-key="offer-1">Maximum Loan to Value (LTV) up to 75%</li>
+                        <li data-lang-key="offer-2">No income proof required</li>
+                        <li data-lang-key="offer-3">Flexible repayment options</li>
+                        <li data-lang-key="offer-4">Safe & secure storage of your gold</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="features-heading">Why Choose Our Gold Loan?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-1-title"><i class="fas fa-rupee-sign"></i> High Loan Amount</h3>
+                    <p data-lang-key="feature-1-text">Get a loan up to 75% of your gold's value, based on purity and weight.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-2-title"><i class="fas fa-hourglass-start"></i> Quick Processing</h3>
+                    <p data-lang-key="feature-2-text">Get your loan disbursed in a matter of minutes with minimal documentation.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-3-title"><i class="fas fa-shield-alt"></i> Secure Storage</h3>
+                    <p data-lang-key="feature-3-text">Your gold ornaments are stored in secure bank lockers with full insurance.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-4-title"><i class="fas fa-lock"></i> Flexible Repayment</h3>
+                    <p data-lang-key="feature-4-text">Choose from various repayment plans, including bullet repayment or monthly interest payments.</p>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="eligibility-heading">Eligibility Criteria</h2>
+            <ul>
+                <li data-lang-key="eligibility-1"><strong>Age:</strong> 18 years and above</li>
+                <li data-lang-key="eligibility-2"><strong>Citizenship:</strong> Indian citizen</li>
+                <li data-lang-key="eligibility-3"><strong>Gold Purity:</strong> 18-24 Karat gold ornaments and coins</li>
+            </ul>
+            
+            <h2 data-lang-key="documents-heading">Required Documents</h2>
+            <div class="document-section">
+                <ul class="document-list">
+                    <li data-lang-key="doc-1"><i class="fas fa-check-circle"></i> <strong>Identity Proof:</strong> Aadhaar Card / PAN Card / Voter ID</li>
+                    <li data-lang-key="doc-2"><i class="fas fa-check-circle"></i> <strong>Address Proof:</strong> Aadhaar Card / Utility Bill / Passport</li>
+                </ul>
+            </div>
+
+            <div class="cta-section">
+                <button class="btn-apply" data-lang-key="apply-btn">Apply Now <i class="fas fa-arrow-right"></i></button>
+                <a href="../index.html" class="back-link" data-lang-key="back-link"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+            </div>
+
+            <div class="disclaimer">
+                <p data-lang-key="disclaimer-text"><strong>Note:</strong> Interest rates and LTV are subject to change based on market gold rates and bank policies. Final approval is at the sole discretion of Global Trust Bank.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'loan-title': 'Gold Loan',
+                'fast-approval-tag': 'Low Interest Rate',
+                'intro-text': 'Get instant funds by pledging your gold ornaments. Our Gold Loan offers quick processing, competitive interest rates, and secure storage for your valuables.',
+                'rate-label': 'Interest Rate',
+                'rate-note': '*Starting from | Per annum',
+                'special-offers-heading': 'Key Features:',
+                'offer-1': 'Maximum Loan to Value (LTV) up to 75%',
+                'offer-2': 'No income proof required',
+                'offer-3': 'Flexible repayment options',
+                'offer-4': 'Safe & secure storage of your gold',
+                'features-heading': 'Why Choose Our Gold Loan?',
+                'feature-1-title': 'High Loan Amount',
+                'feature-1-text': 'Get a loan up to 75% of your gold\'s value, based on purity and weight.',
+                'feature-2-title': 'Quick Processing',
+                'feature-2-text': 'Get your loan disbursed in a matter of minutes with minimal documentation.',
+                'feature-3-title': 'Secure Storage',
+                'feature-3-text': 'Your gold ornaments are stored in secure bank lockers with full insurance.',
+                'feature-4-title': 'Flexible Repayment',
+                'feature-4-text': 'Choose from various repayment plans, including bullet repayment or monthly interest payments.',
+                'eligibility-heading': 'Eligibility Criteria',
+                'eligibility-1': 'Age: 18 years and above',
+                'eligibility-2': 'Citizenship: Indian citizen',
+                'eligibility-3': 'Gold Purity: 18-24 Karat gold ornaments and coins',
+                'documents-heading': 'Required Documents',
+                'doc-1': 'Identity Proof: Aadhaar Card / PAN Card / Voter ID',
+                'doc-2': 'Address Proof: Aadhaar Card / Utility Bill / Passport',
+                'apply-btn': 'Apply Now',
+                'back-link': 'Back to All Services',
+                'disclaimer-text': 'Note: Interest rates and LTV are subject to change based on market gold rates and bank policies. Final approval is at the sole discretion of Global Trust Bank.'
+            },
+            'ta': {
+                'loan-title': 'தங்கக் கடன்',
+                'fast-approval-tag': 'குறைந்த வட்டி விகிதம்',
+                'intro-text': 'உங்கள் தங்க நகைகளை அடகு வைத்து உடனடி நிதியைப் பெறுங்கள். எங்கள் தங்கக் கடன் விரைவான செயலாக்கம், போட்டி வட்டி விகிதங்கள் மற்றும் உங்கள் மதிப்புமிக்க பொருட்களுக்கான பாதுகாப்பான சேமிப்பை வழங்குகிறது.',
+                'rate-label': 'வட்டி விகிதம்',
+                'rate-note': '*ஆரம்பம் | ஆண்டுக்கு',
+                'special-offers-heading': 'முக்கிய அம்சங்கள்:',
+                'offer-1': 'அதிகபட்ச கடன் மதிப்பு (LTV) 75% வரை',
+                'offer-2': 'வருமானச் சான்று தேவையில்லை',
+                'offer-3': 'நெகிழ்வான திருப்பிச் செலுத்தும் விருப்பங்கள்',
+                'offer-4': 'உங்கள் தங்கம் பாதுகாப்பான மற்றும் நம்பகமான சேமிப்பில் வைக்கப்படும்',
+                'features-heading': 'ஏன் எங்கள் தங்கக் கடனைத் தேர்ந்தெடுக்க வேண்டும்?',
+                'feature-1-title': 'அதிக கடன் தொகை',
+                'feature-1-text': 'உங்கள் தங்கத்தின் தூய்மை மற்றும் எடையின் அடிப்படையில், அதன் மதிப்பில் 75% வரை கடன் பெறுங்கள்.',
+                'feature-2-title': 'விரைவான செயலாக்கம்',
+                'feature-2-text': 'குறைந்தபட்ச ஆவணங்களுடன் சில நிமிடங்களில் உங்கள் கடனைப் பெறுங்கள்.',
+                'feature-3-title': 'பாதுகாப்பான சேமிப்பு',
+                'feature-3-text': 'உங்கள் தங்க நகைகள் முழு காப்பீட்டுடன் பாதுகாப்பான வங்கி லாக்கர்களில் சேமிக்கப்படுகின்றன.',
+                'feature-4-title': 'நெகிழ்வான திருப்பிச் செலுத்துதல்',
+                'feature-4-text': 'புல்லட் திருப்பிச் செலுத்துதல் அல்லது மாதாந்திர வட்டி செலுத்துதல் உட்பட பல்வேறு திருப்பிச் செலுத்தும் திட்டங்களிலிருந்து தேர்வு செய்யவும்.',
+                'eligibility-heading': 'தகுதிக்கான நிபந்தனைகள்',
+                'eligibility-1': 'வயது: 18 வயது மற்றும் அதற்கு மேல்',
+                'eligibility-2': 'குடியுரிமை: இந்திய குடிமகன்',
+                'eligibility-3': 'தங்கத்தின் தூய்மை: 18-24 காரட் தங்க நகைகள் மற்றும் நாணயங்கள்',
+                'documents-heading': 'தேவையான ஆவணங்கள்',
+                'doc-1': 'அடையாளச் சான்று: ஆதார் அட்டை / பான் கார்டு / வாக்காளர் அடையாள அட்டை',
+                'doc-2': 'முகவரிச் சான்று: ஆதார் அட்டை / பயன்பாட்டு மசோதா / பாஸ்போர்ட்',
+                'apply-btn': 'இப்போது விண்ணப்பிக்கவும்',
+                'back-link': 'அனைத்து சேவைகளுக்கும் திரும்பவும்',
+                'disclaimer-text': 'குறிப்பு: வட்டி விகிதங்கள் மற்றும் LTV சந்தை தங்கத்தின் விகிதங்கள் மற்றும் வங்கி கொள்கைகளின் அடிப்படையில் மாறக்கூடும். இறுதி ஒப்புதல் குளோபல் டிரஸ்ட் வங்கியின் தனிப்பட்ட விருப்பத்திற்கு உட்பட்டது.'
+            },
+            'hi': {
+                'loan-title': 'गोल्ड लोन',
+                'fast-approval-tag': 'कम ब्याज दर',
+                'intro-text': 'अपने सोने के गहनों को गिरवी रखकर तुरंत फंड प्राप्त करें। हमारा गोल्ड लोन त्वरित प्रक्रिया, प्रतिस्पर्धी ब्याज दरें और आपके कीमती सामान के लिए सुरक्षित भंडारण प्रदान करता है।',
+                'rate-label': 'ब्याज दर',
+                'rate-note': '*शुरूआती | प्रति वर्ष',
+                'special-offers-heading': 'मुख्य विशेषताएं:',
+                'offer-1': 'अधिकतम ऋण से मूल्य (LTV) 75% तक',
+                'offer-2': 'कोई आय प्रमाण आवश्यक नहीं',
+                'offer-3': 'लचीले पुनर्भुगतान विकल्प',
+                'offer-4': 'आपके सोने का सुरक्षित और संरक्षित भंडारण',
+                'features-heading': 'हमारे गोल्ड लोन को क्यों चुनें?',
+                'feature-1-title': 'उच्च ऋण राशि',
+                'feature-1-text': 'पवित्रता और वजन के आधार पर, अपने सोने के मूल्य का 75% तक ऋण प्राप्त करें।',
+                'feature-2-title': 'त्वरित प्रसंस्करण',
+                'feature-2-text': 'न्यूनतम दस्तावेज़ीकरण के साथ मिनटों में अपना ऋण प्राप्त करें।',
+                'feature-3-title': 'सुरक्षित भंडारण',
+                'feature-3-text': 'आपके सोने के गहने पूर्ण बीमा के साथ सुरक्षित बैंक लॉकरों में संग्रहीत किए जाते हैं।',
+                'feature-4-title': 'लचीला पुनर्भुगतान',
+                'feature-4-text': 'बुलेट पुनर्भुगतान या मासिक ब्याज भुगतान सहित विभिन्न पुनर्भुगतान योजनाओं में से चुनें।',
+                'eligibility-heading': 'पात्रता मानदंड',
+                'eligibility-1': 'आयु: 18 वर्ष और उससे अधिक',
+                'eligibility-2': 'नागरिकता: भारतीय नागरिक',
+                'eligibility-3': 'सोने की शुद्धता: 18-24 कैरेट सोने के गहने और सिक्के',
+                'documents-heading': 'आवश्यक दस्तावेज़',
+                'doc-1': 'पहचान प्रमाण: आधार कार्ड / पैन कार्ड / वोटर आईडी',
+                'doc-2': 'पते का प्रमाण: आधार कार्ड / यूटिलिटी बिल / पासपोर्ट',
+                'apply-btn': 'अभी आवेदन करें',
+                'back-link': 'सभी सेवाओं पर वापस जाएं',
+                'disclaimer-text': 'नोट: ब्याज दरें और LTV बाजार में सोने की दरों और बैंक की नीतियों के आधार पर बदल सकते हैं। अंतिम स्वीकृति ग्लोबल ट्रस्ट बैंक के एकमात्र विवेक पर है।'
+            }
+        };
+
+        function translatePage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'STRONG') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        const originalStrong = element.querySelector('strong');
+                        if (originalStrong) {
+                            const newText = translations[lang][key];
+                            const originalHtml = element.innerHTML;
+                            const updatedHtml = originalHtml.replace(originalStrong.outerHTML, `<strong>${newText.split(':')[0]}</strong>:`);
+                            element.innerHTML = updatedHtml;
+                            element.innerHTML = element.innerHTML.replace(originalStrong.textContent, newText.split(':')[0] + ':');
+                        } else {
+                             element.textContent = translations[lang][key];
+                        }
+                    }
+                }
+            });
+            const backLink = document.querySelector('.back-link');
+            if (backLink && translations[lang] && translations[lang]['back-link']) {
+                backLink.innerHTML = `<i class="fas fa-arrow-left"></i> ${translations[lang]['back-link']}`;
+            }
+
+            if (translations[lang] && translations[lang]['loan-title']) {
+                document.title = translations[lang]['loan-title'] + ' - Global Trust Bank';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            translatePage(savedLanguage);
+        });
+    </script>
+</body>
+</html>

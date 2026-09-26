@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Global Trust Bank</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f9fc;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #003366;
+            border-bottom: 1px solid #e6f2ff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #0059b3;
+            margin-top: 30px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #0059b3;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .contact-icon {
+            font-size: 24px;
+            color: #0059b3;
+            margin-right: 15px;
+            width: 40px;
+        }
+        .contact-details {
+            flex: 1;
+        }
+        .contact-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #003366;
+        }
+        .contact-form {
+            margin-top: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #0059b3;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        textarea {
+            height: 150px;
+        }
+        button {
+            background: #0059b3;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #004080;
+        }
+        .branches {
+            margin-top: 40px;
+        }
+        .branch-card {
+            border: 1px solid #e6f2ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        .branch-name {
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+        .branch-hours {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">&larr; Back to Home</a>
+        <h1>Contact Global Trust Bank</h1>
+        <p>We're here to help you with any questions or concerns you may have. Choose the most convenient way to reach us.</p>
+        
+        <div class="contact-method">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="contact-details">
+                <div class="contact-title">24/7 Customer Service</div>
+                <div>Toll-Free: 1800-123-4567</div>
+                <div>International: +91-80-12345678</div>
+                <div>Email: support@gtbank.com</div>
+            </div>
+        </div>
+        
+        <div class="contact-method">
+            <div class="contact-icon"><i class="fas fa-comments"></i></div>
+            <div class="contact-details">
+                <div class="contact-title">Live Chat</div>
+                <div>Available 7:00 AM - 11:00 PM (IST)</div>
+                <div>Start a chat through our mobile app or website</div>
+            </div>
+        </div>
+        
+        <div class="contact-method">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-details">
+                <div class="contact-title">Write to Us</div>
+                <div>Customer Service Department</div>
+                <div>Global Trust Bank</div>
+                <div>123 Financial District, Bangalore - 560001</div>
+            </div>
+        </div>
+        
+        <div class="contact-method">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-details">
+                <div class="contact-title">Branch Locator</div>
+                <div>Find your nearest branch or ATM using our <a href="/branch-locator.html">Branch Locator</a></div>
+            </div>
+        </div>
+        
+        <h2>Send Us a Message</h2>
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject">
+                        <option value="account">Account Inquiry</option>
+                        <option value="loan">Loan Information</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="complaint">Complaint</option>
+                        <option value="feedback">Feedback/Suggestion</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        
+        <div class="branches">
+            <h2>Head Office & Major Branches</h2>
+            
+            <div class="branch-card">
+                <div class="branch-name">Global Trust Bank - Head Office</div>
+                <div>123 Financial District, Bangalore, Karnataka - 560001</div>
+                <div>Phone: 080-12345678 | Email: headoffice@gtbank.com</div>
+                <div class="branch-hours">Hours: 9:00 AM - 5:00 PM (Mon-Fri)</div>
+            </div>
+            
+            <div class="branch-card">
+                <div class="branch-name">Global Trust Bank - Mumbai Branch</div>
+                <div>45 Nariman Point, Mumbai, Maharashtra - 400021</div>
+                <div>Phone: 022-87654321 | Email: mumbai@gtbank.com</div>
+                <div class="branch-hours">Hours: 9:30 AM - 4:30 PM (Mon-Fri), 9:30 AM - 1:30 PM (Sat)</div>
+            </div>
+            
+            <div class="branch-card">
+                <div class="branch-name">Global Trust Bank - Delhi Branch</div>
+                <div>12 Connaught Place, New Delhi - 110001</div>
+                <div>Phone: 011-23456789 | Email: delhi@gtbank.com</div>
+                <div class="branch-hours">Hours: 9:30 AM - 4:30 PM (Mon-Fri), 9:30 AM - 1:30 PM (Sat)</div>
+            </div>
+        </div>
+        
+        <h2>Follow Us</h2>
+        <div style="display: flex; gap: 15px; font-size: 24px;">
+            <a href="#" style="color: #0059b3;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color: #0059b3;"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="color: #0059b3;"><i class="fab fa-linkedin"></i></a>
+            <a href="#" style="color: #0059b3;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: #0059b3;"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+</body>
+</html>

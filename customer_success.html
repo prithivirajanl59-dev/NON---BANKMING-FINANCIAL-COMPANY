@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Success & Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .success {
+            padding: 10px;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            margin-bottom: 20px;
+        }
+        .dashboard {
+            margin-top: 20px;
+        }
+        .flexbox {
+            display: flex;
+            gap: 20px;
+        }
+        img {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Success Message -->
+    <div class="success">
+        <h2>✅ Login Successful</h2>
+        <p>Welcome, {{ details[1] }}!</p>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div class="dashboard">
+        <h2>Customer Dashboard</h2>
+        <div class="flexbox">
+            <div>
+                <h3>Photo</h3>
+                <img src="{{ photo_url }}" width="200" height="200" alt="Photo">
+            </div>
+            <div>
+                <p><b>Account Number:</b> {{ details[0] }}</p>
+                <p><b>Full Name:</b> {{ details[1] }}</p>
+                <p><b>DOB:</b> {{ details[2] }}</p>
+                <p><b>Gender:</b> {{ details[3] }}</p>
+                <p><b>Email:</b> {{ details[4] }}</p>
+                <p><b>Phone:</b> {{ details[5] }}</p>
+                <p><b>Address:</b> {{ details[6] }}</p>
+                <p><b>City:</b> {{ details[7] }}</p>
+                <p><b>ZIP:</b> {{ details[8] }}</p>
+                <p><b>Account Type:</b> {{ details[13] }}</p>
+            </div>
+        </div>
+
+        <h3>Documents</h3>
+        <ul>
+            <li><a href="{{ aadhar_url }}" target="_blank">View Aadhar</a></li>
+            <li><a href="{{ pan_url }}" target="_blank">View PAN</a></li>
+        </ul>
+    </div>
+</body>
+</html>

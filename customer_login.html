@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Customer Banking | Global Trust Bank</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<style>
+:root {
+  --primary-dark: #1a2436;
+  --primary: #233656;
+  --primary-light: #2c3e50;
+  --accent: #0072ce;
+  --accent-glow: rgba(0, 114, 206, 0.25);
+  --gold: #c6a96c;
+  --success: #2ecc71;
+  --error: #e74c3c;
+  --background: #f8f9fc;
+  --card-bg: #ffffff;
+  --text-primary: #2d3748;
+  --text-secondary: #718096;
+  --border: #e2e8f0;
+  --shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Security elements */
+.security-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  opacity: 0.15;
+  border-radius: 50%;
+}
+
+.dot:nth-child(1) { top: 15%; left: 10%; }
+.dot:nth-child(2) { top: 65%; left: 7%; }
+.dot:nth-child(3) { top: 25%; right: 10%; }
+.dot:nth-child(4) { top: 75%; right: 8%; }
+.dot:nth-child(5) { bottom: 20%; left: 20%; }
+
+.login-container {
+  width: 100%;
+  max-width: 460px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transform: translateY(0);
+  transition: var(--transition);
+  position: relative;
+  z-index: 1;
+}
+
+.login-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.login-header {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: #fff;
+  padding: 32px 28px 24px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-header::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.login-header::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.bank-logo {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-icon {
+  font-size: 32px;
+  color: var(--gold);
+  margin-right: 12px;
+}
+
+.logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+}
+
+.login-badge {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px auto;
+  font-size: 2.4em;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 2;
+}
+
+.login-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 2;
+}
+
+.login-subtitle {
+  font-size: 15px;
+  opacity: 0.85;
+  font-weight: 300;
+  position: relative;
+  z-index: 2;
+}
+
+.security-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  font-size: 13px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px 15px;
+  border-radius: 20px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.security-notice i {
+  margin-right: 8px;
+  font-size: 14px;
+  color: var(--gold);
+}
+
+.login-body {
+  padding: 38px 32px 32px 32px;
+}
+
+.alert {
+  display: none;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  color: #721c24;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  font-size: 14.5px;
+  align-items: center;
+}
+
+.alert i {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  font-size: 14.5px;
+  margin-bottom: 9px;
+  color: var(--text-primary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.form-label i {
+  margin-right: 10px;
+  color: var(--accent);
+  font-size: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 16px 48px 16px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 15.5px;
+  background: #fafcff;
+  transition: var(--transition);
+  font-family: 'Source Sans Pro', sans-serif;
+  color: var(--text-primary);
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: #fff;
+}
+
+.password-toggle {
+  position: relative;
+}
+
+.password-toggle i {
+  position: absolute;
+  right: 18px;
+  top: 54%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 17px;
+  transition: var(--transition);
+  padding: 5px;
+}
+
+.password-toggle i:hover {
+  color: var(--accent);
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 17px;
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16.5px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(35, 54, 86, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(35, 54, 86, 0.3);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.login-footer {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding: 15px;
+  border-top: 1px solid var(--border);
+}
+
+.help-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 12px;
+}
+
+.help-links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+}
+
+.help-links a i {
+  margin-right: 6px;
+  font-size: 13px;
+}
+
+.help-links a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Additional options */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: 8px;
+}
+
+.virtual-keyboard {
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.virtual-keyboard i {
+  margin-right: 5px;
+}
+
+.virtual-keyboard:hover {
+  color: var(--primary);
+}
+
+/* Loading animation */
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+  from { transform: rotate(0turn); }
+  to { transform: rotate(1turn); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .login-container {
+    max-width: 100%;
+  }
+  
+  .login-header {
+    padding: 28px 20px 20px 20px;
+  }
+  
+  .login-body {
+    padding: 30px 25px 25px 25px;
+  }
+  
+  .help-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .login-options {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+}
+
+/* Animation for error message */
+@keyframes shake {
+  0%, 100% {transform: translateX(0);}
+  15%, 45%, 75% {transform: translateX(-10px);}
+  30%, 60%, 90% {transform: translateX(10px);}
+}
+
+.shake {
+  animation: shake 0.6s ease;
+}
+
+/* Virtual keyboard */
+.virtual-keyboard-container {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f1f5f9;
+  padding: 15px;
+  border-top: 1px solid var(--border);
+  z-index: 1000;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.keyboard-key {
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 500;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.keyboard-key:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.keyboard-key.special {
+  width: 80px;
+  background: #e2e8f0;
+}
+
+.keyboard-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+</style>
+</head>
+<body>
+<!-- Decorative security dots -->
+<div class="security-dots">
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
+
+<div class="login-container">
+  <div class="login-header">
+    <div class="bank-logo">
+      <i class="fas fa-landmark logo-icon"></i>
+      <div class="logo-text">GLOBAL TRUST BANK</div>
+    </div>
+    <div class="login-badge"><i class="fas fa-user"></i></div>
+    <h1 class="login-title">Customer Banking</h1>
+    <p class="login-subtitle">Access your accounts securely</p>
+    <div class="security-notice">
+      <i class="fas fa-lock"></i>
+      <span>256-bit SSL encryption</span>
+    </div>
+  </div>
+  
+  <div class="login-body">
+    <div class="alert" id="error-message">
+      <i class="fas fa-exclamation-circle"></i>
+      <span id="error-text">Incorrect login credentials. Please try again.</span>
+    </div>
+    
+    <form id="customerLoginForm" method="POST">
+      <div class="form-group">
+        <label for="login-id" class="form-label">
+          <i class="fas fa-id-card"></i>
+          <span>Account Number / Username</span>
+        </label>
+        <input type="text" id="login-id" name="login_id" class="form-control" placeholder="Enter your account number or username" required autocomplete="username">
+      </div>
+      
+      <div class="form-group password-toggle">
+        <label for="password" class="form-label">
+          <i class="fas fa-key"></i>
+          <span>Password</span>
+        </label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required autocomplete="current-password">
+        <i class="fas fa-eye" id="togglePassword"></i>
+      </div>
+      
+      <div class="login-options">
+        <label class="remember-me">
+          <input type="checkbox" id="remember" name="remember">
+          Remember me
+        </label>
+        <div class="virtual-keyboard" id="showKeyboard">
+          <i class="fas fa-keyboard"></i>
+          <span>Virtual Keyboard</span>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn" id="loginButton">
+        <span>Sign In to Banking</span>
+      </button>
+    </form>
+    
+    <div class="login-footer">
+      <div>© 2023 Global Trust Bank. All Rights Reserved.</div>
+      <div class="help-links">
+        <a href="#"><i class="fas fa-unlock-alt"></i> Forgot Password</a>
+        <a href="#"><i class="fas fa-user-plus"></i> Enroll in Online Banking</a>
+        <a href="#"><i class="fas fa-headset"></i> Customer Support</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Virtual Keyboard -->
+<div class="virtual-keyboard-container" id="virtualKeyboard">
+  <div class="keyboard-close" id="closeKeyboard">
+    <i class="fas fa-times"></i>
+  </div>
+  <div class="keyboard-row">
+    <div class="keyboard-key" data-key="1">1</div>
+    <div class="keyboard-key" data-key="2">2</div>
+    <div class="keyboard-key" data-key="3">3</div>
+    <div class="keyboard-key" data-key="4">4</div>
+    <div class="keyboard-key" data-key="5">5</div>
+    <div class="keyboard-key" data-key="6">6</div>
+    <div class="keyboard-key" data-key="7">7</div>
+    <div class="keyboard-key" data-key="8">8</div>
+    <div class="keyboard-key" data-key="9">9</div>
+    <div class="keyboard-key" data-key="0">0</div>
+  </div>
+  <div class="keyboard-row">
+    <div class="keyboard-key" data-key="q">q</div>
+    <div class="keyboard-key" data-key="w">w</div>
+    <div class="keyboard-key" data-key="e">e</div>
+    <div class="keyboard-key" data-key="r">r</div>
+    <div class="keyboard-key" data-key="t">t</div>
+    <div class="keyboard-key" data-key="y">y</div>
+    <div class="keyboard-key" data-key="u">u</div>
+    <div class="keyboard-key" data-key="i">i</div>
+    <div class="keyboard-key" data-key="o">o</div>
+    <div class="keyboard-key" data-key="p">p</div>
+  </div>
+  <div class="keyboard-row">
+    <div class="keyboard-key" data-key="a">a</div>
+    <div class="keyboard-key" data-key="s">s</div>
+    <div class="keyboard-key" data-key="d">d</div>
+    <div class="keyboard-key" data-key="f">f</div>
+    <div class="keyboard-key" data-key="g">g</div>
+    <div class="keyboard-key" data-key="h">h</div>
+    <div class="keyboard-key" data-key="j">j</div>
+    <div class="keyboard-key" data-key="k">k</div>
+    <div class="keyboard-key" data-key="l">l</div>
+    <div class="keyboard-key special" data-key="Backspace">⌫</div>
+  </div>
+  <div class="keyboard-row">
+    <div class="keyboard-key" data-key="z">z</div>
+    <div class="keyboard-key" data-key="x">x</div>
+    <div class="keyboard-key" data-key="c">c</div>
+    <div class="keyboard-key" data-key="v">v</div>
+    <div class="keyboard-key" data-key="b">b</div>
+    <div class="keyboard-key" data-key="n">n</div>
+    <div class="keyboard-key" data-key="m">m</div>
+    <div class="keyboard-key special" data-key="Shift">⇧</div>
+    <div class="keyboard-key special" data-key="Clear">Clear</div>
+  </div>
+</div>
+
+<script>
+const togglePassword = document.getElementById('togglePassword');
+const passwordInput = document.getElementById('password');
+const form = document.getElementById('customerLoginForm');
+const errorMessage = document.getElementById('error-message');
+const errorText = document.getElementById('error-text');
+const loginButton = document.getElementById('loginButton');
+const showKeyboard = document.getElementById('showKeyboard');
+const virtualKeyboard = document.getElementById('virtualKeyboard');
+const closeKeyboard = document.getElementById('closeKeyboard');
+const keyboardKeys = document.querySelectorAll('.keyboard-key');
+let activeInput = null;
+let isUppercase = false;
+
+// Password visibility toggle
+togglePassword.addEventListener('click', () => {
+  const type = passwordInput.type === 'password' ? 'text' : 'password';
+  passwordInput.type = type;
+  togglePassword.classList.toggle('fa-eye');
+  togglePassword.classList.toggle('fa-eye-slash');
+});
+
+// Virtual keyboard functionality
+document.getElementById('login-id').addEventListener('focus', () => {
+  activeInput = document.getElementById('login-id');
+});
+
+passwordInput.addEventListener('focus', () => {
+  activeInput = passwordInput;
+});
+
+showKeyboard.addEventListener('click', () => {
+  virtualKeyboard.style.display = 'block';
+});
+
+closeKeyboard.addEventListener('click', () => {
+  virtualKeyboard.style.display = 'none';
+});
+
+keyboardKeys.forEach(key => {
+  key.addEventListener('click', () => {
+    const keyValue = key.getAttribute('data-key');
+    
+    if (activeInput) {
+      if (keyValue === 'Backspace') {
+        activeInput.value = activeInput.value.slice(0, -1);
+      } else if (keyValue === 'Clear') {
+        activeInput.value = '';
+      } else if (keyValue === 'Shift') {
+        isUppercase = !isUppercase;
+        keyboardKeys.forEach(k => {
+          if (k.textContent.length === 1 && k.textContent.match(/[a-z0-9]/i)) {
+            k.textContent = isUppercase ? k.textContent.toUpperCase() : k.textContent.toLowerCase();
+            k.setAttribute('data-key', isUppercase ? k.getAttribute('data-key').toUpperCase() : k.getAttribute('data-key').toLowerCase());
+          }
+        });
+      } else {
+        activeInput.value += isUppercase ? keyValue.toUpperCase() : keyValue;
+        // Auto switch to lowercase after typing one character
+        if (isUppercase && keyValue.match(/[a-z]/i)) {
+          isUppercase = false;
+          keyboardKeys.forEach(k => {
+            if (k.textContent.length === 1 && k.textContent.match(/[a-z0-9]/i)) {
+              k.textContent = k.textContent.toLowerCase();
+              k.setAttribute('data-key', k.getAttribute('data-key').toLowerCase());
+            }
+          });
+        }
+      }
+      
+      // Trigger input event for any validation
+      activeInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  });
+});
+
+// Form submission
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorMessage.style.display = 'none';
+  
+  const login_id = form.login_id.value.trim();
+  const password = form.password.value;
+
+  // Validation
+  if (!login_id || !password) {
+    showError('Please enter both your account number/username and password.');
+    return;
+  }
+
+  // Show loading state
+  loginButton.classList.add('btn-loading');
+  
+  const formData = new FormData();
+  formData.append('login_id', login_id);
+  formData.append('password', password);
+
+  try {
+    const response = await fetch('/customer/login', {
+      method: 'POST',
+      body: formData
+    });
+
+    const text = await response.text();
+
+    if (response.ok) {
+      // Successful login
+      document.open();
+      document.write(text);
+      document.close();
+    } else {
+      showError(text || 'Incorrect login credentials. Please try again.');
+    }
+  } catch (err) {
+    showError('Network error. Please try again later.');
+  } finally {
+    loginButton.classList.remove('btn-loading');
+  }
+});
+
+// Helper function to show errors
+function showError(message) {
+  errorText.textContent = message;
+  errorMessage.style.display = 'flex';
+  form.classList.add('shake');
+  setTimeout(() => form.classList.remove('shake'), 600);
+}
+</script>
+</body>
+</html> 

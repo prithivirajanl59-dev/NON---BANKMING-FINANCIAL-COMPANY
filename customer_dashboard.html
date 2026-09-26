@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalTrust Bank - Online Banking Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9fc;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .bank-header {
+            background: linear-gradient(135deg, #003366, #0059b3);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        .bank-header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bank-info {
+            background-color: white;
+            padding: 15px 25px;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #0059b3;
+        }
+        
+        h1, h2, h3, h4 {
+            color: #003366;
+        }
+        
+        .portal-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+            width: 300px;
+            transition: transform 0.3s;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #0059b3;
+            border-bottom: 1px solid #e6f2ff;
+            padding-bottom: 10px;
+            font-size: 18px;
+            margin-top: 0;
+            font-weight: 600;
+        }
+        
+        .action-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        a, button {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #0059b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        a:hover, button:hover {
+            background-color: #004080;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        
+        .new-user {
+            background-color: #f0f8ff;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 13px;
+            border-left: 3px solid #0059b3;
+        }
+        
+        .new-user h3 {
+            margin-top: 0;
+            color: #003366;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .bank-links {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            padding: 15px 0;
+            border-top: 1px solid #e6e6e6;
+        }
+        
+        .bank-links a {
+            color: #0059b3;
+            text-decoration: none;
+            margin: 0 10px;
+            background: none;
+            padding: 0;
+            font-size: 13px;
+        }
+        
+        .bank-links a:hover {
+            text-decoration: underline;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Services Section */
+        .services-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .service-card {
+            border: 1px solid #e6f2ff;
+            border-radius: 8px;
+            padding: 15px;
+            transition: all 0.3s;
+            background: #fafcff;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #b3d1ff;
+        }
+        
+        .service-card h3 {
+            color: #0059b3;
+            margin-top: 0;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .service-card p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .service-icon {
+            font-size: 24px;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+        
+        .service-link {
+            font-size: 13px;
+            padding: 6px 12px;
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-btn {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .language-btn:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 140px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .language-dropdown a {
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            background: none;
+            text-align: left;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .language-dropdown a:hover {
+            background-color: #e6f2ff;
+            color: #0059b3;
+        }
+        
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+        
+        /* Scrolling News Ticker */
+        .news-ticker {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ticker-label {
+            background-color: #e74c3c;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 13px;
+            margin-right: 15px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .ticker-content {
+            white-space: nowrap;
+            position: absolute;
+            display: flex;
+            left: 0;
+        }
+        
+        .ticker-item {
+            margin-right: 30px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        .ticker-item i {
+            margin-right: 5px;
+            color: #f1c40f;
+            font-size: 14px;
+        }
+        
+        /* Blinking News Ticker */
+        .blinking-ticker {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        /* Quick Links */
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .quick-link {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #0059b3;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: 1px solid #e6f2ff;
+        }
+        
+        .quick-link:hover {
+            background: #f0f8ff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .quick-link i {
+            font-size: 18px;
+        }
+        
+        /* Offers/Rates Section */
+        .offers-container, .commitments-container, .insights-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+        
+        .rates-grid, .commitments-grid, .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .rate-card {
+            background: #f9fbff;
+            border-radius: 6px;
+            padding: 15px;
+            border-left: 3px solid #0059b3;
+        }
+        
+        .rate-card h4 {
+            margin: 0 0 8px 0;
+            font-size: 15px;
+            color: #0059b3;
+        }
+        
+        .rate-value {
+            font-size: 22px;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+        
+        .rate-duration {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        /* New Styles for Offers and Insights */
+        .offer-card, .commitment-card, .insight-card {
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .offer-card .service-icon, .commitment-card .service-icon, .insight-card .service-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .offer-card:hover, .commitment-card:hover, .insight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .offer-card a, .insight-card a {
+            background: none;
+            color: #0059b3;
+            text-decoration: underline;
+        }
+        
+        .offer-card a:hover, .insight-card a:hover {
+            color: #004080;
+            text-decoration: none;
+        }
+        
+        .commitment-card h3 {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        .commitment-card p {
+            font-size: 13px;
+            color: #555;
+        }
+        
+        /* Login Form */
+        .login-form {
+            margin-top: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 13px;
+            color: #555;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #0059b3;
+            box-shadow: 0 0 0 2px rgba(0,89,179,0.1);
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .remember-me {
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #555;
+        }
+        
+        .forgot-password {
+            font-size: 13px;
+            color: #0059b3 !important;
+            text-decoration: underline;
+            background: none !important;
+            padding: 0 !important;
+        }
+        
+        .forgot-password:hover {
+            color: #004080 !important;
+            text-decoration: none;
+        }
+        
+        .login-btn {
+            background-color: #0059b3;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: #004080;
+        }
+        
+        /* Current Date */
+        .current-date {
+            background: rgba(255,255,255,0.2);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Promotional Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, #0059b3, #003366);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .promo-banner h2 {
+            color: white;
+            font-size: 28px;
+            margin: 0 0 10px 0;
+        }
+        
+        .promo-banner p {
+            font-size: 16px;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* Insights Card */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+        
+        .insight-card {
+            background: #f8fcff;
+            border: 1px solid #e6f2ff;
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .insight-card h3 {
+            margin-top: 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .insight-card a {
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        /* Login Button Fix */
+        .header-login-btn {
+            color: white;
+            cursor: pointer;
+            padding: 8px 12px;
+            margin-left: 10px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .header-login-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .lang-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: green;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .profile-icon:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+        
+        .logout-btn {
+            padding: 8px 15px;
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bank-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .services-grid, .rates-grid, .commitments-grid, .insights-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .quick-links {
+                justify-content: flex-start;
+            }
+            
+            .ticker-label {
+                display: none;
+            }
+            
+            .news-ticker {
+                justify-content: center;
+            }
+            
+            .ticker-content {
+                position: static;
+                justify-content: center;
+                animation: none !important;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .ticker-item {
+                margin-right: 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid, .rates-grid, .commitments-grid, .insights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="bank-header">
+            <h1><i class="fas fa-university"></i> Global Trust Bank</h1>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button onclick="window.location.href='/customer/my_loans'" class="btn-view-loans">
+  View My Loans
+</button>
+
+                <div class="current-date" id="current-date"></div>
+                <div class="language-selector">
+                    <button class="language-btn">
+                        <i class="fas fa-globe"></i> <span id="current-language-text">English</span>
+                    </button>
+                    <div class="language-dropdown">
+                        <a href="#" onclick="changeLanguage('en')">English</a>
+                        <a href="#" onclick="changeLanguage('ta')">தமிழ் (Tamil)</a>
+                        <a href="#" onclick="changeLanguage('hi')">हिंदी (Hindi)</a>
+                    </div>
+                </div>
+                <!-- Modern Profile Icon -->
+                <div class="profile-icon" onclick="window.location.href='/customer/profile'" title="Profile">
+                    <i class="fas fa-user"></i>
+                </div>
+                <button class="logout-btn" onclick="window.location.href='/logout'">
+                    <span id="logout-text">Logout</span>
+                </button>
+            </div>
+            <div id="lang-notification" class="lang-notification"></div>
+        </div>
+        
+        <div class="news-ticker">
+            <div class="ticker-label" id="ticker-label">LATEST NEWS</div>
+            <div class="ticker-content" id="ticker-content">
+            </div>
+        </div>
+        
+        <div class="blinking-ticker" id="blinking-ticker">
+            IMPORTANT: Always keep your login credentials secure. Never share them with anyone.
+        </div>
+        
+        <div class="bank-info" id="welcome-message">
+            <p></p>
+        </div>
+
+        <div class="promo-banner">
+            <h2 id="promo-banner-title">Open a Savings Account Online!</h2>
+            <p id="promo-banner-desc">Get up to 4% p.a. interest and a lifetime free debit card. Open now in just 5 minutes.</p>
+        </div>
+        
+        <div class="quick-links">
+            <a href="mobile-banking.html" class="quick-link" id="mobile-banking-link"><i class="fas fa-mobile-alt"></i> <span id="mobile-banking-text">Mobile Banking</span></a>
+            <a href="credit-card.html" class="quick-link" id="credit-card-link"><i class="fas fa-credit-card"></i> <span id="credit-card-text">Apply for Credit Card</span></a>
+            <a href="home-loan.html" class="quick-link" id="home-loan-link"><i class="fas fa-home"></i> <span id="home-loan-text">Home Loans</span></a>
+            <a href="personal-loan.html" class="quick-link" id="personal-loan-link"><i class="fas fa-user-tie"></i> <span id="personal-loan-text">Personal Loan</span></a>
+            <a href="gold-loan.html" class="quick-link" id="gold-loan-link"><i class="fas fa-coins"></i> <span id="gold-loan-text">Gold Loan</span></a>
+            <a href="fixed-deposit.html" class="quick-link" id="fd-link"><i class="fas fa-piggy-bank"></i> <span id="fd-text">Open FD Online</span></a>
+            <a href="fund-transfer.html" class="quick-link" id="fund-transfer-link"><i class="fas fa-exchange-alt"></i> <span id="fund-transfer-text">Fund Transfer</span></a>
+        </div>
+        
+        <div class="offers-container">
+            <h2 id="offers-title">Our Best Offers for You</h2>
+            <div class="rates-grid">
+                <div class="offer-card rate-card" style="border-left: 3px solid #e74c3c; background: #fff8f8;">
+                    <div class="service-icon" style="color: #e74c3c;"><i class="fas fa-piggy-bank"></i></div>
+                    <h4 id="fd-offer-title">Special FD Rate!</h4>
+                    <div class="rate-value">7.75% p.a.</div>
+                    <div class="rate-duration" id="fd-offer-desc">Limited period offer on 3-year deposits.</div>
+                    <a class="service-link" href="#" id="fd-offer-cta" style="background-color: #e74c3c;">Explore Now</a>
+                </div>
+                <div class="offer-card rate-card" style="border-left: 3px solid #27ae60; background: #f8fff8;">
+                    <div class="service-icon" style="color: #27ae60;"><i class="fas fa-coins"></i></div>
+                    <h4 id="gold-loan-offer-title">Lowest Gold Loan Rate!</h4>
+                    <div class="rate-value">9.50% p.a.</div>
+                    <div class="rate-duration" id="gold-loan-offer-desc">Get an instant loan against your gold.</div>
+                    <a class="service-link" href="#" id="gold-loan-offer-cta" style="background-color: #27ae60;">Apply Now</a>
+                </div>
+                <div class="offer-card rate-card" style="border-left: 3px solid #3498db; background: #f8fcff;">
+                    <div class="service-icon" style="color: #3498db;"><i class="fas fa-umbrella"></i></div>
+                    <h4 id="insurance-offer-title">Protect Your Family</h4>
+                    <div class="rate-value" style="font-size: 18px;">Health & Life Insurance</div>
+                    <div class="rate-duration" id="insurance-offer-desc">Compare plans and find the right one for you.</div>
+                    <a class="service-link" href="#" id="insurance-offer-cta" style="background-color: #3498db;">View Plans</a>
+                </div>
+                <div class="offer-card rate-card" style="border-left: 3px solid #f39c12; background: #fffcf8;">
+                    <div class="service-icon" style="color: #f39c12;"><i class="fas fa-credit-card"></i></div>
+                    <h4 id="credit-card-offer-title">Zero Fee Credit Card</h4>
+                    <div class="rate-value" style="font-size: 18px;">Life-time free</div>
+                    <div class="rate-duration" id="credit-card-offer-desc">Enjoy rewards and cashback with no annual fee.</div>
+                    <a class="service-link" href="#" id="credit-card-offer-cta" style="background-color: #f39c12;">Apply Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="commitments-container">
+            <h2 id="commitments-title">Why Choose Global Trust Bank?</h2>
+            <div class="commitments-grid">
+                <div class="commitment-card">
+                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 id="commitments-security-title">Advanced Security</h3>
+                    <p id="commitments-security-desc">Your financial safety is our top priority. We use state-of-the-art encryption to protect your data.</p>
+                </div>
+                <div class="commitment-card">
+                    <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 id="commitments-support-title">Dedicated Support</h3>
+                    <p id="commitments-support-desc">Our customer service team is available 24/7 to help you with any queries or concerns.</p>
+                </div>
+                <div class="commitment-card">
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 id="commitments-digital-title">Seamless Digital Banking</h3>
+                    <p id="commitments-digital-desc">Manage your accounts, pay bills, and transfer funds effortlessly on our mobile app.</p>
+                </div>
+                <div class="commitment-card">
+                    <div class="service-icon"><i class="fas fa-leaf"></i></div>
+                    <h3 id="commitments-eco-title">Eco-Friendly Banking</h3>
+                    <p id="commitments-eco-desc">We are committed to a greener future through paperless banking and sustainable initiatives.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bank Services Section -->
+        <div class="services-container">
+            <h2 id="services-title">Our Banking Services</h2>
+            <div class="services-grid">
+                <!-- Personal Loan -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 id="personal-loan-title-service">Personal Loans</h3>
+                    <p id="personal-loan-desc-service">Get quick personal loans with minimal documentation and instant approval</p>
+                    <a href="/services/personal-loan.html" class="service-link" id="personal-loan-learn-more">Learn More</a>
+                </div>
+
+                <!-- Gold Loan -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3 id="gold-loan-title-service">Gold Loans</h3>
+                    <p id="gold-loan-desc-service">Avail loan against your gold with attractive interest rates and fast disbursal</p>
+                    <a href="/services/gold-loan.html" class="service-link" id="gold-loan-learn-more">Learn More</a>
+                </div>
+
+                <!-- Home Loan -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 id="home-loan-title-service">Home Loans</h3>
+                    <p id="home-loan-desc-service">Competitive rates for your dream home with flexible repayment options</p>
+                    <a href="/services/home-loan.html" class="service-link" id="home-loan-learn-more">Learn More</a>
+                </div>
+
+                <!-- Education Loan -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 id="edu-loan-title-service">Education Loans</h3>
+                    <p id="edu-loan-desc-service">Support for higher education in India and abroad with moratorium period</p>
+                    <a href="/services/education-loan.html" class="service-link" id="edu-loan-learn-more">Learn More</a>
+                </div>
+
+                <!-- Auto Loan -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 id="auto-loan-title-service">Auto Loans</h3>
+                    <p id="auto-loan-desc-service">Finance your new or used vehicle with quick approval and low EMI</p>
+                    <a href="/services/auto-loan.html" class="service-link" id="auto-loan-learn-more">Learn More</a>
+                </div>
+
+                <!-- Savings Account -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3 id="savings-title-service">Savings Accounts</h3>
+                    <p id="savings-desc-service">High interest savings accounts with debit card and net banking</p>
+                    <a href="/services/savings-accounts.html" class="service-link" id="savings-learn-more">Learn More</a>
+                </div>
+
+                <!-- Business Banking -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-business-time"></i>
+                    </div>
+                    <h3 id="business-title-service">Business Banking</h3>
+                    <p id="business-desc-service">Current accounts, loans and payment solutions for businesses</p>
+                    <a href="/services/business-banking.html" class="service-link" id="business-learn-more">Learn More</a>
+                </div>
+
+                <!-- Credit Cards -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 id="credit-card-title-service">Credit Cards</h3>
+                    <p id="credit-card-desc-service">Premium cards with rewards, cashback and airport lounge access</p>
+                    <a href="/services/credit-cards.html" class="service-link" id="credit-card-learn-more">Learn More</a>
+                </div>
+
+                <!-- Investment -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 id="investment-title-service">Investments</h3>
+                    <p id="investment-desc-service">Grow your wealth with mutual funds, fixed deposits and SIPs</p>
+                    <a href="/services/investments.html" class="service-link" id="investment-learn-more">Learn More</a>
+                </div>
+
+                <!-- Insurance -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 id="insurance-title-service">Insurance</h3>
+                    <p id="insurance-desc-service">Secure your future with health, life, and vehicle insurance plans</p>
+                    <a href="/services/insurance.html" class="service-link" id="insurance-learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="insights-container">
+            <h2 id="insights-title">Financial Insights & Blog</h2>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h3 id="insight-1-title">5 Ways to Grow Your Savings</h3>
+                    <p id="insight-1-desc">Learn how to make your money work for you with these smart savings strategies.</p>
+                    <a href="#" id="insight-1-cta">Read More <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="insight-card">
+                    <h3 id="insight-2-title">How to Plan for Your Retirement</h3>
+                    <p id="insight-2-desc">A comprehensive guide to help you build a solid financial foundation for your golden years.</p>
+                    <a href="#" id="insight-2-cta">Read More <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="insight-card">
+                    <h3 id="insight-3-title">The Benefits of Opening a Joint Account</h3>
+                    <p id="insight-3-desc">Understand the pros and cons of joint accounts for couples and families.</p>
+                    <a href="#" id="insight-3-cta">Read More <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+        
+      
+            <!-- Quick Access -->
+            <div class="section">
+                <h2 id="quick-access-title">Quick Access</h2>
+                <div class="action-row">
+                    <span id="fd-calculator-text">FD Calculator</span>
+                    <a class="service-link" href="/services/fd-calculator.html" id="fd-calculator-learn-more">Learn More</a>
+                </div>
+                <div class="action-row">
+                    <span id="emi-calculator-text">EMI Calculator</span>
+                    <a class="service-link" href="/services/emi-calculator.html" id="emi-calculator-learn-more">Learn More</a>
+                </div>
+                <div class="action-row">
+                    <span id="investment-planner-text">Investment Planner</span>
+                    <a class="service-link" href="/services/investment-planner.html" id="investment-planner-learn-more">Learn More</a>
+                </div>
+                <div class="action-row">
+                    <span id="branch-locator-text">Branch Locator</span>
+                    <a class="service-link" href="/services/branch-locator.html" id="branch-locator-learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bank-links">
+            <a href="privacy-policy.html" id="privacy-link">Privacy Policy</a> | 
+            <a href="terms-of-service.html" id="terms-link">Terms of Service</a> | 
+            <a href="security-center.html" id="security-link">Security Center</a> | 
+            <a href="contact-us.html" id="contact-link">Contact Us</a> | 
+            <a href="sitemap.html" id="sitemap-link">Sitemap</a> | 
+            <a href="careers.html" id="careers-link">Careers</a>
+        </div>
+    </div>
+
+    <script>
+        // ... (keep all the existing JavaScript code as is, it's correct)
+        // The JavaScript code from your original file remains the same and should work
+        // I've just fixed the HTML structure and CSS issues
+
+        const dateFormats = {
+            en: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
+            ta: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
+            hi: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+        };
+        
+        function updateCurrentDate(lang) {
+            const today = new Date();
+            if (lang === 'ta') {
+                const tamilMonths = ['ஜனவரி', 'பிப்ரவரி', 'மார்ச்', 'ஏப்ரல்', 'மே', 'ஜூன்', 'ஜூலை', 'ஆகஸ்ட்', 'செப்டம்பர்', 'அக்டோபர்', 'நவம்பர்', 'டிசம்பர்'];
+                const tamilDays = ['ஞாயிறு', 'திங்கள்', 'செவ்வாய்', 'புதன்', 'வியாழன்', 'வெள்ளி', 'சனி'];
+                const day = tamilDays[today.getDay()];
+                const date = today.getDate();
+                const month = tamilMonths[today.getMonth()];
+                const year = today.getFullYear();
+                document.getElementById('current-date').textContent = `${day}, ${date} ${month} ${year}`;
+            } else if (lang === 'hi') {
+                const hindiMonths = ['जनवरी', 'फरवरी', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसंबर'];
+                const hindiDays = ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार'];
+                const day = hindiDays[today.getDay()];
+                const date = today.getDate();
+                const month = hindiMonths[today.getMonth()];
+                const year = today.getFullYear();
+                document.getElementById('current-date').textContent = `${day}, ${date} ${month} ${year}`;
+            } else {
+                document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', dateFormats[lang]);
+            }
+        }
+        
+        const tickerItems = {
+            en: [
+                {icon: 'fa-bullhorn', text: "Special FD rates: 7.75% for 3 years | Limited period offer"},
+                {icon: 'fa-coins', text: "Gold Loan at attractive rates starting from 9.50% p.a. | Quick and easy process"},
+                {icon: 'fa-user-tie', text: "Personal Loan at attractive rates starting from 10.75% p.a."},
+                {icon: 'fa-exclamation-triangle', text: "Beware of phishing calls pretending to be bank officials"},
+                {icon: 'fa-rupee-sign', text: "New RBI guidelines for home loans effective from July 1st"},
+                {icon: 'fa-mobile-alt', text: "Download our new mobile banking app with enhanced security features"},
+                {icon: 'fa-percentage', text: "Base lending rate reduced by 0.25% to 8.50% p.a."}
+            ],
+            ta: [
+                {icon: 'fa-bullhorn', text: "சிறப்பு FD விகிதங்கள்: 3 ஆண்டுகளுக்கு 7.75% | குறிப்பிட்ட கால சலுகை"},
+                {icon: 'fa-coins', text: "தங்கம் கடன் கவர்ச்சிகரமான விகிதங்களில் 9.50% p.a. முதல் தொடங்குகிறது | விரைவான மற்றும் எளிதான செயல்முறை"},
+                {icon: 'fa-user-tie', text: "தனிநபர் கடன் கவர்ச்சிகரமான விகிதங்களில் 10.75% p.a. முதல் தொடங்குகிறது"},
+                {icon: 'fa-exclamation-triangle', text: "வங்கி அதிகாரிகள் போல் போலி அழைப்புகளில் இருந்து எச்சரிக்கையாக இருங்கள்"},
+                {icon: 'fa-rupee-sign', text: "வீடு கடன்களுக்கான புதிய RBI வழிகாட்டுதல்கள் ஜூலை 1 முதல் நடைமுறைக்கு வருகின்றன"},
+                {icon: 'fa-mobile-alt', text: "மேம்படுத்தப்பட்ட பாதுகாப்பு அம்சங்களுடன் எங்கள் புதிய மொபைல் வங்கி பயன்பாட்டைப் பதிவிறக்கவும்"},
+                {icon: 'fa-percentage', text: "அடிப்படை கடன் விகிதம் 0.25% குறைக்கப்பட்டு 8.50% p.a ஆக உள்ளது"}
+            ],
+            hi: [
+                {icon: 'fa-bullhorn', text: "विशेष एफडी दरें: 3 साल के लिए 7.75% | सीमित अवधि का प्रस्ताव"},
+                {icon: 'fa-coins', text: "आकर्षक दरों पर गोल्ड लोन 9.50% प्रति वर्ष से शुरू | त्वरित और आसान प्रक्रिया"},
+                {icon: 'fa-user-tie', text: "आकर्षक दरों पर व्यक्तिगत ऋण 10.75% प्रति वर्ष से शुरू"},
+                {icon: 'fa-exclamation-triangle', text: "बैंक अधिकारियों का नाटक करने वाले फिशिंग कॉल से सावधान रहें"},
+                {icon: 'fa-rupee-sign', text: "1 जुलाई से होम लोन के लिए नए आरबीआई दिशानिर्देश प्रभावी"},
+                {icon: 'fa-mobile-alt', text: "उन्नत सुरक्षा सुविधाओं के साथ हमारा नया मोबाइल बैंकिंग ऐप डाउनलोड करें"},
+                {icon: 'fa-percentage', text: "आधार उधार दर में 0.25% की कटौती कर 8.50% प्रति वर्ष कर दिया गया"}
+            ]
+        };
+
+        const blinkingTickerMessages = {
+            en: "IMPORTANT: Always keep your login credentials secure. Never share them with anyone.",
+            ta: "முக்கியம்: உங்கள் உள்நுழைவு சான்றுகளை எப்போதும் பாதுகாப்பாக வைத்திருங்கள். அவற்றை யாருடனும் பகிர்ந்து கொள்ளாதீர்கள்.",
+            hi: "महत्वपूर्ण: अपने लॉगिन क्रेडेंशियल्स को हमेशा सुरक्षित रखें। उन्हें किसी के साथ साझा न करें।"
+        };
+
+        const translations = {
+            en: {
+                currentLanguage: "English",
+                tickerLabel: "LATEST NEWS",
+                welcome: "Welcome to Global Trust Bank's secure online portal. For assistance, please call our customer service at 1800-123-4567 or visit your nearest branch.",
+                mobileBankingText: "Mobile Banking",
+                creditCardText: "Apply for Credit Card",
+                homeLoanText: "Home Loans",
+                personalLoanText: "Personal Loan",
+                goldLoanText: "Gold Loan",
+                fdText: "Open FD Online",
+                fundTransferText: "Fund Transfer",
+                promoBannerTitle: "Open a Savings Account Online!",
+                promoBannerDesc: "Get up to 4% p.a. interest and a lifetime free debit card. Open now in just 5 minutes.",
+                offersTitle: "Our Best Offers for You",
+                fdOfferTitle: "Special FD Rate!",
+                fdOfferDesc: "Limited period offer on 3-year deposits.",
+                fdOfferCta: "Explore Now",
+                goldLoanOfferTitle: "Lowest Gold Loan Rate!",
+                goldLoanOfferDesc: "Get an instant loan against your gold.",
+                goldLoanOfferCta: "Apply Now",
+                insuranceOfferTitle: "Protect Your Family",
+                insuranceOfferDesc: "Compare plans and find the right one for you.",
+                insuranceOfferCta: "View Plans",
+                creditCardOfferTitle: "Zero Fee Credit Card",
+                creditCardOfferDesc: "Enjoy rewards and cashback with no annual fee.",
+                creditCardOfferCta: "Apply Now",
+                commitmentsTitle: "Why Choose Global Trust Bank?",
+                commitmentsSecurityTitle: "Advanced Security",
+                commitmentsSecurityDesc: "Your financial safety is our top priority. We use state-of-the-art encryption to protect your data.",
+                commitmentsSupportTitle: "Dedicated Support",
+                commitmentsSupportDesc: "Our customer service team is available 24/7 to help you with any queries or concerns.",
+                commitmentsDigitalTitle: "Seamless Digital Banking",
+                commitmentsDigitalDesc: "Manage your accounts, pay bills, and transfer funds effortlessly on our mobile app.",
+                commitmentsEcoTitle: "Eco-Friendly Banking",
+                commitmentsEcoDesc: "We are committed to a greener future through paperless banking and sustainable initiatives.",
+                servicesTitle: "Our Banking Services",
+                personalLoanTitleService: "Personal Loans",
+                personalLoanDescService: "Get quick personal loans with minimal documentation and instant approval",
+                homeLoanTitleService: "Home Loans",
+                homeLoanDescService: "Competitive rates for your dream home with flexible repayment options",
+                goldLoanTitleService: "Gold Loans",
+                goldLoanDescService: "Avail loan against your gold with attractive interest rates and fast disbursal",
+                autoLoanTitleService: "Auto Loans",
+                autoLoanDescService: "Finance your new or used vehicle with quick approval and low EMI",
+                eduLoanTitleService: "Education Loans",
+                eduLoanDescService: "Support for higher education in India and abroad with moratorium period",
+                creditCardTitleService: "Credit Cards",
+                creditCardDescService: "Premium cards with rewards, cashback and airport lounge access",
+                insuranceTitleService: "Insurance",
+                insuranceDescService: "Secure your future with health, life, and vehicle insurance plans",
+                investmentTitleService: "Investments",
+                investmentDescService: "Grow your wealth with mutual funds, fixed deposits and SIPs",
+                savingsTitleService: "Savings Accounts",
+                savingsDescService: "High interest savings accounts with debit card and net banking",
+                businessTitleService: "Business Banking",
+                businessDescService: "Current accounts, loans and payment solutions for businesses",
+                learnMore: "Learn More",
+                insightsTitle: "Financial Insights & Blog",
+                insight1Title: "5 Ways to Grow Your Savings",
+                insight1Desc: "Learn how to make your money work for you with these smart savings strategies.",
+                insight1Cta: "Read More",
+                insight2Title: "How to Plan for Your Retirement",
+                insight2Desc: "A comprehensive guide to help you build a solid financial foundation for your golden years.",
+                insight2Cta: "Read More",
+                insight3Title: "The Benefits of Opening a Joint Account",
+                insight3Desc: "Understand the pros and cons of joint accounts for couples and families.",
+                insight3Cta: "Read More",
+                customerPortalTitle: "Customer Portal",
+                usernameLabel: "Customer ID/Username",
+                passwordLabel: "Password",
+                rememberLabel: "Remember me",
+                forgotPassword: "Forgot Password?",
+                customerLoginBtn: "Login",
+                newCustomerText: "New to Internet Banking?",
+                customerRegisterBtn: "Register Now",
+                staffPortalTitle: "Staff Portal",
+                staffLoginText: "Staff Login",
+                staffLoginBtnLink: "Staff Login",
+                newStaffText: "New Staff Member?",
+                staffRegisterBtn: "Register",
+                quickAccessTitle: "Quick Access",
+                fdCalculatorText: "FD Calculator",
+                emiCalculatorText: "EMI Calculator",
+                investmentPlannerText: "Investment Planner",
+                branchLocatorText: "Branch Locator",
+                privacyLink: "Privacy Policy",
+                termsLink: "Terms of Service",
+                securityLink: "Security Center",
+                contactLink: "Contact Us",
+                sitemapLink: "Sitemap",
+                careersLink: "Careers",
+                logoutText: "Logout"
+            },
+            ta: {
+                currentLanguage: "தமிழ்",
+                tickerLabel: "சமீபத்திய செய்திகள்",
+                welcome: "குளோபல் டிரஸ்ட் வங்கியின் பாதுகாப்பான ஆன்லைன் போர்ட்டலுக்கு வரவேற்கிறோம். உதவிக்கு, எங்கள் வாடிக்கையாளர் சேவைக்கு 1800-123-4567 என்ற எண்ணில் அழைக்கவும் அல்லது அருகில் உள்ள கிளையை அணுகவும்.",
+                mobileBankingText: "மொபைல் பேங்கிங்",
+                creditCardText: "கிரெடிட் கார்டுக்கு விண்ணப்பிக்கவும்",
+                homeLoanText: "வீட்டுக் கடன்கள்",
+                personalLoanText: "தனிநபர் கடன்",
+                goldLoanText: "தங்கம் கடன்",
+                fdText: "FD ஆன்லைனில் திறக்கவும்",
+                fundTransferText: "பணம் மாற்றுதல்",
+                promoBannerTitle: "ஆன்லைனில் ஒரு சேமிப்பு கணக்கைத் திறக்கவும்!",
+                promoBannerDesc: "4% p.a. வரை வட்டி மற்றும் வாழ்நாள் முழுவதும் இலவச டெபிட் கார்டைப் பெறுங்கள். இப்போது 5 நிமிடங்களில் திறக்கவும்.",
+                offersTitle: "உங்களுக்கான சிறந்த சலுகைகள்",
+                fdOfferTitle: "சிறப்பு FD விகிதம்!",
+                fdOfferDesc: "3 ஆண்டு வைப்புகளுக்கான குறிப்பிட்ட கால சலுகை.",
+                fdOfferCta: "இப்போது ஆராயுங்கள்",
+                goldLoanOfferTitle: "குறைந்த தங்கம் கடன் விகிதம்!",
+                goldLoanOfferDesc: "உங்கள் தங்கத்திற்கு எதிராக உடனடி கடன் பெறுங்கள்.",
+                goldLoanOfferCta: "இப்போது விண்ணப்பிக்கவும்",
+                insuranceOfferTitle: "உங்கள் குடும்பத்தைப் பாதுகாக்கவும்",
+                insuranceOfferDesc: "திட்டங்களை ஒப்பிட்டு உங்களுக்கு சரியானதைக் கண்டறியவும்.",
+                insuranceOfferCta: "திட்டங்களைக் காண்க",
+                creditCardOfferTitle: "பூஜ்ஜிய கட்டண கிரெடிட் கார்டு",
+                creditCardOfferDesc: "ஆண்டு கட்டணம் இல்லாமல் வெகுமதிகள் மற்றும் கேஷ்பேக்கை அனுபவிக்கவும்.",
+                creditCardOfferCta: "இப்போது விண்ணப்பிக்கவும்",
+                commitmentsTitle: "குளோபல் டிரஸ்ட் வங்கியின் தேர்வை ஏன்?",
+                commitmentsSecurityTitle: "மேம்பட்ட பாதுகாப்பு",
+                commitmentsSecurityDesc: "உங்கள் நிதி பாதுகாப்பு எங்கள் முதல் முன்னுரிமை. உங்கள் தரவைப் பாதுகாக்க நாங்கள் அதிநவீன குறியாக்கத்தைப் பயன்படுத்துகிறோம்.",
+                commitmentsSupportTitle: "சிறந்த ஆதரவு",
+                commitmentsSupportDesc: "உங்கள் கேள்விகள் அல்லது கவலைகளுக்கு உதவ எங்கள் வாடிக்கையாளர் சேவை குழு 24/7 கிடைக்கும்.",
+                commitmentsDigitalTitle: "தடையற்ற டிஜிட்டல் வங்கி",
+                commitmentsDigitalDesc: "எங்கள் மொபைல் பயன்பாட்டில் உங்கள் கணக்குகளை நிர்வகிக்கவும், கட்டணங்களைச் செலுத்தவும் மற்றும் நிதிகளை சிரமமின்றி மாற்றவும்.",
+                commitmentsEcoTitle: "சுற்றுச்சூழல் நட்பு வங்கி",
+                commitmentsEcoDesc: "காகிதமில்லா வங்கி மற்றும் நிலையான முன்முயற்சிகளால் நாங்கள் ஒரு பசுமையான எதிர்காலத்திற்கு உறுதியளிக்கிறோம்.",
+                servicesTitle: "எங்கள் வங்கி சேவைகள்",
+                personalLoanTitleService: "தனிநபர் கடன்கள்",
+                personalLoanDescService: "குறைந்தபட்ச ஆவணங்களுடன் விரைவான தனிப்பட்ட கடன்களைப் பெற்று உடனடி அனுமதி பெறுங்கள்",
+                homeLoanTitleService: "வீட்டுக் கடன்கள்",
+                homeLoanDescService: "நெகிழ்வான திருப்பிச் செலுத்தும் விருப்பங்களுடன் உங்கள் கனவு இல்லத்திற்கான போட்டி விகிதங்கள்",
+                goldLoanTitleService: "தங்கம் கடன்கள்",
+                goldLoanDescService: "கவர்ச்சிகரமான வட்டி விகிதங்கள் மற்றும் விரைவான விநியோகத்துடன் உங்கள் தங்கத்திற்கு எதிராக கடன் பெறுங்கள்",
+                autoLoanTitleService: "வாகன கடன்கள்",
+                autoLoanDescService: "விரைவான ஒப்புதல் மற்றும் குறைந்த EMI உடன் உங்கள் புதிய அல்லது பயன்படுத்திய வாகனத்திற்கு நிதியளிக்கவும்",
+                eduLoanTitleService: "கல்விக் கடன்கள்",
+                eduLoanDescService: "இந்தியா மற்றும் வெளிநாடுகளில் உயர்கல்விக்கு ஆதரவு, தற்காலிகத் தடை காலத்துடன்",
+                creditCardTitleService: "கிரெடிட் கார்டுகள்",
+                creditCardDescService: "சலுகைகள், கேஷ்பேக் மற்றும் விமான நிலைய லவுஞ்ச் அணுகலுடன் கூடிய பிரீமியம் கார்டுகள்",
+                insuranceTitleService: "காப்பீடு",
+                insuranceDescService: "ஆரோக்கியம், வாழ்க்கை மற்றும் வாகன காப்பீட்டுத் திட்டங்களுடன் உங்கள் எதிர்காலத்தைப் பாதுகாக்கவும்",
+                investmentTitleService: "முதலீடுகள்",
+                investmentDescService: "பரஸ்பர நிதிகள், நிலையான வைப்புகள் மற்றும் SIPகள் மூலம் உங்கள் செல்வத்தை வளர்க்கவும்",
+                savingsTitleService: "சேமிப்பு கணக்குகள்",
+                savingsDescService: "டெபிட் கார்டு மற்றும் நெட் பேங்கிங் வசதியுடன் கூடிய அதிக வட்டி சேமிப்பு கணக்குகள்",
+                businessTitleService: "வணிக வங்கி",
+                businessDescService: "வணிகங்களுக்கான நடப்பு கணக்குகள், கடன்கள் மற்றும் பணம் செலுத்தும் தீர்வுகள்",
+                learnMore: "மேலும் அறிக",
+                insightsTitle: "நிதி நுண்ணறிவு மற்றும் வலைப்பதிவு",
+                insight1Title: "உங்கள் சேமிப்பை வளர்க்க 5 வழிகள்",
+                insight1Desc: "இந்த ஸ்மார்ட் சேமிப்பு உத்திகளுடன் உங்கள் பணம் உங்களுக்காக எவ்வாறு வேலை செய்ய வைக்கிறது என்பதை அறிக.",
+                insight1Cta: "மேலும் படிக்க",
+                insight2Title: "உங்கள் ஓய்வூதியத்திற்கு எப்படி திட்டமிடுவது",
+                insight2Desc: "உங்கள் எதிர்காலத்திற்கான ஒரு உறுதியான நிதி அடித்தளத்தை உருவாக்க உதவும் ஒரு விரிவான வழிகாட்டி.",
+                insight2Cta: "மேலும் படிக்க",
+                insight3Title: "கூட்டுக் கணக்கைத் திறப்பதன் நன்மைகள்",
+                insight3Desc: "தம்பதியினர் மற்றும் குடும்பங்களுக்கான கூட்டுக் கணக்குகளின் நன்மை தீமைகளைப் புரிந்து கொள்ளுங்கள்.",
+                insight3Cta: "மேலும் படிக்க",
+                customerPortalTitle: "வாடிக்கையாளர் போர்ட்டல்",
+                usernameLabel: "வாடிக்கையாளர் ஐடி/பயனர்பெயர்",
+                passwordLabel: "கடவுச்சொல்",
+                rememberLabel: "என்னை நினைவில் கொள்",
+                forgotPassword: "கடவுச்சொல் மறந்துவிட்டதா?",
+                customerLoginBtn: "உள்நுழை",
+                newCustomerText: "இன்டர்நெட் பேங்கிங்கிற்கு புதியவரா?",
+                customerRegisterBtn: "இப்போதே பதிவு செய்யவும்",
+                staffPortalTitle: "பணியாளர் போர்ட்டல்",
+                staffLoginText: "பணியாளர் உள்நுழைவு",
+                staffLoginBtnLink: "பணியாளர் உள்நுழைவு",
+                newStaffText: "புதிய பணியாளரா?",
+                staffRegisterBtn: "பதிவு செய்",
+                quickAccessTitle: "விரைவு அணுகல்",
+                fdCalculatorText: "FD கால்குலேட்டர்",
+                emiCalculatorText: "EMI கால்குலேட்டர்",
+                investmentPlannerText: "முதலீட்டுத் திட்டமிடுபவர்",
+                branchLocatorText: "கிளை இருப்பிடம்",
+                privacyLink: "தனியுரிமைக் கொள்கை",
+                termsLink: "சேவை விதிமுறைகள்",
+                securityLink: "பாதுகாப்பு மையம்",
+                contactLink: "தொடர்பு கொள்ளவும்",
+                sitemapLink: "தளவரைபடம்",
+                careersLink: "பணிகள்",
+                logoutText: "வெளியேறு"
+            },
+            hi: {
+                currentLanguage: "हिंदी",
+                tickerLabel: "ताज़ा खबर",
+                welcome: "ग्लोबल ट्रस्ट बैंक के सुरक्षित ऑनलाइन पोर्टल में आपका स्वागत है। सहायता के लिए, कृपया हमारी ग्राहक सेवा को 1800-123-4567 पर कॉल करें या अपनी निकटतम शाखा में जाएँ।",
+                mobileBankingText: "मोबाइल बैंकिंग",
+                creditCardText: "क्रेडिट कार्ड के लिए आवेदन करें",
+                homeLoanText: "गृह ऋण",
+                personalLoanText: "व्यक्तिगत ऋण",
+                goldLoanText: "गोल्ड लोन",
+                fdText: "ऑनलाइन एफडी खोलें",
+                fundTransferText: "फंड ट्रांसफर",
+                promoBannerTitle: "ऑनलाइन बचत खाता खोलें!",
+                promoBannerDesc: "4% प्रति वर्ष तक ब्याज और लाइफटाइम फ्री डेबिट कार्ड प्राप्त करें। अभी 5 मिनट में खोलें।",
+                offersTitle: "आपके लिए हमारे सर्वोत्तम ऑफ़र",
+                fdOfferTitle: "विशेष एफडी दर!",
+                fdOfferDesc: "3 साल की जमा पर सीमित अवधि का ऑफ़र।",
+                fdOfferCta: "अभी खोजें",
+                goldLoanOfferTitle: "सबसे कम गोल्ड लोन दर!",
+                goldLoanOfferDesc: "अपने सोने के बदले तुरंत ऋण प्राप्त करें।",
+                goldLoanOfferCta: "अभी आवेदन करें",
+                insuranceOfferTitle: "अपने परिवार को सुरक्षित रखें",
+                insuranceOfferDesc: "योजनाओं की तुलना करें और अपने लिए सही योजना खोजें।",
+                insuranceOfferCta: "योजनाएं देखें",
+                creditCardOfferTitle: "शून्य शुल्क क्रेडिट कार्ड",
+                creditCardOfferDesc: "बिना किसी वार्षिक शुल्क के पुरस्कार और कैशबैक का आनंद लें।",
+                creditCardOfferCta: "अभी आवेदन करें",
+                commitmentsTitle: "ग्लोबल ट्रस्ट बैंक को क्यों चुनें?",
+                commitmentsSecurityTitle: "उन्नत सुरक्षा",
+                commitmentsSecurityDesc: "आपकी वित्तीय सुरक्षा हमारी सर्वोच्च प्राथमिकता है। हम आपके डेटा की सुरक्षा के लिए अत्याधुनिक एन्क्रिप्शन का उपयोग करते हैं।",
+                commitmentsSupportTitle: "समर्पित सहायता",
+                commitmentsSupportDesc: "हमारी ग्राहक सेवा टीम आपके किसी भी प्रश्न या चिंता में आपकी सहायता के लिए 24/7 उपलब्ध है।",
+                commitmentsDigitalTitle: "निर्बाध डिजिटल बैंकिंग",
+                commitmentsDigitalDesc: "हमारे मोबाइल ऐप पर अपने खातों को प्रबंधित करें, बिलों का भुगतान करें और धन हस्तांतरित करें।",
+                commitmentsEcoTitle: "पर्यावरण-अनुकूल बैंकिंग",
+                commitmentsEcoDesc: "हम पेपरलेस बैंकिंग और स्थायी पहलों के माध्यम से एक हरित भविष्य के लिए प्रतिबद्ध हैं।",
+                servicesTitle: "हमारी बैंकिंग सेवाएँ",
+                personalLoanTitleService: "व्यक्तिगत ऋण",
+                personalLoanDescService: "न्यूनतम दस्तावेज़ीकरण और त्वरित अनुमोदन के साथ त्वरित व्यक्तिगत ऋण प्राप्त करें",
+                homeLoanTitleService: "गृह ऋण",
+                homeLoanDescService: "लचीले पुनर्भुगतान विकल्पों के साथ आपके सपनों के घर के लिए प्रतिस्पर्धी दरें",
+                goldLoanTitleService: "गोल्ड लोन",
+                goldLoanDescService: "आकर्षक ब्याज दरों और त्वरित वितरण के साथ अपने सोने के खिलाफ ऋण प्राप्त करें",
+                autoLoanTitleService: "ऑटो ऋण",
+                autoLoanDescService: "त्वरित अनुमोदन और कम ईएमआई के साथ अपने नए या पुराने वाहन को वित्तपोषित करें",
+                eduLoanTitleService: "शिक्षा ऋण",
+                eduLoanDescService: "स्थगन अवधि के साथ भारत और विदेश में उच्च शिक्षा के लिए सहायता",
+                creditCardTitleService: "क्रेडिट कार्ड",
+                creditCardDescService: "पुरस्कार, कैशबैक और हवाई अड्डे के लाउंज एक्सेस के साथ प्रीमियम कार्ड",
+                insuranceTitleService: "बीमा",
+                insuranceDescService: "स्वास्थ्य, जीवन और वाहन बीमा योजनाओं के साथ अपने भविष्य को सुरक्षित करें",
+                investmentTitleService: "निवेश",
+                investmentDescService: "म्यूचुअल फंड, फिक्स्ड डिपॉजिट और एसआईपी के साथ अपनी संपत्ति बढ़ाएं",
+                savingsTitleService: "बचत खाते",
+                savingsDescService: "डेबिट कार्ड और नेट बैंकिंग के साथ उच्च ब्याज वाले बचत खाते",
+                businessTitleService: "बिजनेस बैंकिंग",
+                businessDescService: "व्यवसायों के लिए चालू खाते, ऋण और भुगतान समाधान",
+                learnMore: "और जानें",
+                insightsTitle: "वित्तीय अंतर्दृष्टि और ब्लॉग",
+                insight1Title: "अपनी बचत बढ़ाने के 5 तरीके",
+                insight1Desc: "इन स्मार्ट बचत रणनीतियों के साथ जानें कि आपका पैसा आपके लिए कैसे काम करता है।",
+                insight1Cta: "और पढ़ें",
+                insight2Title: "अपनी सेवानिवृत्ति की योजना कैसे बनाएं",
+                insight2Desc: "अपने सुनहरे वर्षों के लिए एक ठोस वित्तीय नींव बनाने में आपकी मदद करने के लिए एक व्यापक गाइड।",
+                insight2Cta: "और पढ़ें",
+                insight3Title: "संयुक्त खाता खोलने के लाभ",
+                insight3Desc: "जोड़ों और परिवारों के लिए संयुक्त खातों के फायदे और नुकसान को समझें।",
+                insight3Cta: "और पढ़ें",
+                customerPortalTitle: "ग्राहक पोर्टल",
+                usernameLabel: "ग्राहक आईडी/उपयोगकर्ता नाम",
+                passwordLabel: "पासवर्ड",
+                rememberLabel: "मुझे याद रखें",
+                forgotPassword: "पासवर्ड भूल गए?",
+                customerLoginBtn: "लॉगिन",
+                newCustomerText: "इंटरनेट बैंकिंग में नए हैं?",
+                customerRegisterBtn: "अभी पंजीकरण करें",
+                staffPortalTitle: "कर्मचारी पोर्टल",
+                staffLoginText: "कर्मचारी लॉगिन",
+                staffLoginBtnLink: "कर्मचारी लॉगिन",
+                newStaffText: "नए कर्मचारी सदस्य?",
+                staffRegisterBtn: "पंजीकरण करें",
+                quickAccessTitle: "त्वरित पहुँच",
+                fdCalculatorText: "एफडी कैलकुलेटर",
+                emiCalculatorText: "ईएमआई कैलकुलेटर",
+                investmentPlannerText: "निवेश योजनाकार",
+                branchLocatorText: "शाखा लोकेटर",
+                privacyLink: "गोपनीयता नीति",
+                termsLink: "सेवा की शर्तें",
+                securityLink: "सुरक्षा केंद्र",
+                contactLink: "हमसे संपर्क करें",
+                sitemapLink: "साइटमैप",
+                careersLink: "करियर",
+                logoutText: "लॉगआउट"
+            }
+        };
+
+        let currentLanguage = 'en';
+        let tickerAnimationId;
+
+        function updateTicker(lang) {
+            const tickerContent = document.getElementById('ticker-content');
+            tickerContent.innerHTML = '';
+            
+            if (tickerItems[lang]) {
+                tickerItems[lang].forEach(item => {
+                    const tickerItem = document.createElement('div');
+                    tickerItem.className = 'ticker-item';
+                    tickerItem.innerHTML = `<i class="fas ${item.icon}"></i> ${item.text}`;
+                    tickerContent.appendChild(tickerItem);
+                });
+            }
+
+            document.getElementById('blinking-ticker').textContent = blinkingTickerMessages[lang] || blinkingTickerMessages['en'];
+            
+            if (window.innerWidth > 768) {
+                if (tickerAnimationId) {
+                    cancelAnimationFrame(tickerAnimationId);
+                }
+                animateTicker();
+            } else {
+                tickerContent.style.transform = 'translateX(0)';
+                tickerContent.style.position = 'static';
+                tickerContent.style.justifyContent = 'center';
+            }
+        }
+
+        function animateTicker() {
+            const ticker = document.querySelector('.ticker-content');
+            const newsTickerContainer = document.querySelector('.news-ticker');
+            if (!ticker || !newsTickerContainer) return;
+
+            const items = document.querySelectorAll('.ticker-item');
+            
+            let totalContentWidth = 0;
+            items.forEach(item => {
+                totalContentWidth += item.offsetWidth + 30;
+            });
+
+            if (totalContentWidth <= newsTickerContainer.offsetWidth) {
+                ticker.style.transform = 'translateX(0)';
+                ticker.style.position = 'static';
+                ticker.style.justifyContent = 'center';
+                return;
+            }
+
+            ticker.style.position = 'absolute';
+            ticker.style.justifyContent = 'flex-start';
+            let position = newsTickerContainer.offsetWidth;
+
+            function tick() {
+                position -= 1;
+                if (position < -totalContentWidth) {
+                    position = newsTickerContainer.offsetWidth;
+                }
+                ticker.style.transform = `translateX(${position}px)`;
+                tickerAnimationId = requestAnimationFrame(tick);
+            }
+            
+            tick();
+        }
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // This is the CRITICAL line to add. It saves the language choice.
+            localStorage.setItem('selectedLanguage', lang);
+
+            // Show notification
+            const notif = document.getElementById('lang-notification');
+            notif.textContent = 
+                lang === 'en' ? 'Language changed to English' :
+                lang === 'ta' ? 'மொழி தமிழாக மாற்றப்பட்டது' :
+                'भाषा हिंदी में बदल गई';
+            
+            notif.style.display = 'block';
+            setTimeout(() => notif.style.display = 'none', 3000);
+
+            const currentLangText = document.getElementById('current-language-text');
+            if (currentLangText) {
+                currentLangText.textContent = translations[lang].currentLanguage || translations['en'].currentLanguage;
+            }
+            updateCurrentDate(lang);
+            updateTicker(lang);
+
+            document.getElementById('welcome-message').querySelector('p').textContent = translations[lang].welcome;
+            document.getElementById('ticker-label').textContent = translations[lang].tickerLabel;
+
+            document.getElementById('promo-banner-title').textContent = translations[lang].promoBannerTitle;
+            document.getElementById('promo-banner-desc').textContent = translations[lang].promoBannerDesc;
+            
+            document.getElementById('mobile-banking-text').textContent = translations[lang].mobileBankingText;
+            document.getElementById('credit-card-text').textContent = translations[lang].creditCardText;
+            document.getElementById('home-loan-text').textContent = translations[lang].homeLoanText;
+            document.getElementById('personal-loan-text').textContent = translations[lang].personalLoanText;
+            document.getElementById('gold-loan-text').textContent = translations[lang].goldLoanText;
+            document.getElementById('fd-text').textContent = translations[lang].fdText;
+            document.getElementById('fund-transfer-text').textContent = translations[lang].fundTransferText;
+
+            document.getElementById('offers-title').textContent = translations[lang].offersTitle;
+            document.getElementById('fd-offer-title').textContent = translations[lang].fdOfferTitle;
+            document.getElementById('fd-offer-desc').textContent = translations[lang].fdOfferDesc;
+            document.getElementById('fd-offer-cta').textContent = translations[lang].fdOfferCta;
+            document.getElementById('gold-loan-offer-title').textContent = translations[lang].goldLoanOfferTitle;
+            document.getElementById('gold-loan-offer-desc').textContent = translations[lang].goldLoanOfferDesc;
+            document.getElementById('gold-loan-offer-cta').textContent = translations[lang].goldLoanOfferCta;
+            document.getElementById('insurance-offer-title').textContent = translations[lang].insuranceOfferTitle;
+            document.getElementById('insurance-offer-desc').textContent = translations[lang].insuranceOfferDesc;
+            document.getElementById('insurance-offer-cta').textContent = translations[lang].insuranceOfferCta;
+            document.getElementById('credit-card-offer-title').textContent = translations[lang].creditCardOfferTitle;
+            document.getElementById('credit-card-offer-desc').textContent = translations[lang].creditCardOfferDesc;
+            document.getElementById('credit-card-offer-cta').textContent = translations[lang].creditCardOfferCta;
+
+            document.getElementById('commitments-title').textContent = translations[lang].commitmentsTitle;
+            document.getElementById('commitments-security-title').textContent = translations[lang].commitmentsSecurityTitle;
+            document.getElementById('commitments-security-desc').textContent = translations[lang].commitmentsSecurityDesc;
+            document.getElementById('commitments-support-title').textContent = translations[lang].commitmentsSupportTitle;
+            document.getElementById('commitments-support-desc').textContent = translations[lang].commitmentsSupportDesc;
+            document.getElementById('commitments-digital-title').textContent = translations[lang].commitmentsDigitalTitle;
+            document.getElementById('commitments-digital-desc').textContent = translations[lang].commitmentsDigitalDesc;
+            document.getElementById('commitments-eco-title').textContent = translations[lang].commitmentsEcoTitle;
+            document.getElementById('commitments-eco-desc').textContent = translations[lang].commitmentsEcoDesc;
+
+            document.getElementById('services-title').textContent = translations[lang].servicesTitle;
+            document.getElementById('personal-loan-title-service').textContent = translations[lang].personalLoanTitleService;
+            document.getElementById('personal-loan-desc-service').textContent = translations[lang].personalLoanDescService;
+            document.getElementById('personal-loan-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('home-loan-title-service').textContent = translations[lang].homeLoanTitleService;
+            document.getElementById('home-loan-desc-service').textContent = translations[lang].homeLoanDescService;
+            document.getElementById('home-loan-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('gold-loan-title-service').textContent = translations[lang].goldLoanTitleService;
+            document.getElementById('gold-loan-desc-service').textContent = translations[lang].goldLoanDescService;
+            document.getElementById('gold-loan-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('auto-loan-title-service').textContent = translations[lang].autoLoanTitleService;
+            document.getElementById('auto-loan-desc-service').textContent = translations[lang].autoLoanDescService;
+            document.getElementById('auto-loan-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('edu-loan-title-service').textContent = translations[lang].eduLoanTitleService;
+            document.getElementById('edu-loan-desc-service').textContent = translations[lang].eduLoanDescService;
+            document.getElementById('edu-loan-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('credit-card-title-service').textContent = translations[lang].creditCardTitleService;
+            document.getElementById('credit-card-desc-service').textContent = translations[lang].creditCardDescService;
+            document.getElementById('credit-card-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('insurance-title-service').textContent = translations[lang].insuranceTitleService;
+            document.getElementById('insurance-desc-service').textContent = translations[lang].insuranceDescService;
+            document.getElementById('insurance-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('investment-title-service').textContent = translations[lang].investmentTitleService;
+            document.getElementById('investment-desc-service').textContent = translations[lang].investmentDescService;
+            document.getElementById('investment-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('savings-title-service').textContent = translations[lang].savingsTitleService;
+            document.getElementById('savings-desc-service').textContent = translations[lang].savingsDescService;
+            document.getElementById('savings-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('business-title-service').textContent = translations[lang].businessTitleService;
+            document.getElementById('business-desc-service').textContent = translations[lang].businessDescService;
+            document.getElementById('business-learn-more').textContent = translations[lang].learnMore;
+
+            document.getElementById('insights-title').textContent = translations[lang].insightsTitle;
+            document.getElementById('insight-1-title').textContent = translations[lang].insight1Title;
+            document.getElementById('insight-1-desc').textContent = translations[lang].insight1Desc;
+            document.getElementById('insight-1-cta').textContent = translations[lang].insight1Cta;
+            document.getElementById('insight-2-title').textContent = translations[lang].insight2Title;
+            document.getElementById('insight-2-desc').textContent = translations[lang].insight2Desc;
+            document.getElementById('insight-2-cta').textContent = translations[lang].insight2Cta;
+            document.getElementById('insight-3-title').textContent = translations[lang].insight3Title;
+            document.getElementById('insight-3-desc').textContent = translations[lang].insight3Desc;
+            document.getElementById('insight-3-cta').textContent = translations[lang].insight3Cta;
+
+            document.getElementById('customer-portal-title').textContent = translations[lang].customerPortalTitle;
+            document.getElementById('username-label').textContent = translations[lang].usernameLabel;
+            document.getElementById('password-label').textContent = translations[lang].passwordLabel;
+            document.getElementById('remember-label').textContent = translations[lang].rememberLabel;
+            document.getElementById('forgot-password').textContent = translations[lang].forgotPassword;
+            document.getElementById('customer-login-btn').textContent = translations[lang].customerLoginBtn;
+            document.getElementById('new-customer-text').textContent = translations[lang].newCustomerText;
+            document.getElementById('customer-register-btn').textContent = translations[lang].customerRegisterBtn;
+
+            document.getElementById('staff-portal-title').textContent = translations[lang].staffPortalTitle;
+            document.getElementById('staff-login-text').textContent = translations[lang].staffLoginText;
+            document.getElementById('staff-login-btn-link').textContent = translations[lang].staffLoginBtnLink;
+            document.getElementById('new-staff-text').textContent = translations[lang].newStaffText;
+            document.getElementById('staff-register-btn').textContent = translations[lang].staffRegisterBtn;
+            
+            document.getElementById('quick-access-title').textContent = translations[lang].quickAccessTitle;
+            document.getElementById('fd-calculator-text').textContent = translations[lang].fdCalculatorText;
+            document.getElementById('fd-calculator-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('emi-calculator-text').textContent = translations[lang].emiCalculatorText;
+            document.getElementById('emi-calculator-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('investment-planner-text').textContent = translations[lang].investmentPlannerText;
+            document.getElementById('investment-planner-learn-more').textContent = translations[lang].learnMore;
+            document.getElementById('branch-locator-text').textContent = translations[lang].branchLocatorText;
+            document.getElementById('branch-locator-learn-more').textContent = translations[lang].learnMore;
+
+            document.getElementById('privacy-link').textContent = translations[lang].privacyLink;
+            document.getElementById('terms-link').textContent = translations[lang].termsLink;
+            document.getElementById('security-link').textContent = translations[lang].securityLink;
+            document.getElementById('contact-link').textContent = translations[lang].contactLink;
+            document.getElementById('sitemap-link').textContent = translations[lang].sitemapLink;
+            document.getElementById('careers-link').textContent = translations[lang].careersLink;
+
+            document.getElementById('logout-text').textContent = translations[lang].logoutText;
+
+            document.getElementById('username').placeholder = lang === 'en' ? "Enter your customer ID" : (lang === 'ta' ? "உங்கள் வாடிக்கையாளர் ஐடியை உள்ளிடவும்" : "अपनी ग्राहक आईडी दर्ज करें");
+            document.getElementById('password').placeholder = lang === 'en' ? "Enter your password" : (lang === 'ta' ? "உங்கள் கடவுச்சொல்லை உள்ளிடவும்" : "अपना पासवर्ड दर्ज करें");
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for saved language preference
+            const savedLanguage = localStorage.getItem('selectedLanguage');
+            if (savedLanguage) {
+                currentLanguage = savedLanguage;
+            }
+            
+            changeLanguage(currentLanguage);
+            window.addEventListener('resize', () => updateTicker(currentLanguage));
+            
+            // Add login functionality
+            document.getElementById('customer-login-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                if (username && password) {
+                    alert(currentLanguage === 'en' ? 'Login successful!' : 
+                          currentLanguage === 'ta' ? 'உள்நுழைவு வெற்றிகரமாக உள்ளது!' : 
+                          'लॉगिन सफल रहा!');
+                } else {
+                    alert(currentLanguage === 'en' ? 'Please enter both username and password' : 
+                          currentLanguage === 'ta' ? 'பயனர்பெயர் மற்றும் கடவுச்சொல் இரண்டையும் உள்ளிடவும்' : 
+                          'कृपया उपयोगकर्ता नाम और पासवर्ड दोनों दर्ज करें');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

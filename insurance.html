@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="service-title">Insurance - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --dark-blue: #003a75;
+            --accent-blue: #e6f0ff;
+            --gold: #ffc107;
+            --dark-text: #2d3748;
+            --gray: #6c757d;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark-text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .bank-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .service-hero {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            color: white;
+            padding: 40px;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .service-hero h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        .service-hero .tag {
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .service-hero .service-icon {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 80px;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        .service-content {
+            background: white;
+            padding: 40px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .service-card {
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,86,179,0.1);
+            border-color: var(--primary-blue);
+        }
+        .service-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .service-card h3 i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+        .service-card p {
+            margin: 15px 0 0;
+            font-size: 14px;
+        }
+        .btn-apply {
+            background: linear-gradient(to right, var(--dark-blue), var(--primary-blue));
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
+        }
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,86,179,0.4);
+        }
+        .btn-apply i {
+            margin-left: 10px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .back-link i {
+            margin-right: 8px;
+        }
+        .disclaimer {
+            background: #fff8e6;
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #5e503f;
+        }
+        @media (max-width: 768px) {
+            .service-hero .service-icon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bank-container">
+        <div class="service-hero">
+            <h1 data-lang-key="service-title">Insurance</h1>
+            <span class="tag" data-lang-key="tagline">Protecting Your Future</span>
+            <i class="fas fa-shield-alt service-icon"></i>
+        </div>
+        
+        <div class="service-content">
+            <p class="lead" data-lang-key="intro-text">Secure your family's future and your assets with our comprehensive insurance plans. We offer a range of products to fit your every need, from life and health to home and auto insurance.</p>
+            
+            <h2 data-lang-key="plans-heading">Our Insurance Plans</h2>
+            <div class="card-container">
+                <div class="service-card">
+                    <h3 data-lang-key="plan-1-title"><i class="fas fa-heartbeat"></i> Life Insurance</h3>
+                    <p data-lang-key="plan-1-text">Provide financial security for your loved ones in your absence with our flexible life insurance policies. Get coverage that grows with you.</p>
+                </div>
+                <div class="service-card">
+                    <h3 data-lang-key="plan-2-title"><i class="fas fa-user-md"></i> Health Insurance</h3>
+                    <p data-lang-key="plan-2-text">Protect yourself and your family against rising medical costs. Our health plans cover hospitalization, critical illnesses, and more with cashless facilities.</p>
+                </div>
+                <div class="service-card">
+                    <h3 data-lang-key="plan-3-title"><i class="fas fa-home"></i> Home Insurance</h3>
+                    <p data-lang-key="plan-3-text">Safeguard your most valuable asset from unforeseen events like fire, theft, and natural disasters. Comprehensive coverage for your home and its contents.</p>
+                </div>
+                <div class="service-card">
+                    <h3 data-lang-key="plan-4-title"><i class="fas fa-car-crash"></i> Auto Insurance</h3>
+                    <p data-lang-key="plan-4-text">Get peace of mind on the road with our auto insurance plans. We offer comprehensive coverage for damages, theft, and third-party liability.</p>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="benefits-heading">Why Choose Our Insurance?</h2>
+            <ul>
+                <li data-lang-key="benefit-1"><strong>Tailored Solutions:</strong> Find the perfect policy for your unique needs and budget.</li>
+                <li data-lang-key="benefit-2"><strong>Quick Claims Process:</strong> Our dedicated team ensures a fast and hassle-free claim settlement process.</li>
+                <li data-lang-key="benefit-3"><strong>Wide Network:</strong> Access to a wide network of hospitals and service providers for cashless services.</li>
+                <li data-lang-key="benefit-4"><strong>Expert Advice:</strong> Our insurance advisors will help you choose the best plan to secure your future.</li>
+            </ul>
+
+            <div class="cta-section">
+                <button class="btn-apply" data-lang-key="apply-btn">Get a Quote <i class="fas fa-arrow-right"></i></button>
+                <a href="../index.html" class="back-link" data-lang-key="back-link"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+            </div>
+
+            <div class="disclaimer">
+                <p data-lang-key="disclaimer-text"><strong>Note:</strong> Insurance products are offered in partnership with licensed providers. Terms, conditions, and eligibility criteria apply. Please read the policy document carefully before making a decision.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'service-title': 'Insurance',
+                'tagline': 'Protecting Your Future',
+                'intro-text': 'Secure your family\'s future and your assets with our comprehensive insurance plans. We offer a range of products to fit your every need, from life and health to home and auto insurance.',
+                'plans-heading': 'Our Insurance Plans',
+                'plan-1-title': 'Life Insurance',
+                'plan-1-text': 'Provide financial security for your loved ones in your absence with our flexible life insurance policies. Get coverage that grows with you.',
+                'plan-2-title': 'Health Insurance',
+                'plan-2-text': 'Protect yourself and your family against rising medical costs. Our health plans cover hospitalization, critical illnesses, and more with cashless facilities.',
+                'plan-3-title': 'Home Insurance',
+                'plan-3-text': 'Safeguard your most valuable asset from unforeseen events like fire, theft, and natural disasters. Comprehensive coverage for your home and its contents.',
+                'plan-4-title': 'Auto Insurance',
+                'plan-4-text': 'Get peace of mind on the road with our auto insurance plans. We offer comprehensive coverage for damages, theft, and third-party liability.',
+                'benefits-heading': 'Why Choose Our Insurance?',
+                'benefit-1': 'Tailored Solutions: Find the perfect policy for your unique needs and budget.',
+                'benefit-2': 'Quick Claims Process: Our dedicated team ensures a fast and hassle-free claim settlement process.',
+                'benefit-3': 'Wide Network: Access to a wide network of hospitals and service providers for cashless services.',
+                'benefit-4': 'Expert Advice: Our insurance advisors will help you choose the best plan to secure your future.',
+                'apply-btn': 'Get a Quote',
+                'back-link': 'Back to All Services',
+                'disclaimer-text': 'Note: Insurance products are offered in partnership with licensed providers. Terms, conditions, and eligibility criteria apply. Please read the policy document carefully before making a decision.'
+            },
+            'ta': {
+                'service-title': 'காப்பீடு',
+                'tagline': 'உங்கள் எதிர்காலத்தைப் பாதுகாத்தல்',
+                'intro-text': 'எங்கள் விரிவான காப்பீட்டுத் திட்டங்களுடன் உங்கள் குடும்பத்தின் எதிர்காலத்தையும் உங்கள் சொத்துக்களையும் பாதுகாக்கவும். ஆயுள் மற்றும் சுகாதாரம் முதல் வீடு மற்றும் வாகனக் காப்பீடு வரை உங்கள் ஒவ்வொரு தேவைக்கும் ஏற்றவாறு பல தயாரிப்புகளை நாங்கள் வழங்குகிறோம்.',
+                'plans-heading': 'எங்கள் காப்பீட்டுத் திட்டங்கள்',
+                'plan-1-title': 'ஆயுள் காப்பீடு',
+                'plan-1-text': 'எங்கள் நெகிழ்வான ஆயுள் காப்பீட்டு பாலிசிகள் மூலம் நீங்கள் இல்லாதபோது உங்கள் அன்புக்குரியவர்களுக்கு நிதி பாதுகாப்பை வழங்கவும். உங்களுடன் வளரும் கவரேஜைப் பெறுங்கள்.',
+                'plan-2-title': 'சுகாதார காப்பீடு',
+                'plan-2-text': 'உங்களையும் உங்கள் குடும்பத்தையும் அதிகரித்து வரும் மருத்துவ செலவுகளிலிருந்து பாதுகாக்கவும். எங்கள் சுகாதார திட்டங்கள் மருத்துவமனையில் தங்குதல், தீவிர நோய்கள் மற்றும் பலவற்றை பணமில்லா வசதிகளுடன் உள்ளடக்கியது.',
+                'plan-3-title': 'வீட்டுக் காப்பீடு',
+                'plan-3-text': 'தீ, திருட்டு மற்றும் இயற்கை பேரிடர்கள் போன்ற எதிர்பாராத நிகழ்வுகளிலிருந்து உங்கள் மிக மதிப்புமிக்க சொத்தை பாதுகாக்கவும். உங்கள் வீட்டிற்கும் அதன் உள்ளடக்கங்களுக்கும் விரிவான கவரேஜ்.',
+                'plan-4-title': 'வாகனக் காப்பீடு',
+                'plan-4-text': 'எங்கள் வாகனக் காப்பீட்டுத் திட்டங்களுடன் சாலையில் மன அமைதியைப் பெறுங்கள். சேதங்கள், திருட்டு மற்றும் மூன்றாம் தரப்பு பொறுப்புக்கான விரிவான கவரேஜை நாங்கள் வழங்குகிறோம்.',
+                'benefits-heading': 'ஏன் எங்கள் காப்பீட்டைத் தேர்ந்தெடுக்க வேண்டும்?',
+                'benefit-1': 'தனிப்பயனாக்கப்பட்ட தீர்வுகள்: உங்கள் தனிப்பட்ட தேவைகள் மற்றும் பட்ஜெட்டுக்கு சரியான பாலிசியைக் கண்டறியவும்.',
+                'benefit-2': 'விரைவான உரிமைகோரல் செயல்முறை: எங்கள் அர்ப்பணிப்புள்ள குழு விரைவான மற்றும் தொந்தரவு இல்லாத உரிமைகோரல் தீர்வை உறுதி செய்கிறது.',
+                'benefit-3': 'பரந்த வலையமைப்பு: பணமில்லா சேவைகளுக்காக மருத்துவமனைகள் மற்றும் சேவை வழங்குநர்களின் பரந்த வலையமைப்பை அணுகலாம்.',
+                'benefit-4': 'நிபுணர் ஆலோசனை: உங்கள் எதிர்காலத்தைப் பாதுகாக்க சிறந்த திட்டத்தைத் தேர்வுசெய்ய எங்கள் காப்பீட்டு ஆலோசகர்கள் உங்களுக்கு உதவுவார்கள்.',
+                'apply-btn': 'விலைப்பட்டியலைப் பெறுங்கள்',
+                'back-link': 'அனைத்து சேவைகளுக்கும் திரும்பவும்',
+                'disclaimer-text': 'குறிப்பு: காப்பீட்டு தயாரிப்புகள் உரிமம் பெற்ற வழங்குநர்களுடன் இணைந்து வழங்கப்படுகின்றன. விதிமுறைகள், நிபந்தனைகள் மற்றும் தகுதிக்கான நிபந்தனைகள் பொருந்தும். முடிவெடுப்பதற்கு முன் பாலிசி ஆவணத்தை கவனமாகப் படிக்கவும்.'
+            },
+            'hi': {
+                'service-title': 'बीमा',
+                'tagline': 'अपने भविष्य की रक्षा करें',
+                'intro-text': 'हमारी व्यापक बीमा योजनाओं के साथ अपने परिवार के भविष्य और अपनी संपत्ति को सुरक्षित करें। हम आपकी हर जरूरत को पूरा करने के लिए उत्पादों की एक श्रृंखला प्रदान करते हैं, जीवन और स्वास्थ्य से लेकर घर और ऑटो बीमा तक।',
+                'plans-heading': 'हमारी बीमा योजनाएं',
+                'plan-1-title': 'जीवन बीमा',
+                'plan-1-text': 'हमारी लचीली जीवन बीमा पॉलिसियों के साथ अपनी अनुपस्थिति में अपने प्रियजनों के लिए वित्तीय सुरक्षा प्रदान करें। कवरेज प्राप्त करें जो आपके साथ बढ़ता है।',
+                'plan-2-title': 'स्वास्थ्य बीमा',
+                'plan-2-text': 'बढ़ती चिकित्सा लागतों से खुद को और अपने परिवार को बचाएं। हमारी स्वास्थ्य योजनाएं अस्पताल में भर्ती, गंभीर बीमारियों और नकदी रहित सुविधाओं के साथ बहुत कुछ कवर करती हैं।',
+                'plan-3-title': 'गृह बीमा',
+                'plan-3-text': 'आग, चोरी और प्राकृतिक आपदाओं जैसी अप्रत्याशित घटनाओं से अपनी सबसे मूल्यवान संपत्ति की रक्षा करें। आपके घर और उसकी सामग्री के लिए व्यापक कवरेज।',
+                'plan-4-title': 'ऑटो बीमा',
+                'plan-4-text': 'हमारी ऑटो बीमा योजनाओं के साथ सड़क पर मन की शांति प्राप्त करें। हम क्षति, चोरी और तीसरे पक्ष की देयता के लिए व्यापक कवरेज प्रदान करते हैं।',
+                'benefits-heading': 'हमारा बीमा क्यों चुनें?',
+                'benefit-1': 'अनुरूप समाधान: अपनी अनूठी जरूरतों और बजट के लिए सही पॉलिसी खोजें।',
+                'benefit-2': 'त्वरित दावा प्रक्रिया: हमारी समर्पित टीम एक तेज और परेशानी मुक्त दावा निपटान प्रक्रिया सुनिश्चित करती है।',
+                'benefit-3': 'व्यापक नेटवर्क: नकदी रहित सेवाओं के लिए अस्पतालों और सेवा प्रदाताओं के एक व्यापक नेटवर्क तक पहुंच।',
+                'benefit-4': 'विशेषज्ञ सलाह: हमारे बीमा सलाहकार आपके भविष्य को सुरक्षित करने के लिए सबसे अच्छी योजना चुनने में आपकी मदद करेंगे।',
+                'apply-btn': 'एक उद्धरण प्राप्त करें',
+                'back-link': 'सभी सेवाओं पर वापस जाएं',
+                'disclaimer-text': 'नोट: बीमा उत्पाद लाइसेंस प्राप्त प्रदाताओं के साथ साझेदारी में पेश किए जाते हैं। नियम, शर्तें और पात्रता मानदंड लागू होते हैं। कृपया निर्णय लेने से पहले पॉलिसी दस्तावेज़ को ध्यान से पढ़ें।'
+            }
+        };
+
+        function translatePage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'STRONG') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        const originalStrong = element.querySelector('strong');
+                        if (originalStrong) {
+                            const newText = translations[lang][key];
+                            const originalHtml = element.innerHTML;
+                            const updatedHtml = originalHtml.replace(originalStrong.outerHTML, `<strong>${newText.split(':')[0]}</strong>:`);
+                            element.innerHTML = updatedHtml;
+                            element.innerHTML = element.innerHTML.replace(originalStrong.textContent, newText.split(':')[0] + ':');
+                        } else {
+                             element.textContent = translations[lang][key];
+                        }
+                    }
+                }
+            });
+            const backLink = document.querySelector('.back-link');
+            if (backLink && translations[lang] && translations[lang]['back-link']) {
+                backLink.innerHTML = `<i class="fas fa-arrow-left"></i> ${translations[lang]['back-link']}`;
+            }
+
+            if (translations[lang] && translations[lang]['service-title']) {
+                document.title = translations[lang]['service-title'] + ' - Global Trust Bank';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            translatePage(savedLanguage);
+        });
+    </script>
+</body>
+</html>

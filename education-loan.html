@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Loan - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a4b8c;
+            --accent-blue: #e8f1fd;
+            --gold: #ffb700;
+            --dark-text: #2d3748;
+            --light-text: #6c757d;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            color: var(--dark-text);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .bank-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .loan-hero {
+            background: linear-gradient(135deg, #0f2d52, var(--primary-blue));
+            color: white;
+            padding: 50px 40px;
+            border-radius: 12px 12px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .loan-hero h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        .loan-hero .tag {
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .loan-hero .icon {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 90px;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        .loan-content {
+            background: white;
+            padding: 45px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .intro-text {
+            font-size: 18px;
+            color: var(--dark-text);
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+        .rate-highlight {
+            display: flex;
+            background: var(--accent-blue);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 35px 0;
+            align-items: center;
+            border-left: 5px solid var(--gold);
+        }
+        .rate-box {
+            min-width: 220px;
+            margin-right: 40px;
+        }
+        .rate-value {
+            font-size: 46px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+        .rate-label {
+            font-size: 17px;
+            color: var(--dark-text);
+            margin-top: 8px;
+        }
+        .rate-note {
+            font-size: 14px;
+            color: var(--light-text);
+            margin-top: 12px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 45px 0;
+        }
+        .feature-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(26,75,140,0.1);
+            border-color: var(--primary-blue);
+        }
+        .feature-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 19px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .feature-card h3 i {
+            margin-right: 12px;
+            color: var(--gold);
+            font-size: 20px;
+        }
+        .feature-value {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin: 15px 0;
+        }
+        .document-section {
+            background: var(--accent-blue);
+            padding: 35px;
+            border-radius: 10px;
+            margin: 45px 0;
+        }
+        .document-list {
+            columns: 2;
+            column-gap: 40px;
+        }
+        .document-list li {
+            padding: 12px 0;
+            break-inside: avoid;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px dashed #cbd5e0;
+        }
+        .document-list li:last-child {
+            border-bottom: none;
+        }
+        .document-list i {
+            color: var(--primary-blue);
+            margin-right: 12px;
+            font-size: 16px;
+        }
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary-blue), #0f2d52);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(26,75,140,0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26,75,140,0.4);
+        }
+        .btn-primary i {
+            margin-left: 12px;
+        }
+        .btn-secondary {
+            background: white;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+            padding: 15px 30px;
+            margin-left: 20px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover {
+            background: var(--accent-blue);
+        }
+        .disclaimer {
+            background: #fff9e6;
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            margin-top: 45px;
+            font-size: 14px;
+            color: #5e503f;
+            border-radius: 6px;
+        }
+        .covered-expenses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .expense-badge {
+            background: #f0f7ff;
+            color: var(--primary-blue);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        .expense-badge i {
+            margin-right: 8px;
+            color: var(--gold);
+        }
+        @media (max-width: 768px) {
+            .rate-highlight {
+                flex-direction: column;
+                text-align: center;
+            }
+            .rate-box {
+                margin-right: 0;
+                margin-bottom: 25px;
+            }
+            .document-list {
+                columns: 1;
+            }
+            .loan-hero .icon {
+                display: none;
+            }
+            .action-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bank-container">
+        <div class="loan-hero">
+            <h1 data-lang-key="loan-title">Education Loan</h1>
+            <span class="tag" data-lang-key="moratorium-tag">Moratorium Period Available</span>
+            <i class="fas fa-graduation-cap icon"></i>
+        </div>
+        
+        <div class="loan-content">
+            <p class="intro-text" data-lang-key="intro-text">Invest in your future with our comprehensive education financing solutions for domestic and international studies at premier institutions worldwide.</p>
+            
+            <div class="rate-highlight">
+                <div class="rate-box">
+                    <div class="rate-value">8.25%*</div>
+                    <div class="rate-label" data-lang-key="rate-label">Interest Rate (Domestic)</div>
+                    <div class="rate-note" data-lang-key="rate-note">*For top-ranked institutions</div>
+                </div>
+                <div class="rate-details">
+                    <p data-lang-key="special-benefits-heading"><strong>Special Benefits:</strong></p>
+                    <ul>
+                        <li data-lang-key="benefit-1">0.50% concession for female students</li>
+                        <li data-lang-key="benefit-2">Interest subsidy available for economically weaker sections</li>
+                        <li data-lang-key="benefit-3">No collateral required for loans up to ₹7.5 lakhs</li>
+                        <li data-lang-key="benefit-4">Repayment begins 6 months after course completion</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="features-heading">Loan Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 data-lang-key="feature-1-title"><i class="fas fa-rupee-sign"></i> Loan Amount</h3>
+                    <div class="feature-value" data-lang-key="feature-1-value">No Upper Limit</div>
+                    <p data-lang-key="feature-1-text">Up to ₹1.5 crores for foreign education at top 200 global universities</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-lang-key="feature-2-title"><i class="fas fa-calendar-alt"></i> Repayment Period</h3>
+                    <div class="feature-value" data-lang-key="feature-2-value">Up to 15 Years</div>
+                    <p data-lang-key="feature-2-text">Including course duration + 6 months grace period</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-lang-key="feature-3-title"><i class="fas fa-percentage"></i> Margin Money</h3>
+                    <div class="feature-value" data-lang-key="feature-3-value">5-15%</div>
+                    <p data-lang-key="feature-3-text">Depending on loan amount and institution ranking</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-lang-key="feature-4-title"><i class="fas fa-file-invoice-dollar"></i> Processing Fee</h3>
+                    <div class="feature-value" data-lang-key="feature-4-value">0.50%</div>
+                    <p data-lang-key="feature-4-text">+ GST (Maximum ₹25,000 for loans above ₹20 lakhs)</p>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="expenses-heading">Covered Expenses</h2>
+            <div class="covered-expenses">
+                <span class="expense-badge" data-lang-key="expense-1"><i class="fas fa-check"></i> Tuition Fees</span>
+                <span class="expense-badge" data-lang-key="expense-2"><i class="fas fa-check"></i> Hostel Charges</span>
+                <span class="expense-badge" data-lang-key="expense-3"><i class="fas fa-check"></i> Travel Expenses</span>
+                <span class="expense-badge" data-lang-key="expense-4"><i class="fas fa-check"></i> Study Materials</span>
+                <span class="expense-badge" data-lang-key="expense-5"><i class="fas fa-check"></i> Equipment & Tools</span>
+                <span class="expense-badge" data-lang-key="expense-6"><i class="fas fa-check"></i> Exam Fees</span>
+                <span class="expense-badge" data-lang-key="expense-7"><i class="fas fa-check"></i> Health Insurance</span>
+                <span class="expense-badge" data-lang-key="expense-8"><i class="fas fa-check"></i> Caution Deposit</span>
+            </div>
+            
+            <h2 data-lang-key="eligibility-heading">Eligibility Criteria</h2>
+            <ul>
+                <li data-lang-key="eligibility-1"><strong>Course:</strong> Recognized graduate/postgraduate programs including engineering, medicine, management, etc.</li>
+                <li data-lang-key="eligibility-2"><strong>Institution:</strong> Approved by UGC/AICTE/Government or ranked in top global lists</li>
+                <li data-lang-key="eligibility-3"><strong>Co-applicant:</strong> Parent/guardian required for students below 18 years</li>
+                <li data-lang-key="eligibility-4"><strong>Admission:</strong> Secured admission or entrance exam qualification</li>
+            </ul>
+            
+            <h2 data-lang-key="documents-heading">Required Documents</h2>
+            <div class="document-section">
+                <ul class="document-list">
+                    <li data-lang-key="doc-1"><i class="fas fa-file-alt"></i> <strong>Academic Records:</strong> Mark sheets of last qualifying exam</li>
+                    <li data-lang-key="doc-2"><i class="fas fa-file-alt"></i> <strong>Admission Proof:</strong> Offer letter from institution</li>
+                    <li data-lang-key="doc-3"><i class="fas fa-file-alt"></i> <strong>Fee Structure:</strong> Detailed break-up from institution</li>
+                    <li data-lang-key="doc-4"><i class="fas fa-file-alt"></i> <strong>Identity Proof:</strong> PAN Card + Aadhaar/Passport</li>
+                    <li data-lang-key="doc-5"><i class="fas fa-file-alt"></i> <strong>Income Proof:</strong> Parent/guardian's income documents</li>
+                    <li data-lang-key="doc-6"><i class="fas fa-file-alt"></i> <strong>Collateral:</strong> Documents if loan exceeds ₹7.5 lakhs</li>
+                </ul>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-primary" data-lang-key="apply-btn">Apply Now <i class="fas fa-arrow-right"></i></button>
+                <button class="btn-secondary" data-lang-key="emi-btn">EMI Calculator</button>
+            </div>
+            
+            <div class="disclaimer">
+                <p data-lang-key="disclaimer-text"><strong>Important:</strong> Interest rates are subject to change. Margin requirement varies by institution ranking. Loans above ₹7.5 lakhs require collateral security. Moratorium period interest may be capitalized. Tax benefits available under Section 80E of Income Tax Act.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'loan-title': 'Education Loan',
+                'moratorium-tag': 'Moratorium Period Available',
+                'intro-text': 'Invest in your future with our comprehensive education financing solutions for domestic and international studies at premier institutions worldwide.',
+                'rate-label': 'Interest Rate (Domestic)',
+                'rate-note': '*For top-ranked institutions',
+                'special-benefits-heading': 'Special Benefits:',
+                'benefit-1': '0.50% concession for female students',
+                'benefit-2': 'Interest subsidy available for economically weaker sections',
+                'benefit-3': 'No collateral required for loans up to ₹7.5 lakhs',
+                'benefit-4': 'Repayment begins 6 months after course completion',
+                'features-heading': 'Loan Features',
+                'feature-1-title': 'Loan Amount',
+                'feature-1-value': 'No Upper Limit',
+                'feature-1-text': 'Up to ₹1.5 crores for foreign education at top 200 global universities',
+                'feature-2-title': 'Repayment Period',
+                'feature-2-value': 'Up to 15 Years',
+                'feature-2-text': 'Including course duration + 6 months grace period',
+                'feature-3-title': 'Margin Money',
+                'feature-3-value': '5-15%',
+                'feature-3-text': 'Depending on loan amount and institution ranking',
+                'feature-4-title': 'Processing Fee',
+                'feature-4-value': '0.50%',
+                'feature-4-text': '+ GST (Maximum ₹25,000 for loans above ₹20 lakhs)',
+                'expenses-heading': 'Covered Expenses',
+                'expense-1': 'Tuition Fees',
+                'expense-2': 'Hostel Charges',
+                'expense-3': 'Travel Expenses',
+                'expense-4': 'Study Materials',
+                'expense-5': 'Equipment & Tools',
+                'expense-6': 'Exam Fees',
+                'expense-7': 'Health Insurance',
+                'expense-8': 'Caution Deposit',
+                'eligibility-heading': 'Eligibility Criteria',
+                'eligibility-1': '<strong>Course:</strong> Recognized graduate/postgraduate programs including engineering, medicine, management, etc.',
+                'eligibility-2': '<strong>Institution:</strong> Approved by UGC/AICTE/Government or ranked in top global lists',
+                'eligibility-3': '<strong>Co-applicant:</strong> Parent/guardian required for students below 18 years',
+                'eligibility-4': '<strong>Admission:</strong> Secured admission or entrance exam qualification',
+                'documents-heading': 'Required Documents',
+                'doc-1': '<strong>Academic Records:</strong> Mark sheets of last qualifying exam',
+                'doc-2': '<strong>Admission Proof:</strong> Offer letter from institution',
+                'doc-3': '<strong>Fee Structure:</strong> Detailed break-up from institution',
+                'doc-4': '<strong>Identity Proof:</strong> PAN Card + Aadhaar/Passport',
+                'doc-5': '<strong>Income Proof:</strong> Parent/guardian\'s income documents',
+                'doc-6': '<strong>Collateral:</strong> Documents if loan exceeds ₹7.5 lakhs',
+                'apply-btn': 'Apply Now',
+                'emi-btn': 'EMI Calculator',
+                'disclaimer-text': '<strong>Important:</strong> Interest rates are subject to change. Margin requirement varies by institution ranking. Loans above ₹7.5 lakhs require collateral security. Moratorium period interest may be capitalized. Tax benefits available under Section 80E of Income Tax Act.'
+            },
+            'ta': {
+                'loan-title': 'கல்வி கடன்',
+                'moratorium-tag': 'தற்காலிக விடுப்பு காலம் உண்டு',
+                'intro-text': 'உள்நாட்டு மற்றும் சர்வதேச சிறந்த கல்வி நிறுவனங்களில் படிப்பதற்கான விரிவான கல்வி நிதி தீர்வுகளுடன் உங்கள் எதிர்காலத்தில் முதலீடு செய்யுங்கள்.',
+                'rate-label': 'வட்டி விகிதம் (உள்நாட்டு)',
+                'rate-note': '*சிறந்த கல்வி நிறுவனங்களுக்கு',
+                'special-benefits-heading': 'சிறப்பு நன்மைகள்:',
+                'benefit-1': 'பெண் மாணவர்களுக்கு 0.50% சலுகை',
+                'benefit-2': 'பொருளாதாரத்தில் பின்தங்கிய பிரிவினருக்கு வட்டி மானியம் கிடைக்கும்',
+                'benefit-3': '₹7.5 லட்சம் வரை உள்ள கடன்களுக்கு எந்த அடமானமும் தேவையில்லை',
+                'benefit-4': 'பாடநெறி முடிந்த 6 மாதங்களுக்குப் பிறகு திருப்பிச் செலுத்துதல் தொடங்கும்',
+                'features-heading': 'கடன் அம்சங்கள்',
+                'feature-1-title': 'கடன் தொகை',
+                'feature-1-value': 'உச்ச வரம்பு இல்லை',
+                'feature-1-text': 'சிறந்த 200 சர்வதேச பல்கலைக்கழகங்களில் வெளிநாட்டு கல்விக்கு ₹1.5 கோடி வரை',
+                'feature-2-title': 'திருப்பிச் செலுத்தும் காலம்',
+                'feature-2-value': '15 ஆண்டுகள் வரை',
+                'feature-2-text': 'படிப்புக் காலம் + 6 மாத சலுகைக் காலம் உட்பட',
+                'feature-3-title': 'மத்திய நிதி',
+                'feature-3-value': '5-15%',
+                'feature-3-text': 'கடன் தொகை மற்றும் கல்வி நிறுவன தரவரிசையைப் பொறுத்து',
+                'feature-4-title': 'செயலாக்க கட்டணம்',
+                'feature-4-value': '0.50%',
+                'feature-4-text': '+ ஜிஎஸ்டி (₹20 லட்சத்திற்கு மேல் உள்ள கடன்களுக்கு அதிகபட்சம் ₹25,000)',
+                'expenses-heading': 'கணக்கிலடங்கிய செலவுகள்',
+                'expense-1': 'கட்டணம்',
+                'expense-2': 'விடுதி கட்டணங்கள்',
+                'expense-3': 'பயண செலவுகள்',
+                'expense-4': 'படிப்பிற்கான பொருட்கள்',
+                'expense-5': 'உபகரணங்கள் மற்றும் கருவிகள்',
+                'expense-6': 'தேர்வு கட்டணம்',
+                'expense-7': 'சுகாதார காப்பீடு',
+                'expense-8': 'முன்வைப்பு நிதி',
+                'eligibility-heading': 'தகுதிக்கான அளவுகோல்கள்',
+                'eligibility-1': '<strong>பாடநெறி:</strong> பொறியியல், மருத்துவம், மேலாண்மை உள்ளிட்ட அங்கீகரிக்கப்பட்ட பட்டப்படிப்பு/முதுகலை திட்டங்கள்.',
+                'eligibility-2': '<strong>நிறுவனம்:</strong> யுஜிசி/ஏஐசிடிஇ/அரசாங்கத்தால் அங்கீகரிக்கப்பட்டது அல்லது சிறந்த சர்வதேச பட்டியலில் இடம்பெற்றது',
+                'eligibility-3': '<strong>கூட்டு விண்ணப்பதாரர்:</strong> 18 வயதுக்குட்பட்ட மாணவர்களுக்கு பெற்றோர்/பாதுகாவலர் தேவை',
+                'eligibility-4': '<strong>சேர்க்கை:</strong> சேர்க்கை அல்லது நுழைவுத் தேர்வில் தேர்ச்சி பெற்றிருக்க வேண்டும்',
+                'documents-heading': 'தேவையான ஆவணங்கள்',
+                'doc-1': '<strong>கல்வி பதிவுகள்:</strong> கடைசி தகுதித் தேர்வின் மதிப்பெண் பட்டியல்',
+                'doc-2': '<strong>சேர்க்கை சான்று:</strong> கல்வி நிறுவனத்திலிருந்து அழைப்புக் கடிதம்',
+                'doc-3': '<strong>கட்டண அமைப்பு:</strong> கல்வி நிறுவனத்திலிருந்து விரிவான கட்டணப் பட்டியல்',
+                'doc-4': '<strong>அடையாளச் சான்று:</strong> பான் அட்டை + ஆதார்/கடவுச்சீட்டு',
+                'doc-5': '<strong>வருமானச் சான்று:</strong> பெற்றோர்/பாதுகாவலரின் வருமான ஆவணங்கள்',
+                'doc-6': '<strong>அடமானம்:</strong> கடன் ₹7.5 லட்சத்திற்கு அதிகமாக இருந்தால் ஆவணங்கள்',
+                'apply-btn': 'இப்போது விண்ணப்பிக்கவும்',
+                'emi-btn': 'EMI கால்குலேட்டர்',
+                'disclaimer-text': '<strong>முக்கியமானது:</strong> வட்டி விகிதங்கள் மாறுதலுக்கு உட்பட்டவை. கல்வி நிறுவனத்தின் தரவரிசையைப் பொறுத்து மத்திய நிதி தேவை மாறுபடும். ₹7.5 லட்சத்திற்கு மேல் உள்ள கடன்களுக்கு அடமான பாதுகாப்பு தேவை. தற்காலிக விடுப்புக் கால வட்டி மூலதனமாக்கப்படலாம். வருமான வரிச் சட்டம் பிரிவு 80E-ன் கீழ் வரிச் சலுகைகள் கிடைக்கும்.'
+            },
+            'hi': {
+                'loan-title': 'शिक्षा ऋण',
+                'moratorium-tag': 'स्थगन अवधि उपलब्ध',
+                'intro-text': 'घरेलू और अंतर्राष्ट्रीय स्तर पर प्रमुख संस्थानों में पढ़ाई के लिए हमारे व्यापक शिक्षा वित्तपोषण समाधानों के साथ अपने भविष्य में निवेश करें।',
+                'rate-label': 'ब्याज दर (घरेलू)',
+                'rate-note': '*शीर्ष-रैंक वाले संस्थानों के लिए',
+                'special-benefits-heading': 'विशेष लाभ:',
+                'benefit-1': 'महिला छात्रों के लिए 0.50% की छूट',
+                'benefit-2': 'आर्थिक रूप से कमजोर वर्गों के लिए ब्याज सब्सिडी उपलब्ध',
+                'benefit-3': '₹7.5 लाख तक के ऋण के लिए कोई संपार्श्विक आवश्यक नहीं',
+                'benefit-4': 'पाठ्यक्रम पूरा होने के 6 महीने बाद पुनर्भुगतान शुरू होता है',
+                'features-heading': 'ऋण की विशेषताएं',
+                'feature-1-title': 'ऋण राशि',
+                'feature-1-value': 'कोई ऊपरी सीमा नहीं',
+                'feature-1-text': 'शीर्ष 200 वैश्विक विश्वविद्यालयों में विदेशी शिक्षा के लिए ₹1.5 करोड़ तक',
+                'feature-2-title': 'पुनर्भुगतान अवधि',
+                'feature-2-value': '15 वर्ष तक',
+                'feature-2-text': 'पाठ्यक्रम की अवधि + 6 महीने की अनुग्रह अवधि सहित',
+                'feature-3-title': 'मार्जिन मनी',
+                'feature-3-value': '5-15%',
+                'feature-3-text': 'ऋण राशि और संस्थान की रैंकिंग के आधार पर',
+                'feature-4-title': 'प्रसंस्करण शुल्क',
+                'feature-4-value': '0.50%',
+                'feature-4-text': '+ जीएसटी (₹20 लाख से ऊपर के ऋण के लिए अधिकतम ₹25,000)',
+                'expenses-heading': 'शामिल खर्च',
+                'expense-1': 'ट्यूशन फीस',
+                'expense-2': 'छात्रावास शुल्क',
+                'expense-3': 'यात्रा व्यय',
+                'expense-4': 'अध्ययन सामग्री',
+                'expense-5': 'उपकरण और औजार',
+                'expense-6': 'परीक्षा शुल्क',
+                'expense-7': 'स्वास्थ्य बीमा',
+                'expense-8': 'सावधानी जमा',
+                'eligibility-heading': 'पात्रता मापदंड',
+                'eligibility-1': '<strong>पाठ्यक्रम:</strong> इंजीनियरिंग, चिकित्सा, प्रबंधन, आदि सहित मान्यता प्राप्त स्नातक/स्नातकोत्तर कार्यक्रम।',
+                'eligibility-2': '<strong>संस्थान:</strong> यूजीसी/एआईसीटीई/सरकार द्वारा अनुमोदित या शीर्ष वैश्विक सूचियों में रैंक किया गया',
+                'eligibility-3': '<strong>सह-आवेदक:</strong> 18 वर्ष से कम उम्र के छात्रों के लिए माता-पिता/अभिभावक आवश्यक',
+                'eligibility-4': '<strong>प्रवेश:</strong> सुरक्षित प्रवेश या प्रवेश परीक्षा योग्यता',
+                'documents-heading': 'आवश्यक दस्तावेज़',
+                'doc-1': '<strong>शैक्षणिक रिकॉर्ड:</strong> पिछली योग्यता परीक्षा की मार्कशीट',
+                'doc-2': '<strong>प्रवेश प्रमाण:</strong> संस्थान से ऑफर लेटर',
+                'doc-3': '<strong>शुल्क संरचना:</strong> संस्थान से विस्तृत विवरण',
+                'doc-4': '<strong>पहचान का प्रमाण:</strong> पैन कार्ड + आधार/पासपोर्ट',
+                'doc-5': '<strong>आय का प्रमाण:</strong> माता-पिता/अभिभावक के आय दस्तावेज़',
+                'doc-6': '<strong>संपार्श्विक:</strong> यदि ऋण ₹7.5 लाख से अधिक है तो दस्तावेज़',
+                'apply-btn': 'अभी आवेदन करें',
+                'emi-btn': 'ईएमआई कैलकुलेटर',
+                'disclaimer-text': '<strong>महत्वपूर्ण:</strong> ब्याज दरें परिवर्तन के अधीन हैं। मार्जिन की आवश्यकता संस्थान की रैंकिंग के अनुसार भिन्न होती है। ₹7.5 लाख से ऊपर के ऋणों के लिए संपार्श्विक सुरक्षा आवश्यक है। स्थगन अवधि का ब्याज पूंजीकृत किया जा सकता है। आयकर अधिनियम की धारा 80E के तहत कर लाभ उपलब्ध हैं।'
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName.toLowerCase() === 'input' || element.tagName.toLowerCase() === 'textarea') {
+                        element.placeholder = translations[lang][key];
+                    } else if (element.tagName.toLowerCase() === 'button') {
+                        element.innerHTML = translations[lang][key] + ' <i class="fas fa-arrow-right"></i>';
+                    } else if (key === 'emi-btn') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        element.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+        }
+
+        // On page load, check local storage for a saved language
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang) {
+                changeLanguage(savedLang);
+                // Also update the page title
+                document.title = translations[savedLang]['loan-title'] + ' - Global Trust Bank';
+            }
+        });
+    </script>
+</body>
+</html>

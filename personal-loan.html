@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="loan-title">Personal Loan - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --dark-blue: #003a75;
+            --accent-blue: #e6f0ff;
+            --gold: #ffc107;
+            --dark-text: #2d3748;
+            --gray: #6c757d;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark-text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .bank-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .loan-hero {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            color: white;
+            padding: 40px;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .loan-hero h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        .loan-hero .tag {
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .loan-hero .loan-icon {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 80px;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        .loan-content {
+            background: white;
+            padding: 40px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        }
+        .rate-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,86,179,0.1);
+            border-top: 4px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .rate-badge {
+            min-width: 200px;
+        }
+        .rate-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+        .rate-label {
+            font-size: 16px;
+            color: var(--dark-text);
+            margin-top: 5px;
+        }
+        .rate-note {
+            font-size: 13px;
+            color: var(--gray);
+            margin-top: 10px;
+        }
+        .rate-details {
+            flex-grow: 1;
+            margin-left: 40px;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .benefit-card {
+            border: 1px solid #e0e6ed;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,86,179,0.1);
+            border-color: var(--primary-blue);
+        }
+        .benefit-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .benefit-card h3 i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+        .benefit-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin: 15px 0;
+        }
+        .document-section {
+            background: var(--accent-blue);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        .document-list {
+            columns: 2;
+            column-gap: 30px;
+        }
+        .document-list li {
+            padding: 10px 0;
+            break-inside: avoid;
+            display: flex;
+            align-items: center;
+        }
+        .document-list i {
+            color: var(--primary-blue);
+            margin-right: 10px;
+        }
+        .btn-apply {
+            background: linear-gradient(to right, var(--dark-blue), var(--primary-blue));
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
+        }
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,86,179,0.4);
+        }
+        .btn-apply i {
+            margin-left: 10px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .back-link i {
+            margin-right: 8px;
+        }
+        .faq-section {
+            margin-top: 40px;
+        }
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid #e0e6ed;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .faq-item h4 {
+            margin: 0 0 10px 0;
+            cursor: pointer;
+            color: var(--dark-blue);
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .faq-item p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--gray);
+        }
+        .disclaimer {
+            background: #fff8e6;
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #5e503f;
+        }
+        @media (max-width: 768px) {
+            .rate-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .rate-details {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            .document-list {
+                columns: 1;
+            }
+            .loan-hero .loan-icon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bank-container">
+        <div class="loan-hero">
+            <h1 data-lang-key="loan-title">Personal Loan</h1>
+            <span class="tag" data-lang-key="fast-approval-tag">Quick & Easy</span>
+            <i class="fas fa-hand-holding-usd loan-icon"></i>
+        </div>
+        
+        <div class="loan-content">
+            <p class="lead" data-lang-key="intro-text">Meet your financial needs with a flexible personal loan. Whether it's for a wedding, medical emergency, or home renovation, our loans have no usage restrictions.</p>
+            
+            <div class="rate-card">
+                <div class="rate-badge">
+                    <div class="rate-value">10.50%*</div>
+                    <div class="rate-label" data-lang-key="rate-label">Interest Rate</div>
+                    <div class="rate-note" data-lang-key="rate-note">*Starting from | Subject to credit score</div>
+                </div>
+                <div class="rate-details">
+                    <p data-lang-key="special-offers-heading"><strong>Key Features:</strong></p>
+                    <ul>
+                        <li data-lang-key="offer-1">No collateral required</li>
+                        <li data-lang-key="offer-2">Loan amount up to ₹20 Lakhs</li>
+                        <li data-lang-key="offer-3">Flexible repayment tenure up to 5 years</li>
+                        <li data-lang-key="offer-4">Instant approval for existing customers</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="features-heading">Why Choose Our Personal Loan?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-1-title"><i class="fas fa-credit-card"></i> Flexible Use</h3>
+                    <p data-lang-key="feature-1-text">Use the funds for any purpose - travel, education, medical needs, or debt consolidation. No questions asked.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-2-title"><i class="fas fa-calendar-alt"></i> Easy Repayment</h3>
+                    <p data-lang-key="feature-2-text">Choose a comfortable EMI plan with a tenure ranging from 12 to 60 months.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-3-title"><i class="fas fa-rupee-sign"></i> Transparent Fees</h3>
+                    <p data-lang-key="feature-3-text">Enjoy competitive interest rates and low processing fees with no hidden charges.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 data-lang-key="feature-4-title"><i class="fas fa-mobile-alt"></i> Digital Process</h3>
+                    <p data-lang-key="feature-4-text">Apply online in minutes and get instant approval and e-disbursal for qualified applicants.</p>
+                </div>
+            </div>
+            
+            <h2 data-lang-key="eligibility-heading">Eligibility Criteria</h2>
+            <ul>
+                <li data-lang-key="eligibility-1"><strong>Age:</strong> 21 years to 60 years (at loan maturity)</li>
+                <li data-lang-key="eligibility-2"><strong>Income:</strong> Minimum net monthly income of ₹25,000</li>
+                <li data-lang-key="eligibility-3"><strong>Employment:</strong> Salaried employee or self-employed individual with 2 years of business continuity</li>
+                <li data-lang-key="eligibility-4"><strong>CIBIL Score:</strong> 750 and above preferred</li>
+            </ul>
+            
+            <h2 data-lang-key="documents-heading">Required Documents</h2>
+            <div class="document-section">
+                <ul class="document-list">
+                    <li data-lang-key="doc-1"><i class="fas fa-check-circle"></i> <strong>Identity Proof:</strong> PAN Card + Aadhaar/Passport</li>
+                    <li data-lang-key="doc-2"><i class="fas fa-check-circle"></i> <strong>Address Proof:</strong> Aadhaar/Utility Bill/Rental Agreement</li>
+                    <li data-lang-key="doc-3"><i class="fas fa-check-circle"></i> <strong>Income Proof:</strong> Last 3 months salary slips + Last 2 years Form 16 (for salaried)</li>
+                    <li data-lang-key="doc-4"><i class="fas fa-check-circle"></i> <strong>Bank Statements:</strong> Last 6 months bank account statement</li>
+                    <li data-lang-key="doc-5"><i class="fas fa-check-circle"></i> <strong>Self-Employed:</strong> Business Proof and financials for last 2 years</li>
+                </ul>
+            </div>
+
+            <div class="cta-section">
+    <a href="/loan/personal/apply" class="btn-apply" data-lang-key="apply-btn">
+        Apply Now <i class="fas fa-arrow-right"></i>
+    </a>
+    <a href="../index.html" class="back-link" data-lang-key="back-link">
+        <i class="fas fa-arrow-left"></i> Back to All Services
+    </a>
+</div>
+
+
+
+            <div class="faq-section">
+                <h2 data-lang-key="faq-heading">Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <h4 data-lang-key="faq-q1">What can I use the personal loan for?</h4>
+                    <p data-lang-key="faq-a1">You can use the funds for any personal purpose, such as a vacation, wedding, medical expenses, or home renovation. There are no restrictions on how you use the money.</p>
+                </div>
+                <div class="faq-item">
+                    <h4 data-lang-key="faq-q2">How is the interest rate determined?</h4>
+                    <p data-lang-key="faq-a2">The interest rate depends on your credit score, income, employment type, and the loan amount and tenure you choose. A higher credit score can get you a lower interest rate.</p>
+                </div>
+                <div class="faq-item">
+                    <h4 data-lang-key="faq-q3">What is the minimum and maximum loan amount?</h4>
+                    <p data-lang-key="faq-a3">The minimum loan amount is typically ₹50,000, and the maximum is up to ₹20 Lakhs, based on your eligibility.</p>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                <p data-lang-key="disclaimer-text"><strong>Note:</strong> Interest rates and loan amounts are subject to change based on bank policies and individual credit assessment. Final approval and loan terms are at the sole discretion of Global Trust Bank.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'loan-title': 'Personal Loan',
+                'fast-approval-tag': 'Quick & Easy',
+                'intro-text': 'Meet your financial needs with a flexible personal loan. Whether it\'s for a wedding, medical emergency, or home renovation, our loans have no usage restrictions.',
+                'rate-label': 'Interest Rate',
+                'rate-note': '*Starting from | Subject to credit score',
+                'special-offers-heading': 'Key Features:',
+                'offer-1': 'No collateral required',
+                'offer-2': 'Loan amount up to ₹20 Lakhs',
+                'offer-3': 'Flexible repayment tenure up to 5 years',
+                'offer-4': 'Instant approval for existing customers',
+                'features-heading': 'Why Choose Our Personal Loan?',
+                'feature-1-title': 'Flexible Use',
+                'feature-1-text': 'Use the funds for any purpose - travel, education, medical needs, or debt consolidation. No questions asked.',
+                'feature-2-title': 'Easy Repayment',
+                'feature-2-text': 'Choose a comfortable EMI plan with a tenure ranging from 12 to 60 months.',
+                'feature-3-title': 'Transparent Fees',
+                'feature-3-text': 'Enjoy competitive interest rates and low processing fees with no hidden charges.',
+                'feature-4-title': 'Digital Process',
+                'feature-4-text': 'Apply online in minutes and get instant approval and e-disbursal for qualified applicants.',
+                'eligibility-heading': 'Eligibility Criteria',
+                'eligibility-1': 'Age: 21 years to 60 years (at loan maturity)',
+                'eligibility-2': 'Income: Minimum net monthly income of ₹25,000',
+                'eligibility-3': 'Employment: Salaried employee or self-employed individual with 2 years of business continuity',
+                'eligibility-4': 'CIBIL Score: 750 and above preferred',
+                'documents-heading': 'Required Documents',
+                'doc-1': 'Identity Proof: PAN Card + Aadhaar/Passport',
+                'doc-2': 'Address Proof: Aadhaar/Utility Bill/Rental Agreement',
+                'doc-3': 'Income Proof: Last 3 months salary slips + Last 2 years Form 16 (for salaried)',
+                'doc-4': 'Bank Statements: Last 6 months bank account statement',
+                'doc-5': 'Self-Employed: Business Proof and financials for last 2 years',
+                'apply-btn': 'Apply Now',
+                'back-link': 'Back to All Services',
+                'faq-heading': 'Frequently Asked Questions',
+                'faq-q1': 'What can I use the personal loan for?',
+                'faq-a1': 'You can use the funds for any personal purpose, such as a vacation, wedding, medical expenses, or home renovation. There are no restrictions on how you use the money.',
+                'faq-q2': 'How is the interest rate determined?',
+                'faq-a2': 'The interest rate depends on your credit score, income, employment type, and the loan amount and tenure you choose. A higher credit score can get you a lower interest rate.',
+                'faq-q3': 'What is the minimum and maximum loan amount?',
+                'faq-a3': 'The minimum loan amount is typically ₹50,000, and the maximum is up to ₹20 Lakhs, based on your eligibility.',
+                'disclaimer-text': 'Note: Interest rates and loan amounts are subject to change based on bank policies and individual credit assessment. Final approval and loan terms are at the sole discretion of Global Trust Bank.'
+            },
+            'ta': {
+                'loan-title': 'தனிநபர் கடன்',
+                'fast-approval-tag': 'விரைவான மற்றும் எளிதான',
+                'intro-text': 'ஒரு நெகிழ்வான தனிநபர் கடனுடன் உங்கள் நிதித் தேவைகளைப் பூர்த்தி செய்யுங்கள். திருமணம், மருத்துவ அவசரநிலை அல்லது வீடு புதுப்பித்தலுக்கு எதுவாக இருந்தாலும், எங்கள் கடன்களுக்கு பயன்பாட்டு கட்டுப்பாடுகள் இல்லை.',
+                'rate-label': 'வட்டி விகிதம்',
+                'rate-note': '*ஆரம்பம் | கடன் மதிப்பெண்ணுக்கு உட்பட்டது',
+                'special-offers-heading': 'முக்கிய அம்சங்கள்:',
+                'offer-1': 'பிணை தேவையில்லை',
+                'offer-2': '₹20 லட்சம் வரை கடன் தொகை',
+                'offer-3': '5 ஆண்டுகள் வரை நெகிழ்வான திருப்பிச் செலுத்தும் காலம்',
+                'offer-4': 'ஏற்கனவே உள்ள வாடிக்கையாளர்களுக்கு உடனடி ஒப்புதல்',
+                'features-heading': 'எங்கள் தனிநபர் கடனை ஏன் தேர்ந்தெடுக்க வேண்டும்?',
+                'feature-1-title': 'நெகிழ்வான பயன்பாடு',
+                'feature-1-text': 'பயணம், கல்வி, மருத்துவத் தேவைகள் அல்லது கடன் ஒருங்கிணைப்பு போன்ற எந்தவொரு தனிப்பட்ட நோக்கத்திற்கும் நிதியைப் பயன்படுத்தலாம். எந்த கேள்வியும் கேட்கப்படாது.',
+                'feature-2-title': 'எளிதான திருப்பிச் செலுத்துதல்',
+                'feature-2-text': '12 முதல் 60 மாதங்கள் வரையிலான காலத்துடன் வசதியான EMI திட்டத்தைத் தேர்ந்தெடுக்கவும்.',
+                'feature-3-title': 'வெளிப்படையான கட்டணங்கள்',
+                'feature-3-text': 'மறைக்கப்பட்ட கட்டணங்கள் இல்லாமல் போட்டி வட்டி விகிதங்கள் மற்றும் குறைந்த செயலாக்க கட்டணங்களை அனுபவிக்கவும்.',
+                'feature-4-title': 'டிஜிட்டல் செயல்முறை',
+                'feature-4-text': 'சில நிமிடங்களில் ஆன்லைனில் விண்ணப்பித்து, தகுதியான விண்ணப்பதாரர்களுக்கு உடனடி ஒப்புதல் மற்றும் இ-பட்டுவாடாவைப் பெறுங்கள்.',
+                'eligibility-heading': 'தகுதிக்கான நிபந்தனைகள்',
+                'eligibility-1': 'வயது: 21 வயது முதல் 60 வயது வரை (கடன் முதிர்ச்சியின் போது)',
+                'eligibility-2': 'வருமானம்: குறைந்தபட்ச நிகர மாத வருமானம் ₹25,000',
+                'eligibility-3': 'வேலைவாய்ப்பு: 2 வருட வணிக தொடர்ச்சியுடன் சம்பளதாரர் அல்லது சுயதொழில் செய்பவர்',
+                'eligibility-4': 'CIBIL ஸ்கோர்: 750 மற்றும் அதற்கு மேல் விரும்பத்தக்கது',
+                'documents-heading': 'தேவையான ஆவணங்கள்',
+                'doc-1': 'அடையாளச் சான்று: பான் கார்டு + ஆதார்/பாஸ்போர்ட்',
+                'doc-2': 'முகவரிச் சான்று: ஆதார்/பயன்பாட்டு மசோதா/வாடகை ஒப்பந்தம்',
+                'doc-3': 'வருமானச் சான்று: கடைசி 3 மாத சம்பள சீட்டுகள் + கடைசி 2 வருட படிவம் 16 (சம்பளதாரர்களுக்கு)',
+                'doc-4': 'வங்கி அறிக்கைகள்: கடைசி 6 மாத வங்கி கணக்கு அறிக்கை',
+                'doc-5': 'சுயதொழில் செய்பவர்: வணிகச் சான்று மற்றும் கடந்த 2 வருட நிதிநிலை',
+                'apply-btn': 'இப்போது விண்ணப்பிக்கவும்',
+                'back-link': 'அனைத்து சேவைகளுக்கும் திரும்பவும்',
+                'faq-heading': 'அடிக்கடி கேட்கப்படும் கேள்விகள்',
+                'faq-q1': 'தனிநபர் கடனை எதற்காகப் பயன்படுத்தலாம்?',
+                'faq-a1': 'விடுமுறை, திருமணம், மருத்துவச் செலவுகள் அல்லது வீடு புதுப்பித்தல் போன்ற எந்தவொரு தனிப்பட்ட நோக்கத்திற்கும் நிதியைப் பயன்படுத்தலாம். பணத்தை எப்படிப் பயன்படுத்துவது என்பதற்கு எந்தக் கட்டுப்பாடுகளும் இல்லை.',
+                'faq-q2': 'வட்டி விகிதம் எப்படி நிர்ணயிக்கப்படுகிறது?',
+                'faq-a2': 'வட்டி விகிதம் உங்கள் கடன் மதிப்பெண், வருமானம், வேலைவாய்ப்பு வகை, மற்றும் நீங்கள் தேர்ந்தெடுக்கும் கடன் தொகை மற்றும் காலத்தைப் பொறுத்தது. அதிக கடன் மதிப்பெண் உங்களுக்கு குறைந்த வட்டி விகிதத்தைப் பெற்றுத் தரும்.',
+                'faq-q3': 'குறைந்தபட்ச மற்றும் அதிகபட்ச கடன் தொகை என்ன?',
+                'faq-a3': 'குறைந்தபட்ச கடன் தொகை பொதுவாக ₹50,000, மற்றும் அதிகபட்சம் ₹20 லட்சம் வரை, உங்கள் தகுதியைப் பொறுத்து.',
+                'disclaimer-text': 'குறிப்பு: வட்டி விகிதங்கள் மற்றும் கடன் தொகைகள் வங்கி கொள்கைகள் மற்றும் தனிப்பட்ட கடன் மதிப்பீட்டின் அடிப்படையில் மாறக்கூடும். இறுதி ஒப்புதல் மற்றும் கடன் விதிமுறைகள் குளோபல் டிரஸ்ட் வங்கியின் தனிப்பட்ட விருப்பத்திற்கு உட்பட்டது.'
+            },
+            'hi': {
+                'loan-title': 'व्यक्तिगत ऋण',
+                'fast-approval-tag': 'त्वरित और आसान',
+                'intro-text': 'एक लचीले व्यक्तिगत ऋण के साथ अपनी वित्तीय जरूरतों को पूरा करें। चाहे वह शादी, चिकित्सा आपातकाल, या घर के नवीनीकरण के लिए हो, हमारे ऋणों पर उपयोग पर कोई प्रतिबंध नहीं है।',
+                'rate-label': 'ब्याज दर',
+                'rate-note': '*शुरूआती | क्रेडिट स्कोर के अधीन',
+                'special-offers-heading': 'मुख्य विशेषताएं:',
+                'offer-1': 'कोई संपार्श्विक आवश्यक नहीं',
+                'offer-2': '₹20 लाख तक की ऋण राशि',
+                'offer-3': '5 साल तक की लचीली पुनर्भुगतान अवधि',
+                'offer-4': 'मौजूदा ग्राहकों के लिए तत्काल स्वीकृति',
+                'features-heading': 'हमारे व्यक्तिगत ऋण को क्यों चुनें?',
+                'feature-1-title': 'लचीला उपयोग',
+                'feature-1-text': 'धन का उपयोग किसी भी व्यक्तिगत उद्देश्य के लिए करें - यात्रा, शिक्षा, चिकित्सा आवश्यकताएं, या ऋण समेकन। कोई प्रश्न नहीं पूछा जाएगा।',
+                'feature-2-title': 'आसान पुनर्भुगतान',
+                'feature-2-text': '12 से 60 महीने तक की अवधि के साथ एक आरामदायक ईएमआई योजना चुनें।',
+                'feature-3-title': 'पारदर्शी शुल्क',
+                'feature-3-text': 'प्रतिस्पर्धी ब्याज दरों और कम प्रोसेसिंग शुल्क का आनंद लें, जिसमें कोई छिपा हुआ शुल्क नहीं है।',
+                'feature-4-title': 'डिजिटल प्रक्रिया',
+                'feature-4-text': 'मिनटों में ऑनलाइन आवेदन करें और योग्य आवेदकों के लिए तत्काल स्वीकृति और ई-वितरण प्राप्त करें।',
+                'eligibility-heading': 'पात्रता मानदंड',
+                'eligibility-1': 'आयु: 21 वर्ष से 60 वर्ष (ऋण की परिपक्वता पर)',
+                'eligibility-2': 'आय: न्यूनतम शुद्ध मासिक आय ₹25,000',
+                'eligibility-3': 'रोजगार: वेतनभोगी कर्मचारी या 2 साल की व्यावसायिक निरंतरता वाला स्व-नियोजित व्यक्ति',
+                'eligibility-4': 'सिबिल स्कोर: 750 और उससे अधिक को प्राथमिकता दी जाती है',
+                'documents-heading': 'आवश्यक दस्तावेज़',
+                'doc-1': 'पहचान प्रमाण: पैन कार्ड + आधार/पासपोर्ट',
+                'doc-2': 'पते का प्रमाण: आधार/यूटिलिटी बिल/किराया समझौता',
+                'doc-3': 'आय का प्रमाण: पिछले 3 महीने की वेतन पर्ची + पिछले 2 साल का फॉर्म 16 (वेतनभोगियों के लिए)',
+                'doc-4': 'बैंक स्टेटमेंट: पिछले 6 महीने का बैंक खाता विवरण',
+                'doc-5': 'स्व-नियोजित: पिछले 2 वर्षों के लिए व्यवसाय प्रमाण और वित्तीय',
+                'apply-btn': 'अभी आवेदन करें',
+                'back-link': 'सभी सेवाओं पर वापस जाएं',
+                'faq-heading': 'अक्सर पूछे जाने वाले प्रश्न',
+                'faq-q1': 'मैं व्यक्तिगत ऋण का उपयोग किस लिए कर सकता हूँ?',
+                'faq-a1': 'आप धन का उपयोग किसी भी व्यक्तिगत उद्देश्य के लिए कर सकते हैं, जैसे कि छुट्टी, शादी, चिकित्सा व्यय, या घर का नवीनीकरण। धन का उपयोग कैसे करें, इस पर कोई प्रतिबंध नहीं है।',
+                'faq-q2': 'ब्याज दर कैसे निर्धारित होती है?',
+                'faq-a2': 'ब्याज दर आपके क्रेडिट स्कोर, आय, रोजगार के प्रकार और आपके द्वारा चुनी गई ऋण राशि और अवधि पर निर्भर करती है। उच्च क्रेडिट स्कोर आपको कम ब्याज दर दिला सकता है।',
+                'faq-q3': 'न्यूनतम और अधिकतम ऋण राशि क्या है?',
+                'faq-a3': 'न्यूनतम ऋण राशि आमतौर पर ₹50,000 होती है, और अधिकतम ₹20 लाख तक, आपकी पात्रता के आधार पर।',
+                'disclaimer-text': 'नोट: ब्याज दरें और ऋण राशि बैंक की नीतियों और व्यक्तिगत क्रेडिट मूल्यांकन के आधार पर परिवर्तन के अधीन हैं। अंतिम स्वीकृति और ऋण शर्तें ग्लोबल ट्रस्ट बैंक के एकमात्र विवेक पर हैं।'
+            }
+        };
+
+        function translatePage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'STRONG') {
+                        element.textContent = translations[lang][key];
+                    } else if (element.tagName === 'LI') {
+                        // Handle list items with strong tags
+                        const strongText = element.querySelector('strong');
+                        if (strongText) {
+                            const originalKey = strongText.textContent.trim();
+                            const newText = translations[lang][key];
+                            element.innerHTML = `<strong>${originalKey}</strong>: ${newText.split(':')[1].trim()}`;
+                        } else {
+                            element.textContent = translations[lang][key];
+                        }
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            const backLink = document.querySelector('.back-link');
+            if (backLink && translations[lang] && translations[lang]['back-link']) {
+                backLink.innerHTML = `<i class="fas fa-arrow-left"></i> ${translations[lang]['back-link']}`;
+            }
+
+            if (translations[lang] && translations[lang]['loan-title']) {
+                document.title = translations[lang]['loan-title'] + ' - Global Trust Bank';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            translatePage(savedLanguage);
+        });
+    </script>
+</body>
+</html>

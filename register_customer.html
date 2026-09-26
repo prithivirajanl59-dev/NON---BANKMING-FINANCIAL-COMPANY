@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Registration - Global Trust Bank</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #003366;
+      --accent-color: #ff6b00;
+      --light-gray: #f5f7fa;
+      --medium-gray: #e1e5eb;
+      --dark-gray: #6c757d;
+      --success-color: #28a745;
+      --error-color: #dc3545;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--light-gray);
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .registration-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    .registration-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .bank-logo {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 15px;
+      border-radius: 50%;
+      border: 3px solid white;
+      background-color: white;
+      padding: 5px;
+    }
+    
+    .registration-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    .registration-subtitle {
+      font-size: 16px;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+    
+    .form-container {
+      padding: 30px;
+    }
+    
+    .form-section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--medium-gray);
+    }
+    
+    .form-section:last-of-type {
+      border-bottom: none;
+    }
+    
+    .section-title {
+      font-size: 20px;
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--medium-gray);
+      display: flex;
+      align-items: center;
+    }
+    
+    .section-title i {
+      margin-right: 10px;
+      color: var(--primary-color);
+    }
+    
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -15px;
+    }
+    
+    .form-group {
+      flex: 1 0 calc(50% - 30px);
+      margin: 0 15px 20px;
+      min-width: 250px;
+    }
+    
+    .form-group.full-width {
+      flex: 1 0 calc(100% - 30px);
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--secondary-color);
+    }
+    
+    label.required:after {
+      content: " *";
+      color: var(--error-color);
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--medium-gray);
+      border-radius: 5px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+    }
+    
+    input[type="file"] {
+      padding: 10px;
+      border: 1px dashed var(--dark-gray);
+      background-color: var(--light-gray);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-secondary {
+      background-color: var(--dark-gray);
+    }
+    
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+    
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+    
+    .verification-section {
+      display: none;
+      margin-top: 30px;
+      padding: 25px;
+      background-color: var(--light-gray);
+      border-radius: 8px;
+      border-left: 4px solid var(--success-color);
+    }
+    
+    .verification-title {
+      font-size: 22px;
+      color: var(--success-color);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .verification-title i {
+      margin-right: 10px;
+    }
+    
+    .verification-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 15px;
+    }
+    
+    .verification-item {
+      background: white;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    
+    .verification-label {
+      font-weight: 500;
+      color: var(--dark-gray);
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+    
+    .verification-value {
+      font-weight: 400;
+      color: #333;
+      word-break: break-word;
+    }
+    
+    .verification-actions {
+      margin-top: 30px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+    }
+    
+    .form-footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--dark-gray);
+    }
+    
+    .hidden-visually {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    
+    .progress-steps {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .progress-steps:before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--medium-gray);
+      z-index: 1;
+    }
+    
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .step-number {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: var(--medium-gray);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .step.active .step-number {
+      background-color: var(--primary-color);
+    }
+    
+    .step.completed .step-number {
+      background-color: var(--success-color);
+    }
+    
+    .step-label {
+      font-size: 14px;
+      color: var(--dark-gray);
+    }
+    
+    .step.active .step-label {
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+    
+    .error-message {
+      color: var(--error-color);
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      .form-group {
+        flex: 1 0 calc(100% - 30px);
+      }
+      
+      .verification-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .verification-actions {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="registration-container">
+  <div class="registration-header">
+    <img src="https://via.placeholder.com/80x80?text=GTB" alt="Global Trust Bank" class="bank-logo">
+    <h1 class="registration-title">New Customer Registration</h1>
+    <p class="registration-subtitle">Join Global Trust Bank today for secure banking solutions</p>
+  </div>
+
+  <div class="form-container">
+    <div class="progress-steps">
+      <div class="step active">
+        <div class="step-number">1</div>
+        <div class="step-label">Personal Details</div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-label">Verification</div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-label">Complete</div>
+      </div>
+    </div>
+
+    <form id="registrationForm" method="POST" action="/customer/register" enctype="multipart/form-data">
+      <input type="hidden" name="full_name" id="full_name">
+      
+      <div class="form-section">
+        <h3 class="section-title"><i class="fas fa-user-circle"></i> Personal Information</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first_name" class="required">First Name</label>
+            <input type="text" id="first_name" required placeholder="Enter your first name">
+            <div class="error-message" id="first_name_error"></div>
+          </div>
+          <div class="form-group">
+            <label for="last_name" class="required">Last Name</label>
+            <input type="text" id="last_name" required placeholder="Enter your last name">
+            <div class="error-message" id="last_name_error"></div>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="dob" class="required">Date of Birth</label>
+            <input type="date" name="dob" id="dob" required>
+            <div class="error-message" id="dob_error"></div>
+          </div>
+          <div class="form-group">
+            <label for="gender" class="required">Gender</label>
+            <select name="gender" id="gender" required>
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="error-message" id="gender_error"></div>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email" class="required">Email ID</label>
+            <input type="email" name="email" id="email" required placeholder="your.email@example.com">
+            <div class="error-message" id="email_error"></div>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="required">Phone Number</label>
+            <input type="tel" name="phone" id="phone" required placeholder="+91 9876543210">
+            <div class="error-message" id="phone_error"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <h3 class="section-title"><i class="fas fa-home"></i> Address Information</h3>
+        <div class="form-group full-width">
+          <label for="address" class="required">Street Address</label>
+          <input type="text" name="address" id="address" required placeholder="Enter your full address">
+          <div class="error-message" id="address_error"></div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city" class="required">City</label>
+            <input type="text" name="city" id="city" required placeholder="Enter your city">
+            <div class="error-message" id="city_error"></div>
+          </div>
+          <div class="form-group">
+            <label for="zip" class="required">PIN Code</label>
+            <input type="text" name="zip" id="zip" required placeholder="6-digit PIN code" maxlength="6">
+            <div class="error-message" id="zip_error"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <h3 class="section-title"><i class="fas fa-file-alt"></i> Account Details</h3>
+        <div class="form-group">
+          <label for="account_type" class="required">Account Type</label>
+          <select name="account_type" id="account_type" required>
+            <option value="">Select Account Type</option>
+            <option value="Savings">Savings Account</option>
+            <option value="Current">Current Account</option>
+            <option value="Salary">Salary Account</option>
+          </select>
+          <div class="error-message" id="account_type_error"></div>
+        </div>
+        
+        <div class="form-group">
+          <label for="username" class="required">Username</label>
+          <input type="text" name="username" id="username" required placeholder="Create a username">
+          <div class="error-message" id="username_error"></div>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <h3 class="section-title"><i class="fas fa-id-card"></i> KYC Documents</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="aadhar_number" class="required">Aadhar Number</label>
+            <input type="text" name="aadhar_number" id="aadhar_number" required placeholder="12-digit Aadhar number" maxlength="12">
+            <div class="error-message" id="aadhar_number_error"></div>
+          </div>
+          <div class="form-group">
+            <label for="pan_number" class="required">PAN Card Number</label>
+            <input type="text" name="pan_number" id="pan_number" required placeholder="10-digit PAN number" maxlength="10">
+            <div class="error-message" id="pan_number_error"></div>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="photo" class="required">Passport Photo</label>
+            <input type="file" name="photo" id="photo" required accept="image/*">
+            <div class="error-message" id="photo_error"></div>
+          </div>
+          <div class="form-group">
+            <label for="aadhar_doc" class="required">Aadhar Copy</label>
+            <input type="file" name="aadhar_doc" id="aadhar_doc" required accept="image/*,.pdf">
+            <div class="error-message" id="aadhar_doc_error"></div>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pan_doc" class="required">PAN Card Copy</label>
+            <input type="file" name="pan_doc" id="pan_doc" required accept="image/*,.pdf">
+            <div class="error-message" id="pan_doc_error"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <h3 class="section-title"><i class="fas fa-lock"></i> Security Details</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="password" class="required">Create Password</label>
+            <input type="password" name="password" id="password" required placeholder="Create a strong password">
+            <div class="error-message" id="password_error"></div>
+          </div>
+          <div class="form-group">
+            <label for="confirm_password" class="required">Confirm Password</label>
+            <input type="password" id="confirm_password" required placeholder="Re-enter your password">
+            <div class="error-message" id="confirm_password_error"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group full-width" style="text-align: center; margin-top: 30px;">
+        <button type="button" class="btn" id="verifyDetailsBtn" style="padding: 12px 40px;">
+          <i class="fas fa-check-circle"></i> Verify Details
+        </button>
+      </div>
+    </form>
+
+    <div class="verification-section" id="verificationSection">
+      <h3 class="verification-title"><i class="fas fa-check-circle"></i> Please Verify Your Details</h3>
+      <div class="verification-grid">
+        <div class="verification-item">
+          <div class="verification-label">Full Name</div>
+          <div class="verification-value" id="verifyName"></div>
+        </div>
+        <div class="verification-item">
+          <div class="verification-label">Date of Birth</div>
+          <div class="verification-value" id="verifyDob"></div>
+        </div>
+        <div class="verification-item">
+          <div class="verification-label">Email</div>
+          <div class="verification-value" id="verifyEmail"></div>
+        </div>
+        <div class="verification-item">
+          <div class="verification-label">Account Type</div>
+          <div class="verification-value" id="verifyAccountType"></div>
+        </div>
+        <div class="verification-item">
+          <div class="verification-label">Username</div>
+          <div class="verification-value" id="verifyUsername"></div>
+        </div>
+        <div class="verification-item">
+          <div class="verification-label">Aadhar Number</div>
+          <div class="verification-value" id="verifyAadhar"></div>
+        </div>
+        <div class="verification-item">
+          <div class="verification-label">PAN Number</div>
+          <div class="verification-value" id="verifyPan"></div>
+        </div>
+        <div class="verification-item">
+          <div class="verification-label">Phone Number</div>
+          <div class="verification-value" id="verifyPhone"></div>
+        </div>
+        <div class="verification-item">
+          <div class="verification-label">Address</div>
+          <div class="verification-value" id="verifyAddress"></div>
+        </div>
+      </div>
+      <div class="verification-actions">
+        <button class="btn btn-secondary" id="editDetailsBtn">
+          <i class="fas fa-edit"></i> Edit Details
+        </button>
+        <button type="submit" class="btn" form="registrationForm">
+          <i class="fas fa-paper-plane"></i> Submit Registration
+        </button>
+      </div>
+    </div>
+    
+    <div class="form-footer">
+      <p>Already have an account? <a href="#">Login here</a></p>
+      <p>By registering, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function formatDate(inputDate) {
+    const date = new Date(inputDate);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-IN', options);
+  }
+
+  // Build full_name before submit
+  document.getElementById('registrationForm').addEventListener('submit', function() {
+    document.getElementById('full_name').value =
+      document.getElementById('first_name').value + ' ' + document.getElementById('last_name').value;
+  });
+
+  // Validation functions
+  function validateField(fieldId, errorId, validationFn) {
+    const field = document.getElementById(fieldId);
+    const errorElement = document.getElementById(errorId);
+    const isValid = validationFn(field.value);
+    
+    if (!isValid) {
+      errorElement.textContent = getErrorMessage(fieldId);
+      errorElement.style.display = 'block';
+      field.style.borderColor = 'var(--error-color)';
+    } else {
+      errorElement.style.display = 'none';
+      field.style.borderColor = '';
+    }
+    
+    return isValid;
+  }
+
+  function getErrorMessage(fieldId) {
+    const errorMessages = {
+      first_name: 'Please enter a valid first name',
+      last_name: 'Please enter a valid last name',
+      dob: 'Please enter a valid date of birth',
+      gender: 'Please select your gender',
+      email: 'Please enter a valid email address',
+      phone: 'Please enter a valid 10-digit phone number',
+      address: 'Please enter your address',
+      city: 'Please enter your city',
+      zip: 'Please enter a valid 6-digit PIN code',
+      account_type: 'Please select an account type',
+      username: 'Please enter a username',
+      aadhar_number: 'Please enter a valid 12-digit Aadhar number',
+      pan_number: 'Please enter a valid PAN number',
+      password: 'Password must be at least 8 characters long',
+      confirm_password: 'Passwords do not match'
+    };
+    
+    return errorMessages[fieldId] || 'This field is required';
+  }
+
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+
+  function validatePhone(phone) {
+    const re = /^[0-9]{10}$/;
+    return re.test(phone.replace(/\D/g, ''));
+  }
+
+  function validateAadhar(aadhar) {
+    const re = /^[0-9]{12}$/;
+    return re.test(aadhar);
+  }
+
+  function validatePan(pan) {
+    const re = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+    return re.test(pan.toUpperCase());
+  }
+
+  function validateZip(zip) {
+    const re = /^[0-9]{6}$/;
+    return re.test(zip);
+  }
+
+  function validatePassword(password) {
+    return password.length >= 8;
+  }
+
+  function validateConfirmPassword(confirmPassword) {
+    return confirmPassword === document.getElementById('password').value;
+  }
+
+  document.getElementById('verifyDetailsBtn').addEventListener('click', function() {
+    // Validate all required fields
+    const validations = [
+      validateField('first_name', 'first_name_error', value => value.trim() !== ''),
+      validateField('last_name', 'last_name_error', value => value.trim() !== ''),
+      validateField('dob', 'dob_error', value => value !== ''),
+      validateField('gender', 'gender_error', value => value !== ''),
+      validateField('email', 'email_error', validateEmail),
+      validateField('phone', 'phone_error', validatePhone),
+      validateField('address', 'address_error', value => value.trim() !== ''),
+      validateField('city', 'city_error', value => value.trim() !== ''),
+      validateField('zip', 'zip_error', validateZip),
+      validateField('account_type', 'account_type_error', value => value !== ''),
+      validateField('username', 'username_error', value => value.trim() !== ''),
+      validateField('aadhar_number', 'aadhar_number_error', validateAadhar),
+      validateField('pan_number', 'pan_number_error', validatePan),
+      validateField('password', 'password_error', validatePassword),
+      validateField('confirm_password', 'confirm_password_error', validateConfirmPassword)
+    ];
+    
+    const isValid = validations.every(validation => validation === true);
+    
+    if (!isValid) {
+      alert('Please fix the errors before proceeding.');
+      return;
+    }
+    
+    // Update verification section
+    const firstName = document.getElementById('first_name').value;
+    const lastName = document.getElementById('last_name').value;
+    document.getElementById('verifyName').textContent = `${firstName} ${lastName}`;
+    document.getElementById('verifyDob').textContent = formatDate(document.getElementById('dob').value);
+    document.getElementById('verifyEmail').textContent = document.getElementById('email').value;
+    document.getElementById('verifyAccountType').textContent = document.getElementById('account_type').options[document.getElementById('account_type').selectedIndex].text;
+    document.getElementById('verifyUsername').textContent = document.getElementById('username').value;
+    document.getElementById('verifyAadhar').textContent = document.getElementById('aadhar_number').value;
+    document.getElementById('verifyPan').textContent = document.getElementById('pan_number').value;
+    document.getElementById('verifyPhone').textContent = document.getElementById('phone').value;
+    document.getElementById('verifyAddress').textContent = `${document.getElementById('address').value}, ${document.getElementById('city').value}, ${document.getElementById('zip').value}`;
+    
+    // Show verification and hide form
+    document.getElementById('registrationForm').classList.add('hidden-visually');
+    document.getElementById('verificationSection').style.display = 'block';
+    
+    // Update progress steps
+    document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+    document.querySelectorAll('.step')[1].classList.add('active');
+  });
+
+  document.getElementById('editDetailsBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('verificationSection').style.display = 'none';
+    document.getElementById('registrationForm').classList.remove('hidden-visually');
+    
+    // Update progress steps
+    document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+    document.querySelectorAll('.step')[0].classList.add('active');
+  });
+
+  // Add input event listeners for real-time validation
+  document.getElementById('email').addEventListener('blur', function() {
+    validateField('email', 'email_error', validateEmail);
+  });
+  
+  document.getElementById('phone').addEventListener('blur', function() {
+    validateField('phone', 'phone_error', validatePhone);
+  });
+  
+  document.getElementById('zip').addEventListener('blur', function() {
+    validateField('zip', 'zip_error', validateZip);
+  });
+  
+  document.getElementById('aadhar_number').addEventListener('blur', function() {
+    validateField('aadhar_number', 'aadhar_number_error', validateAadhar);
+  });
+  
+  document.getElementById('pan_number').addEventListener('blur', function() {
+    validateField('pan_number', 'pan_number_error', validatePan);
+  });
+  
+  document.getElementById('password').addEventListener('blur', function() {
+    validateField('password', 'password_error', validatePassword);
+  });
+  
+  document.getElementById('confirm_password').addEventListener('blur', function() {
+    validateField('confirm_password', 'confirm_password_error', validateConfirmPassword);
+  });
+</script>
+
+</body>
+</html>

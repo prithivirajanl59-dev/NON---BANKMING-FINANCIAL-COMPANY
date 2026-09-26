@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --dark-blue: #003a75;
+            --light-blue: #e6f0ff;
+            --gold: #ffc107;
+            --dark-text: #2d3748;
+            --gray: #6c757d;
+            --light-gray: #f8f9fa;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            margin: 0;
+            padding: 0;
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--dark-blue), var(--primary-blue));
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .header h1 {
+            color: var(--dark-blue);
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: var(--gray);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .bank-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .bank-logo i {
+            font-size: 32px;
+            color: var(--primary-blue);
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--light-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            color: var(--primary-blue);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-text);
+            font-size: 14px;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 15px;
+            transition: var(--transition);
+            background-color: #fff;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+        }
+        
+        input[readonly], textarea[readonly] {
+            background-color: #f8f9fa;
+            color: var(--gray);
+            cursor: not-allowed;
+        }
+        
+        .loan-section {
+            background: var(--light-blue);
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .file-upload input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-upload-label {
+            display: block;
+            padding: 12px 15px;
+            background: #fff;
+            border: 1px dashed #d1d5db;
+            border-radius: var(--border-radius);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .file-upload-label:hover {
+            border-color: var(--primary-blue);
+            background-color: rgba(0, 86, 179, 0.03);
+        }
+        
+        .file-upload-label i {
+            margin-right: 8px;
+            color: var(--primary-blue);
+        }
+        
+        .submit-btn {
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(to right, var(--dark-blue), var(--primary-blue));
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 86, 179, 0.2);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 86, 179, 0.4);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 20px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+            transform: translateX(-3px);
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #e53e3e;
+        }
+        
+        .form-note {
+            font-size: 13px;
+            color: var(--gray);
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+            
+            .loan-section {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="bank-logo">
+                <i class="fas fa-university"></i>
+            </div>
+            <h1>Loan Application</h1>
+            <p>Complete the form below to apply for a loan with Global Trust Bank</p>
+        </div>
+        
+        <form action="/customer/apply_loan" method="POST" enctype="multipart/form-data">
+            <div class="form-section">
+                <h2 class="section-title"><i class="fas fa-user-circle"></i> Personal Information</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="full_name" class="required">Full Name</label>
+                        <input type="text" id="full_name" name="full_name" value="{{full_name}}" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="account_number" class="required">Account Number</label>
+                        <input type="text" id="account_number" name="account_number" value="{{account_number}}" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="required">Email Address</label>
+                        <input type="email" id="email" name="email" value="{{email}}" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="required">Phone Number</label>
+                        <input type="text" id="phone" name="phone" value="{{phone}}" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="aadhar" class="required">Aadhar Number</label>
+                        <input type="text" id="aadhar" name="aadhar" value="{{aadhar}}" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pan" class="required">PAN Number</label>
+                        <input type="text" id="pan" name="pan" value="{{pan}}" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dob" class="required">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" value="{{dob}}" readonly>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address" class="required">Address</label>
+                    <textarea id="address" name="address" rows="3" readonly>{{address}}</textarea>
+                </div>
+            </div>
+            
+            <div class="loan-section">
+                <h2 class="section-title"><i class="fas fa-hand-holding-usd"></i> Loan Details</h2>
+                
+                <div class="form-group">
+                    <label for="loan_type" class="required">Loan Type</label>
+                    <select id="loan_type" name="loan_type" required>
+                        <option value="">Select Loan Type</option>
+                        <option value="personal">Personal Loan</option>
+                        <option value="gold">Gold Loan</option>
+                        <option value="automobile">Automobile Loan</option>
+                        <option value="education">Education Loan</option>
+                    </select>
+                </div>
+                
+                <div id="loan-fields"></div>
+            </div>
+            
+            <div class="form-section">
+                <h2 class="section-title"><i class="fas fa-file-upload"></i> Document Upload</h2>
+                
+                <div class="form-group">
+                    <label class="required">Upload Required Documents</label>
+                    <p class="form-note">Upload additional documents (other than Aadhar & PAN already on file)</p>
+                    <div class="file-upload">
+                        <input type="file" id="documents" name="documents" multiple required>
+                        <label for="documents" class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i> Choose Files
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Submit Application
+            </button>
+        </form>
+        
+        <a href="/customer/dashboard" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <script>
+        const loanFields = document.getElementById("loan-fields");
+        const loanTypeSelect = document.getElementById("loan_type");
+
+        loanTypeSelect.addEventListener("change", function() {
+            const type = this.value;
+            loanFields.innerHTML = ""; // reset fields
+
+            if(type === "personal"){
+                loanFields.innerHTML = `
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="amount" class="required">Loan Amount (₹)</label>
+                            <input type="number" id="amount" name="amount" min="10000" max="5000000" required>
+                            <p class="form-note">Minimum: ₹10,000 | Maximum: ₹50,00,000</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="tenure" class="required">Tenure (Months)</label>
+                            <input type="number" id="tenure" name="tenure" min="12" max="84" required>
+                            <p class="form-note">Minimum: 12 months | Maximum: 84 months</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="purpose" class="required">Purpose</label>
+                        <input type="text" id="purpose" name="purpose" placeholder="e.g., Home Renovation, Medical Expenses" required>
+                    </div>
+                `;
+            } else if(type === "gold"){
+                loanFields.innerHTML = `
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="gold_weight" class="required">Gold Weight (grams)</label>
+                            <input type="number" id="gold_weight" name="gold_weight" min="1" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gold_type" class="required">Gold Type</label>
+                            <select id="gold_type" name="gold_type" required>
+                                <option value="">Select Type</option>
+                                <option value="24k">24K</option>
+                                <option value="22k">22K</option>
+                                <option value="18k">18K</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="loan_amount" class="required">Loan Amount (₹)</label>
+                            <input type="number" id="loan_amount" name="loan_amount" min="5000" required>
+                        </div>
+                    </div>
+                `;
+            } else if(type === "automobile"){
+                loanFields.innerHTML = `
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="vehicle_type" class="required">Vehicle Type</label>
+                            <input type="text" id="vehicle_type" name="vehicle_type" placeholder="e.g., Sedan, SUV, Two-wheeler" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle_cost" class="required">Vehicle Cost (₹)</label>
+                            <input type="number" id="vehicle_cost" name="vehicle_cost" min="100000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="down_payment" class="required">Down Payment (₹)</label>
+                            <input type="number" id="down_payment" name="down_payment" min="0" required>
+                        </div>
+                    </div>
+                `;
+            } else if(type === "education"){
+                loanFields.innerHTML = `
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="course_name" class="required">Course Name</label>
+                            <input type="text" id="course_name" name="course_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="institution" class="required">Institution Name</label>
+                            <input type="text" id="institution" name="institution" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="course_fee" class="required">Course Fee (₹)</label>
+                            <input type="number" id="course_fee" name="course_fee" min="10000" required>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

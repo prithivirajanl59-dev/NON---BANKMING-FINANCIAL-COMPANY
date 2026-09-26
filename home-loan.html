@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title-tag">Home Loan - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366;
+            --secondary: #0059b3;
+            --accent: #e6f2ff;
+            --text: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f9fc;
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .service-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-header h1 {
+            margin: 0;
+            font-size: 28px;
+            position: relative;
+            z-index: 2;
+        }
+        .service-header .icon {
+            font-size: 60px;
+            opacity: 0.1;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        .service-content {
+            background: white;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+        .highlight-box {
+            background: var(--accent);
+            border-left: 4px solid var(--secondary);
+            padding: 20px;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+        }
+        .highlight-box .rate {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-right: 30px;
+            min-width: 150px;
+        }
+        .highlight-box .rate small {
+            font-size: 16px;
+            display: block;
+            color: var(--text);
+            font-weight: normal;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-card {
+            border: 1px solid #e0e6ed;
+            border-radius: 6px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 5px 15px rgba(0,89,179,0.1);
+        }
+        .feature-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .feature-card .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+        .documents-list {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 30px 0;
+        }
+        .documents-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #d0d8e0;
+            display: flex;
+            align-items: center;
+        }
+        .documents-list li:last-child {
+            border-bottom: none;
+        }
+        .documents-list i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        .btn-apply {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,89,179,0.3);
+        }
+        .btn-apply i {
+            margin-left: 8px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary);
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+        .back-link i {
+            margin-right: 8px;
+        }
+        .disclaimer {
+            font-size: 12px;
+            color: #666;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .lang-switch {
+            margin: 15px 0;
+            text-align: right;
+        }
+        .lang-switch select {
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .lang-switch select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 2px rgba(0,89,179,0.2);
+        }
+        .lang-label {
+            margin-right: 8px;
+            font-weight: 500;
+        }
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="notification" id="langNotification">Language changed successfully!</div>
+
+    <div class="container">
+        <div class="lang-switch">
+            <span class="lang-label">🌐</span>
+            <select id="language" onchange="switchLang(this.value)">
+                <option value="en">English</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+            </select>
+        </div>
+
+        <div class="service-header">
+            <h1 id="title">Home Loan</h1>
+            <div class="icon"><i class="fas fa-home"></i></div>
+        </div>
+        
+        <div class="service-content">
+            <p id="intro">
+                Realize your dream of owning a home with our competitive home loan options.
+            </p>
+            
+            <div class="highlight-box">
+                <div class="rate">
+                    6.95%*
+                    <small id="rate-text">Interest Rate from</small>
+                </div>
+                <div class="rate-details">
+                    <p>Unlock the door to your new home with our attractive interest rates and flexible repayment plans.</p>
+                </div>
+            </div>
+
+            <h2 id="features-heading">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 id="feature-1-title">Low Interest Rates</h3>
+                    <p id="feature-1-text">Benefit from our market-leading interest rates, making your home loan affordable.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 id="feature-2-title">Flexible Tenure</h3>
+                    <p id="feature-2-text">Choose a repayment period that suits your financial needs, with tenures up to 30 years.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 id="feature-3-title">High Loan Amount</h3>
+                    <p id="feature-3-text">Get up to 90% of the property value as a loan, so you can buy the home you love.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 id="feature-4-title">Quick Processing</h3>
+                    <p id="feature-4-text">Our streamlined digital process ensures quick application review and disbursal.</p>
+                </div>
+            </div>
+
+            <h2 id="eligibility-heading">Eligibility</h2>
+            <ul class="documents-list">
+                <li id="eligibility-1"><i class="fas fa-check-circle"></i> <strong>Age:</strong> 21 years to 65 years (at loan maturity)</li>
+                <li id="eligibility-2"><i class="fas fa-check-circle"></i> <strong>Employment:</strong> Salaried or self-employed individuals with a stable income.</li>
+                <li id="eligibility-3"><i class="fas fa-check-circle"></i> <strong>Credit Score:</strong> A healthy credit history is preferred for faster approval.</li>
+            </ul>
+
+            <h2 id="documents-heading">Required Documents</h2>
+            <ul class="documents-list">
+                <li id="doc-1"><i class="fas fa-file-alt"></i> <strong>Identity Proof:</strong> PAN Card, Aadhaar Card, Passport</li>
+                <li id="doc-2"><i class="fas fa-file-alt"></i> <strong>Address Proof:</strong> Aadhaar Card, Utility Bill, Rental Agreement</li>
+                <li id="doc-3"><i class="fas fa-file-alt"></i> <strong>Income Proof:</strong> Latest salary slips, Bank statements, Form 16</li>
+                <li id="doc-4"><i class="fas fa-file-alt"></i> <strong>Property Documents:</strong> Sale Agreement, Property Title Deed</li>
+            </ul>
+
+            <button class="btn-apply" id="apply-btn">Apply Now <i class="fas fa-arrow-right"></i></button>
+            <a href="index.html" class="back-link" id="back-link"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+
+            <div class="disclaimer">
+                <p id="disclaimer-text">
+                    *Interest rates and loan amounts are subject to change based on bank policies and individual credit assessment. Final approval and loan terms are at the sole discretion of Global Trust Bank.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'title-tag': 'Home Loan - Global Trust Bank',
+                'title': 'Home Loan',
+                'intro': 'Realize your dream of owning a home with our competitive home loan options.',
+                'rate-text': 'Interest Rate from',
+                'features-heading': 'Key Features',
+                'feature-1-title': 'Low Interest Rates',
+                'feature-1-text': 'Benefit from our market-leading interest rates, making your home loan affordable.',
+                'feature-2-title': 'Flexible Tenure',
+                'feature-2-text': 'Choose a repayment period that suits your financial needs, with tenures up to 30 years.',
+                'feature-3-title': 'High Loan Amount',
+                'feature-3-text': 'Get up to 90% of the property value as a loan, so you can buy the home you love.',
+                'feature-4-title': 'Quick Processing',
+                'feature-4-text': 'Our streamlined digital process ensures quick application review and disbursal.',
+                'eligibility-heading': 'Eligibility',
+                'eligibility-1': 'Age: 21 years to 65 years (at loan maturity)',
+                'eligibility-2': 'Employment: Salaried or self-employed individuals with a stable income.',
+                'eligibility-3': 'Credit Score: A healthy credit history is preferred for faster approval.',
+                'documents-heading': 'Required Documents',
+                'doc-1': 'Identity Proof: PAN Card, Aadhaar Card, Passport',
+                'doc-2': 'Address Proof: Aadhaar Card, Utility Bill, Rental Agreement',
+                'doc-3': 'Income Proof: Latest salary slips, Bank statements, Form 16',
+                'doc-4': 'Property Documents: Sale Agreement, Property Title Deed',
+                'apply-btn': 'Apply Now',
+                'back-link': 'Back to All Services',
+                'disclaimer-text': '*Interest rates and loan amounts are subject to change based on bank policies and individual credit assessment. Final approval and loan terms are at the sole discretion of Global Trust Bank.'
+            },
+            'ta': {
+                'title-tag': 'வீட்டுக் கடன் - குளோபல் டிரஸ்ட் வங்கி',
+                'title': 'வீட்டுக் கடன்',
+                'intro': 'எங்களின் போட்டி வீட்டுக் கடன் விருப்பங்களுடன் சொந்த வீடு கனவை நனவாக்குங்கள்.',
+                'rate-text': 'வட்டி விகிதம் தொடங்குகிறது',
+                'features-heading': 'முக்கிய அம்சங்கள்',
+                'feature-1-title': 'குறைந்த வட்டி விகிதங்கள்',
+                'feature-1-text': 'எங்களின் சந்தையில் முன்னணி வட்டி விகிதங்களிலிருந்து பயனடையுங்கள், இது உங்கள் வீட்டுக் கடனை மலிவாக மாற்றும்.',
+                'feature-2-title': 'நெகிழ்வான காலம்',
+                'feature-2-text': 'உங்கள் நிதித் தேவைக்கேற்ப, 30 ஆண்டுகள் வரை திருப்பிச் செலுத்தும் காலத்தைத் தேர்ந்தெடுக்கவும்.',
+                'feature-3-title': 'அதிக கடன் தொகை',
+                'feature-3-text': 'உங்கள் சொத்து மதிப்பில் 90% வரை கடனாகப் பெறுங்கள், இதனால் நீங்கள் விரும்பும் வீட்டை வாங்கலாம்.',
+                'feature-4-title': 'விரைவான செயல்முறை',
+                'feature-4-text': 'எங்களின் சீரான டிஜிட்டல் செயல்முறை, விரைவான விண்ணப்ப ஆய்வு மற்றும் பட்டுவாடாவை உறுதி செய்கிறது.',
+                'eligibility-heading': 'தகுதி',
+                'eligibility-1': 'வயது: 21 வயது முதல் 65 வயது வரை (கடன் முதிர்ச்சியின் போது)',
+                'eligibility-2': 'வேலைவாய்ப்பு: நிலையான வருமானம் கொண்ட சம்பளதாரர் அல்லது சுயதொழில் செய்பவர்.',
+                'eligibility-3': 'கடன் மதிப்பெண்: விரைவான ஒப்புதலுக்கு ஒரு நல்ல கடன் வரலாறு விரும்பத்தக்கது.',
+                'documents-heading': 'தேவையான ஆவணங்கள்',
+                'doc-1': 'அடையாளச் சான்று: பான் கார்டு, ஆதார் அட்டை, பாஸ்போர்ட்',
+                'doc-2': 'முகவரிச் சான்று: ஆதார் அட்டை, பயன்பாட்டு மசோதா, வாடகை ஒப்பந்தம்',
+                'doc-3': 'வருமானச் சான்று: சமீபத்திய சம்பள சீட்டுகள், வங்கி அறிக்கைகள், படிவம் 16',
+                'doc-4': 'சொத்து ஆவணங்கள்: விற்பனை ஒப்பந்தம், சொத்து பட்டா பத்திரம்',
+                'apply-btn': 'இப்போது விண்ணப்பிக்கவும்',
+                'back-link': 'அனைத்து சேவைகளுக்கும் திரும்பவும்',
+                'disclaimer-text': '*வட்டி விகிதங்கள் மற்றும் கடன் தொகைகள் வங்கி கொள்கைகள் மற்றும் தனிப்பட்ட கடன் மதிப்பீட்டின் அடிப்படையில் மாறக்கூடும். இறுதி ஒப்புதல் மற்றும் கடன் விதிமுறைகள் குளோபல் டிரஸ்ட் வங்கியின் தனிப்பட்ட விருப்பத்திற்கு உட்பட்டது.'
+            },
+            'hi': {
+                'title-tag': 'गृह ऋण - ग्लोबल ट्रस्ट बैंक',
+                'title': 'गृह ऋण',
+                'intro': 'हमारे प्रतिस्पर्धी गृह ऋण विकल्पों के साथ अपने घर के मालिक बनने के सपने को साकार करें।',
+                'rate-text': 'ब्याज दर से शुरू',
+                'features-heading': 'मुख्य विशेषताएं',
+                'feature-1-title': 'कम ब्याज दरें',
+                'feature-1-text': 'हमारी बाजार-अग्रणी ब्याज दरों से लाभ उठाएं, जो आपके गृह ऋण को किफायती बनाती हैं।',
+                'feature-2-title': 'लचीली अवधि',
+                'feature-2-text': 'अपनी वित्तीय आवश्यकताओं के अनुरूप, 30 साल तक की पुनर्भुगतान अवधि चुनें।',
+                'feature-3-title': 'उच्च ऋण राशि',
+                'feature-3-text': 'अपनी संपत्ति के मूल्य का 90% तक ऋण के रूप में प्राप्त करें, ताकि आप अपने सपनों का घर खरीद सकें।',
+                'feature-4-title': 'त्वरित प्रक्रिया',
+                'feature-4-text': 'हमारी सुव्यवस्थित डिजिटल प्रक्रिया त्वरित आवेदन समीक्षा और वितरण सुनिश्चित करती है।',
+                'eligibility-heading': 'पात्रता',
+                'eligibility-1': 'आयु: 21 वर्ष से 65 वर्ष (ऋण की परिपक्वता पर)',
+                'eligibility-2': 'रोजगार: वेतनभोगी या स्थिर आय वाले स्व-नियोजित व्यक्ति।',
+                'eligibility-3': 'क्रेडिट स्कोर: त्वरित स्वीकृति के लिए एक स्वस्थ क्रेडिट इतिहास को प्राथमिकता दी जाती है।',
+                'documents-heading': 'आवश्यक दस्तावेज़',
+                'doc-1': 'पहचान प्रमाण: पैन कार्ड, आधार कार्ड, पासपोर्ट',
+                'doc-2': 'पते का प्रमाण: आधार कार्ड, यूटिलिटी बिल, किराया समझौता',
+                'doc-3': 'आय का प्रमाण: नवीनतम वेतन पर्ची, बैंक स्टेटमेंट, फॉर्म 16',
+                'doc-4': 'संपत्ति दस्तावेज: बिक्री समझौता, संपत्ति शीर्षक विलेख',
+                'apply-btn': 'अभी आवेदन करें',
+                'back-link': 'सभी सेवाओं पर वापस जाएं',
+                'disclaimer-text': '*ब्याज दरें और ऋण राशि बैंक की नीतियों और व्यक्तिगत क्रेडिट मूल्यांकन के आधार पर परिवर्तन के अधीन हैं। अंतिम स्वीकृति और ऋण शर्तें ग्लोबल ट्रस्ट बैंक के एकमात्र विवेक पर हैं।'
+            }
+        };
+
+        function translatePage(lang) {
+            document.getElementById('title-tag').textContent = translations[lang]['title-tag'];
+            document.getElementById('title').textContent = translations[lang]['title'];
+            document.getElementById('intro').textContent = translations[lang]['intro'];
+            document.getElementById('rate-text').textContent = translations[lang]['rate-text'];
+            document.getElementById('features-heading').textContent = translations[lang]['features-heading'];
+            document.getElementById('feature-1-title').textContent = translations[lang]['feature-1-title'];
+            document.getElementById('feature-1-text').textContent = translations[lang]['feature-1-text'];
+            document.getElementById('feature-2-title').textContent = translations[lang]['feature-2-title'];
+            document.getElementById('feature-2-text').textContent = translations[lang]['feature-2-text'];
+            document.getElementById('feature-3-title').textContent = translations[lang]['feature-3-title'];
+            document.getElementById('feature-3-text').textContent = translations[lang]['feature-3-text'];
+            document.getElementById('feature-4-title').textContent = translations[lang]['feature-4-title'];
+            document.getElementById('feature-4-text').textContent = translations[lang]['feature-4-text'];
+            document.getElementById('eligibility-heading').textContent = translations[lang]['eligibility-heading'];
+            document.getElementById('eligibility-1').innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang]['eligibility-1']}`;
+            document.getElementById('eligibility-2').innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang]['eligibility-2']}`;
+            document.getElementById('eligibility-3').innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang]['eligibility-3']}`;
+            document.getElementById('documents-heading').textContent = translations[lang]['documents-heading'];
+            document.getElementById('doc-1').innerHTML = `<i class="fas fa-file-alt"></i> ${translations[lang]['doc-1']}`;
+            document.getElementById('doc-2').innerHTML = `<i class="fas fa-file-alt"></i> ${translations[lang]['doc-2']}`;
+            document.getElementById('doc-3').innerHTML = `<i class="fas fa-file-alt"></i> ${translations[lang]['doc-3']}`;
+            document.getElementById('doc-4').innerHTML = `<i class="fas fa-file-alt"></i> ${translations[lang]['doc-4']}`;
+            document.getElementById('apply-btn').innerHTML = `${translations[lang]['apply-btn']} <i class="fas fa-arrow-right"></i>`;
+            document.getElementById('back-link').innerHTML = `<i class="fas fa-arrow-left"></i> ${translations[lang]['back-link']}`;
+            document.getElementById('disclaimer-text').textContent = translations[lang]['disclaimer-text'];
+        }
+
+        function switchLang(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            translatePage(lang);
+            showNotification();
+        }
+
+        function showNotification() {
+            const notification = document.getElementById('langNotification');
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            document.getElementById('language').value = savedLanguage;
+            translatePage(savedLanguage);
+        });
+    </script>
+</body>
+</html>
+```

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title data-lang-key="title-tag">Savings Account - Global Trust Bank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        :root {
+            --primary: #004080;
+            --secondary: #0073e6;
+            --background: #f4f8fc;
+            --card-bg: #ffffff;
+            --accent: #e6f0ff;
+            --text: #1c1c1c;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            padding: 40px 30px;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        .header .icon {
+            font-size: 65px;
+            opacity: 0.1;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .intro {
+            font-size: 17px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background-color: var(--accent);
+            padding: 20px;
+            border-left: 5px solid var(--secondary);
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .highlight .rate {
+            font-size: 30px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-right: 30px;
+            min-width: 160px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            border: 1px solid #d6e4f5;
+            border-radius: 8px;
+            padding: 20px;
+            transition: 0.3s ease;
+            background-color: #fff;
+        }
+
+        .feature-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 4px 12px rgba(0,115,230,0.15);
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            margin-bottom: 0;
+            font-size: 15px;
+        }
+
+        ul.requirements {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.requirements li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        ul.requirements li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
+        .apply-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .apply-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,115,230,0.3);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .back-link i {
+            margin-right: 6px;
+        }
+
+        .footer-note {
+            font-size: 13px;
+            color: #666;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        .lang-switch {
+            margin: 15px 0;
+            text-align: right;
+        }
+
+        .lang-switch select {
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="notification" id="langNotification">Language changed successfully!</div>
+
+    <div class="container">
+        <div class="lang-switch">
+            <span class="lang-label">🌐</span>
+            <select id="language" onchange="switchLang(this.value)">
+                <option value="en">English</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+            </select>
+        </div>
+
+        <div class="header">
+            <h1 data-lang-key="savings-title">Savings Account</h1>
+            <div class="icon"><i class="fas fa-piggy-bank"></i></div>
+        </div>
+
+        <div class="content">
+            <p class="intro" data-lang-key="intro-text">Open a Savings Account with Global Trust Bank and enjoy the benefits of digital banking, competitive interest rates, and financial security with zero balance options. Whether you're a student, a salaried employee, or a senior citizen, we have the right savings account for you.</p>
+
+            <div class="highlight">
+                <div class="rate" data-lang-key="rate-value">Up to 3.5%*</div>
+                <div>
+                    <p data-lang-key="rate-desc">Annual interest on daily balances. Enjoy flexibility, security, and easy access to your funds.</p>
+                </div>
+            </div>
+
+            <h2 data-lang-key="why-choose-heading">Why Open a Savings Account with Us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 data-lang-key="feature-1-title"><i class="fas fa-wallet"></i> Zero Balance</h3>
+                    <p data-lang-key="feature-1-text">Open a zero balance savings account and maintain flexibility with no minimum balance requirement.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-lang-key="feature-2-title"><i class="fas fa-mobile-alt"></i> Mobile & Net Banking</h3>
+                    <p data-lang-key="feature-2-text">24/7 access to your account with secure mobile app and online banking services.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-lang-key="feature-3-title"><i class="fas fa-credit-card"></i> Free Debit Card</h3>
+                    <p data-lang-key="feature-3-text">Get a free international debit card with attractive reward points and offers.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-lang-key="feature-4-title"><i class="fas fa-shield-alt"></i> Safe & Insured</h3>
+                    <p data-lang-key="feature-4-text">Deposits are insured up to ₹5 lakh as per RBI guidelines. Your money is always safe.</p>
+                </div>
+            </div>
+
+            <h2 data-lang-key="eligibility-heading">Eligibility Criteria</h2>
+            <ul class="requirements">
+                <li data-lang-key="eligibility-1">Indian Resident (18 years and above)</li>
+                <li data-lang-key="eligibility-2">Valid ID and Address Proof</li>
+                <li data-lang-key="eligibility-3">Initial deposit (if not a zero balance account)</li>
+            </ul>
+
+            <h2 data-lang-key="documents-heading">Documents Required</h2>
+            <ul class="requirements">
+                <li data-lang-key="doc-1">PAN Card (mandatory)</li>
+                <li data-lang-key="doc-2">Any one of: Aadhaar / Passport / Voter ID / Driving License</li>
+                <li data-lang-key="doc-3">Recent Passport-size Photograph</li>
+            </ul>
+
+            <button class="apply-button" data-lang-key="apply-btn">Open Account Now</button>
+            <br/>
+            <a href="../index.html" class="back-link" data-lang-key="back-link"><i class="fas fa-arrow-left"></i> Back to Services</a>
+
+            <div class="footer-note">
+                <p data-lang-key="footer-note">*Interest rates are subject to change as per RBI and bank guidelines. Terms & conditions apply.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'en': {
+                'title-tag': 'Savings Account - Global Trust Bank',
+                'savings-title': 'Savings Account',
+                'intro-text': 'Open a Savings Account with Global Trust Bank and enjoy the benefits of digital banking, competitive interest rates, and financial security with zero balance options. Whether you\'re a student, a salaried employee, or a senior citizen, we have the right savings account for you.',
+                'rate-value': 'Up to 3.5%*',
+                'rate-desc': 'Annual interest on daily balances. Enjoy flexibility, security, and easy access to your funds.',
+                'why-choose-heading': 'Why Open a Savings Account with Us?',
+                'feature-1-title': 'Zero Balance',
+                'feature-1-text': 'Open a zero balance savings account and maintain flexibility with no minimum balance requirement.',
+                'feature-2-title': 'Mobile & Net Banking',
+                'feature-2-text': '24/7 access to your account with secure mobile app and online banking services.',
+                'feature-3-title': 'Free Debit Card',
+                'feature-3-text': 'Get a free international debit card with attractive reward points and offers.',
+                'feature-4-title': 'Safe & Insured',
+                'feature-4-text': 'Deposits are insured up to ₹5 lakh as per RBI guidelines. Your money is always safe.',
+                'eligibility-heading': 'Eligibility Criteria',
+                'eligibility-1': 'Indian Resident (18 years and above)',
+                'eligibility-2': 'Valid ID and Address Proof',
+                'eligibility-3': 'Initial deposit (if not a zero balance account)',
+                'documents-heading': 'Documents Required',
+                'doc-1': 'PAN Card (mandatory)',
+                'doc-2': 'Any one of: Aadhaar / Passport / Voter ID / Driving License',
+                'doc-3': 'Recent Passport-size Photograph',
+                'apply-btn': 'Open Account Now',
+                'back-link': 'Back to Services',
+                'footer-note': '*Interest rates are subject to change as per RBI and bank guidelines. Terms & conditions apply.'
+            },
+            'ta': {
+                'title-tag': 'சேமிப்பு கணக்கு - குளோபல் டிரஸ்ட் வங்கி',
+                'savings-title': 'சேமிப்பு கணக்கு',
+                'intro-text': 'குளோபல் டிரஸ்ட் வங்கியுடன் சேமிப்பு கணக்கைத் திறந்து, டிஜிட்டல் வங்கி, போட்டி வட்டி விகிதங்கள் மற்றும் பூஜ்ஜிய இருப்பு விருப்பங்களுடன் நிதிப் பாதுகாப்பின் பலன்களை அனுபவிக்கவும். நீங்கள் ஒரு மாணவர், சம்பளதாரர் அல்லது மூத்த குடிமகனாக இருந்தாலும், உங்களுக்கான சரியான சேமிப்பு கணக்கு எங்களிடம் உள்ளது.',
+                'rate-value': '3.5% வரை*',
+                'rate-desc': 'தினசரி இருப்புக்கு வருடாந்திர வட்டி. உங்கள் நிதிக்கு நெகிழ்வுத்தன்மை, பாதுகாப்பு மற்றும் எளிதான அணுகலை அனுபவிக்கவும்.',
+                'why-choose-heading': 'எங்களுடன் சேமிப்பு கணக்கை ஏன் திறக்க வேண்டும்?',
+                'feature-1-title': 'பூஜ்ஜிய இருப்பு',
+                'feature-1-text': 'பூஜ்ஜிய இருப்பு சேமிப்பு கணக்கைத் திறந்து, குறைந்தபட்ச இருப்புத் தேவை இல்லாமல் நெகிழ்வுத்தன்மையைப் பராமரிக்கவும்.',
+                'feature-2-title': 'மொபைல் & நெட் பேங்கிங்',
+                'feature-2-text': 'பாதுகாப்பான மொபைல் செயலி மற்றும் ஆன்லைன் வங்கி சேவைகளுடன் உங்கள் கணக்கிற்கு 24/7 அணுகல்.',
+                'feature-3-title': 'இலவச டெபிட் கார்டு',
+                'feature-3-text': 'கவர்ச்சியான வெகுமதி புள்ளிகள் மற்றும் சலுகைகளுடன் ஒரு இலவச சர்வதேச டெபிட் கார்டைப் பெறுங்கள்.',
+                'feature-4-title': 'பாதுகாப்பானது & காப்பீடு செய்யப்பட்டது',
+                'feature-4-text': 'ஆர்பிஐ வழிகாட்டுதல்களின்படி ₹5 லட்சம் வரை வைப்புத்தொகை காப்பீடு செய்யப்பட்டுள்ளது. உங்கள் பணம் எப்போதும் பாதுகாப்பாக இருக்கும்.',
+                'eligibility-heading': 'தகுதிக்கான நிபந்தனைகள்',
+                'eligibility-1': 'இந்திய குடியுரிமை (18 வயது மற்றும் அதற்கு மேற்பட்டவர்)',
+                'eligibility-2': 'செல்லுபடியாகும் அடையாள மற்றும் முகவரிச் சான்று',
+                'eligibility-3': 'ஆரம்ப வைப்பு (பூஜ்ஜிய இருப்பு கணக்கு இல்லையென்றால்)',
+                'documents-heading': 'தேவையான ஆவணங்கள்',
+                'doc-1': 'பான் கார்டு (கட்டாயம்)',
+                'doc-2': 'ஏதேனும் ஒன்று: ஆதார் / பாஸ்போர்ட் / வாக்காளர் அடையாள அட்டை / ஓட்டுநர் உரிமம்',
+                'doc-3': 'சமீபத்திய பாஸ்போர்ட் அளவு புகைப்படம்',
+                'apply-btn': 'இப்போது கணக்கைத் திறக்கவும்',
+                'back-link': 'சேவைகளுக்குத் திரும்பவும்',
+                'footer-note': '*வட்டி விகிதங்கள் ஆர்பிஐ மற்றும் வங்கி வழிகாட்டுதல்களின்படி மாறக்கூடும். விதிமுறைகள் மற்றும் நிபந்தனைகள் பொருந்தும்.'
+            },
+            'hi': {
+                'title-tag': 'बचत खाता - ग्लोबल ट्रस्ट बैंक',
+                'savings-title': 'बचत खाता',
+                'intro-text': 'ग्लोबल ट्रस्ट बैंक के साथ एक बचत खाता खोलें और डिजिटल बैंकिंग, प्रतिस्पर्धी ब्याज दरों और शून्य बैलेंस विकल्पों के साथ वित्तीय सुरक्षा के लाभों का आनंद लें। चाहे आप एक छात्र, एक वेतनभोगी कर्मचारी, या एक वरिष्ठ नागरिक हों, हमारे पास आपके लिए सही बचत खाता है।',
+                'rate-value': '3.5% तक*',
+                'rate-desc': 'दैनिक शेष पर वार्षिक ब्याज। अपने फंड तक लचीलेपन, सुरक्षा और आसान पहुंच का आनंद लें।',
+                'why-choose-heading': 'हमारे साथ बचत खाता क्यों खोलें?',
+                'feature-1-title': 'शून्य बैलेंस',
+                'feature-1-text': 'एक शून्य बैलेंस बचत खाता खोलें और बिना किसी न्यूनतम बैलेंस आवश्यकता के लचीलापन बनाए रखें।',
+                'feature-2-title': 'मोबाइल और नेट बैंकिंग',
+                'feature-2-text': 'सुरक्षित मोबाइल ऐप और ऑनलाइन बैंकिंग सेवाओं के साथ अपने खाते तक 24/7 पहुंच।',
+                'feature-3-title': 'मुफ्त डेबिट कार्ड',
+                'feature-3-text': 'आकर्षक इनाम बिंदुओं और ऑफ़र के साथ एक मुफ्त अंतरराष्ट्रीय डेबिट कार्ड प्राप्त करें।',
+                'feature-4-title': 'सुरक्षित और बीमित',
+                'feature-4-text': 'आरबीआई दिशानिर्देशों के अनुसार ₹5 लाख तक की जमा राशि का बीमा किया जाता है। आपका पैसा हमेशा सुरक्षित है।',
+                'eligibility-heading': 'पात्रता मानदंड',
+                'eligibility-1': 'भारतीय निवासी (18 वर्ष और उससे अधिक)',
+                'eligibility-2': 'वैध आईडी और पते का प्रमाण',
+                'eligibility-3': 'प्रारंभिक जमा (यदि शून्य बैलेंस खाता नहीं है)',
+                'documents-heading': 'आवश्यक दस्तावेज़',
+                'doc-1': 'पैन कार्ड (अनिवार्य)',
+                'doc-2': 'इनमें से कोई एक: आधार / पासपोर्ट / वोटर आईडी / ड्राइविंग लाइसेंस',
+                'doc-3': 'हाल ही का पासपोर्ट आकार का फोटो',
+                'apply-btn': 'अभी खाता खोलें',
+                'back-link': 'सेवाओं पर वापस जाएं',
+                'footer-note': '*ब्याज दरें आरबीआई और बैंक दिशानिर्देशों के अनुसार परिवर्तन के अधीन हैं। नियम और शर्तें लागू होती हैं।'
+            }
+        };
+
+        function translatePage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    // Special handling for list items that have text and icon
+                    if (element.tagName === 'LI') {
+                        element.textContent = translations[lang][key];
+                    } else if (key === 'back-link') {
+                        element.innerHTML = `<i class="fas fa-arrow-left"></i> ${translations[lang][key]}`;
+                    } else if (key === 'apply-btn') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update title separately
+            if (translations[lang] && translations[lang]['title-tag']) {
+                document.title = translations[lang]['title-tag'];
+            }
+        }
+
+        function switchLang(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            translatePage(lang);
+            showNotification();
+        }
+
+        function showNotification() {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = 'Language changed successfully!';
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 2000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            const langSelector = document.getElementById('language');
+            if (langSelector) {
+                langSelector.value = savedLanguage;
+            }
+            translatePage(savedLanguage);
+        });
+    </script>
+</body>
+</html>
